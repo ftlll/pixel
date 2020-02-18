@@ -1,12 +1,11 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
 import Upload from './components/Upload';
+import './css/imports.css';
 
 function App() {
   return (
-    <div className="App">
-      <h1>File Upload</h1>
+    <div>
+      <h1>Pixel Art</h1>
       <Upload />
     </div>
   );

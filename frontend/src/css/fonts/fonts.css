@@ -1,0 +1,9 @@
+@font-face {
+  font-family: "Minecraftia";
+  src: url("./font-file/Minecraftia\ Regular.eot");
+  src: url("./font-file/Minecraftia\ Regular.eot#iefix") format("embedded-opentype"),
+    url("./font-file/Minecraftia\ Regular.woff2") format("woff2"),
+    url("./font-file/Minecraftia\ Regular.woff") format("woff"),
+    url("./font-file/Minecraftia\ Regular.ttf") format("truetype"),
+    url("./font-file/Minecraftia\ Regular.svg#Minecraftia") format("svg");
+}
