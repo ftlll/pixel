@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^7.1.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
+    "react-redux": "^7.2.0",
     "react-scripts": "3.4.0"
   },
   "scripts": {
@@ -15,8 +16,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "prebuild":"rm -rf ../backend/templates/index.html && rm -rf ../backend/static/build",
-"postbuild": "mv build/index.html ../backend/templates/ &&  mv build ../backend/static/"
+    "prebuild": "rm -rf ../backend/templates/index.html && rm -rf ../backend/static/build",
+    "postbuild": "mv build/index.html ../backend/templates/ &&  mv build ../backend/static/"
   },
   "eslintConfig": {
     "extends": "react-app"

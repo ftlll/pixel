@@ -1,11 +1,12 @@
 import React from 'react';
-import Upload from './components/Upload';
 import './css/imports.css';
+import Canvas from './components/Canvas';
 
 function App() {
   return (
-    <div>
-      <Upload />
+    <div className='background'>
+      <div className='header'>22</div>
+      <Canvas />
     </div>
   );
 }
