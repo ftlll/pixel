@@ -1,6 +1,8 @@
 import React from 'react'
 import reactCSS from 'reactcss'
 import { SketchPicker } from 'react-color'
+import { useSelector, useDispatch } from 'react-redux';
+import { setColor } from '../redux/actions/action'; 
 
 class ColorPicker extends React.Component {
   state = {
