@@ -9,13 +9,9 @@ class Grid extends React.Component {
             color: '#3333ff',
             width: 100/row
         };
-        const cell2 = {
-            width: 100/row
-        };
         const cells = [];
-        for(let i = 0; i < 10; i++) {
+        for(let i = 0; i < row; i++) {
             cells.push(cell);
-            cells.push(cell2);
         }
         return (
             <div style={style}>

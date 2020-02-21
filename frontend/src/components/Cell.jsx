@@ -9,7 +9,7 @@ class Cell extends React.Component {
         const styles = {
             width: `${width}%`,
             height: `${width}%`,
-            margin: `${width/20}%`,
+            paddingBottom: `${width/20}%`,
             backgroundColor:  color || CELL_NULL_COLOR
         };
 
