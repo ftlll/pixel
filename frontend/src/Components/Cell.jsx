@@ -1,11 +1,23 @@
 import React from 'react';
 
-class Cell extends React.Component {
+const CELL_NULL_COLOR = 'rgba(49, 49, 49, 1)';
+const WIDTH = 10;
 
+class Cell extends React.Component {
+    
     render() {
-        
-    };
-    return ();
+        const styles = {
+            width: `100px`,
+            height: `100px`,
+            backgroundColor: CELL_NULL_COLOR
+        };
+
+        return (
+            <div
+            style={styles}
+            />
+        );
+    }
 }
 
 export default Cell;

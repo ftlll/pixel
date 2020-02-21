@@ -1,12 +1,13 @@
 import React from 'react';
 import './css/imports.css';
-import Canvas from './components/Canvas';
+
+import Cell from './components/Cell';
 
 function App() {
   return (
     <div className='background'>
-      <div className='header'>22</div>
-      <Canvas />
+      <div className='header'>222</div>
+      <Cell />
     </div>
   );
 }
