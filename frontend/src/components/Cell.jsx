@@ -6,10 +6,12 @@ const WIDTH = 10;
 class Cell extends React.Component {
     
     render() {
+        const {cell: {color, width}} = this.props;
         const styles = {
-            width: `100px`,
-            height: `100px`,
-            backgroundColor: CELL_NULL_COLOR
+            width: `${width}px`,
+            height: `${width}px`,
+            margin: `${width/10}px`,
+            backgroundColor:  color || CELL_NULL_COLOR
         };
 
         return (
