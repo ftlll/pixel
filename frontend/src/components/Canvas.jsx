@@ -5,10 +5,10 @@ class Canvas extends React.Component {
     
     render() {
         const style = {
-            height: 800,
-            width: 800,
+            height: 400,
+            width: 400,
         };
-        return (<Grid style={style} row={20} column={20}/>);
+        return (<Grid style={style} width={10}/>);
     }
 }
 

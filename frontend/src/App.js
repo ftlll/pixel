@@ -8,9 +8,9 @@ import ColorPicker from './components/ColorPicker';
 function App() {
   return (
     <div className='background'>
-      <div className='header'>222</div>
+      {/* <div className='header'>222</div> */}
       <Canvas />
-      <ColorPicker />
+      {/* <ColorPicker /> */}
     </div>
   );
 }
