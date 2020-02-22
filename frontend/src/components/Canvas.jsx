@@ -4,11 +4,11 @@ import Grid from './Grid';
 class Canvas extends React.Component {
     
     render() {
-        const cell = {
-            color: '#3333ff',
-            width: 100
+        const style = {
+            height: 800,
+            width: 800,
         };
-        return (<Grid />);
+        return (<Grid style={style} row={20} column={20}/>);
     }
 }
 
