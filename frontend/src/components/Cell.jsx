@@ -9,13 +9,13 @@ class Cell extends React.Component {
         const styles = {
             width: `${width}%`,
             height: `${width}%`,
-            paddingBottom: `${width/20}%`,
+            //paddingBottom: `${width/20}%`,
             backgroundColor:  color || CELL_NULL_COLOR
         };
 
         return (
             <div
-            style={styles}
+              style={styles} className='cell'
             />
         );
     }
