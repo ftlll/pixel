@@ -3,13 +3,17 @@ import React from 'react';
 const CELL_NULL_COLOR = 'rgba(49, 49, 49, 1)';
 
 class Cell extends React.Component {
-    
+    shouldComponentUpdate(nextProps) {
+        const {cell: {color, width}} = this.props;
+        let updated = false;
+        updated = (nextProps.color !== color) || (nextProps.width !== width);
+        return updated;
+      }
     render() {
         const {cell: {color, width}} = this.props;
         const styles = {
             width: `${width}%`,
             height: `${width}%`,
-            //paddingBottom: `${width/20}%`,
             backgroundColor:  color || CELL_NULL_COLOR
         };
 
