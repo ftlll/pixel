@@ -1,4 +1,4 @@
 import { combineReducers } from "redux";
-import drawReducer from './drawReducer';
+import drawReducer from './drawingToolReducer';
 
 export default combineReducers({ drawReducer });
