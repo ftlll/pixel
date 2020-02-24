@@ -8,7 +8,8 @@ class Cell extends React.Component {
         let updated = false;
         updated = (nextProps.color !== color) || (nextProps.width !== width);
         return updated;
-      }
+    }
+
     render() {
         const {cell: {color, width}} = this.props;
         const styles = {

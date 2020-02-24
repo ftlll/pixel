@@ -4,15 +4,8 @@ import Cell from './Cell';
 class Grid extends React.Component {
     
     render() {
-        const {style, width} = this.props;
-        const cell = {
-            color: '#3333ff',
-            width
-        };
-        const cells = [];
-        for(let i = 0; i < 100; i++) {
-            cells.push(cell);
-        }
+        const {style, width, cells} = this.props;
+        
         return (
             <div style={style}>
                 {cells.map(cell => {
