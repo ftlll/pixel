@@ -14,13 +14,13 @@ export function setColor (color) {
     }
 };
 
-export function paintPixel(grid, id) {
-    return {
-        type: type.PAINT_PIXEL,
-        gird,
-        id
-    }
-}
+// export function paintPixel(grid, id) {
+//     return {
+//         type: type.PAINT_PIXEL,
+//         gird,
+//         id
+//     }
+// }
 
 export function applePencil() {
     return {
