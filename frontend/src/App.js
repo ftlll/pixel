@@ -10,8 +10,7 @@ class App extends React.Component {
 
     return (
       <div className='background'>
-        {/* <div className='header'>222</div> */}
-        <Canvas cells={this.state.grid}/>
+        <Canvas/>
         {/* <ColorPicker /> */}
       </div>
     );
