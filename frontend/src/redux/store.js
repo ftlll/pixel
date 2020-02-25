@@ -5,9 +5,9 @@ import reducer from "./reducers/reducer";
 
 let store = createStore(reducer);
 
-// store.dispatch({
-//     type: type.SET_INIT_STATE
-// });
+store.dispatch({
+    type: type.SET_INIT_STATE
+});
 
 console.log(store.getState());
 
