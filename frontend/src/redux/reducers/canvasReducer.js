@@ -1,3 +1,4 @@
+import{List, Map} from 'immutable';
 import * as type from '../actions/actionTypes';
 
 const initGrid = (numCells) => {
@@ -9,18 +10,20 @@ const initGrid = (numCells) => {
 }
 
 const initCanvas = (action = {})  => {
-  const options = action.options;
-  const columns = options.columns || 16;
-  const rows = options.rows || 16;
-  let cells = [];
+  const options = action.options || {};
+  const columns = parseInt(options.columns, 10) || 16;
+  const rows = parseInt(options.rows, 10) || 16;
+
+  let grid = List();
   for(let i = 0; i < rows * columns; i++) {
-    cells.push('');
+    grid = grid.push('');
   }
-  return {
-    cells,
+
+  return Map({
+    grid,
     columns,
-    rows,
-  }
+    rows
+  })
 }
 
 export default function(canvas = initCanvas(), action) {

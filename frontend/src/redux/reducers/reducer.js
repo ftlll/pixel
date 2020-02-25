@@ -1,36 +1,39 @@
-import { combineReducers } from "redux";
-import drawToolReducer from './drawingToolReducer';
+import { List, Map } from 'immutable';
 import canvasReducer from './canvasReducer';
+import selectedCanvasReducer from './selectedCanvasReducer';
+import drawingToolReducer from './drawingToolReducer';
 import * as type from '../actions/actionTypes';
 
-const DEFAULT_ROW = 16;
-const DEFAULT_COL = 16;
+function setInitialState(state) {
+  const cellSize = 10;
 
-const initState = (state) => {
-  const initState = {
-    row: DEFAULT_ROW,
-    col: DEFAULT_COL,
+  const initialState = {
+    cellSize,
   };
 
-  return state.merge(initState);
+  return state.merge(initialState);
 }
 
-const generateDefaultState = () => {
-  return initState(Map(), { type: type.SET_INIT_STATE, state: {} });
+function generateDefaultState() {
+  return setInitialState(Map(), { type: type.SET_INIT_STATE, state: {} });
 }
 
-const Reducer = (state, action) =>  {
-    switch (action.type) {
-        case type.SET_INIT_STATE:
-            return initState(state);
-        default:
-            return state;
-    }
+const pipeReducers = reducers => (initialState, action) =>
+  reducers.reduce((state, reducer) => reducer(state, action), initialState);
+
+function partialReducer(state, action) {
+  switch (action.type) {
+    case type.SET_INIT_STATE:
+      return setInitialState(state);
+    default:
+      return state;
+  }
 }
 
 export default function(state = generateDefaultState(), action) {
-    return Reducer(state, action).merge({
-        drawToolReducer: drawToolReducer(state.get('drawingTool'), action),
-        canvasReducer: canvasReducer(state.get('canvas'), action)
-    })
-};
+  return partialReducer(state, action).merge({
+    canvas: pipeReducers([canvasReducer, selectedCanvasReducer])
+      (state.get('canvas'),
+       action),
+  });
+}
