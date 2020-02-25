@@ -32,6 +32,8 @@ function partialReducer(state, action) {
 
 export default function(state = generateDefaultState(), action) {
   return partialReducer(state, action).merge({
-    canvas: pipeReducers([canvasReducer,selectedCanvasReducer])(state.get('canvas'), action),
+    canvas: pipeReducers([canvasReducer, selectedCanvasReducer])
+      (state.get('canvas'),
+       action),
   });
 }

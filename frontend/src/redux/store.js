@@ -10,7 +10,7 @@ let store = createStore(reducer);
 
 // store.dispatch(action.setColor('#ffffff'));
 
- store.dispatch(action.applyPencil('#ffffff',12));
+ store.dispatch(action.applyPencil('#ffffff', 12));
 
 console.log(store.getState());
 

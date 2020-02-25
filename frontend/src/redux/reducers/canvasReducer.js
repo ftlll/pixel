@@ -10,20 +10,15 @@ const initGrid = (numCells) => {
 }
 
 const initCanvas = (action = {})  => {
-  const options = action.options;
-  let columns, rows;
-  if(options) {
-    columns = options.columns ?  options.columns:16;
-    rows = options.rows ? options.rows:16;
-  } else {
-    columns = 16;
-    rows = 16;
-  }
+  const options = action.options || {};
+  const columns = parseInt(options.columns, 10) || 16;
+  const rows = parseInt(options.rows, 10) || 16;
 
   let grid = List();
   for(let i = 0; i < rows * columns; i++) {
     grid = grid.push('');
   }
+
   return Map({
     grid,
     columns,
