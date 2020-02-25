@@ -1,4 +1,9 @@
 import { createStore } from "redux";
-import rootReducer from "./reducers";
+import undoable, { includeAction } from 'redux-undo';
+import * as type from './actions/actionTypes';
+import reducer from "./reducers/reducer";
 
-export default createStore(rootReducer);
+let store = createStore(reducer, {
+    filter: includeAction([])
+});
+export default store;
