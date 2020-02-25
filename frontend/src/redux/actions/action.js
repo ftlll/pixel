@@ -22,9 +22,11 @@ export function setColor (color) {
 //     }
 // }
 
-export function applePencil() {
+export function applyPencil(color, id) {
     return {
-        type: type.APPLY_PENCIL
+        type: type.APPLY_PENCIL,
+        color,
+        id
     }
 }
 
