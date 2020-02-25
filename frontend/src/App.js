@@ -7,10 +7,9 @@ import ColorPicker from './components/ColorPicker';
 class App extends React.Component {
   
   render() {
-
     return (
       <div className='background'>
-        <Canvas/>
+        {/* <Canvas cell={this.props.grid}/> */}
         {/* <ColorPicker /> */}
       </div>
     );

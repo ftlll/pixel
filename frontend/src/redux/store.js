@@ -9,4 +9,9 @@ let store = createStore(reducer);
 //     type: type.SET_INIT_STATE
 // });
 
+console.log(store.getState());
+
+const unsubscribe = store.subscribe(() => console.log(store.getState()))
+
+
 export default store;
