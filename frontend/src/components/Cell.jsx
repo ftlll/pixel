@@ -21,8 +21,6 @@ class Cell extends React.Component {
             backgroundColor:  color || CELL_NULL_COLOR
         };
 
-        
-
         return (
             <div
               style={styles} className='cell'
