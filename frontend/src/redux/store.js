@@ -13,8 +13,12 @@ console.log(store.getState().get('canvas').get('grid'));
 
 const unsubscribe = store.subscribe(() => console.log(store.getState().get('canvas').get('grid')))
 
-store.dispatch(action.applyPencil('#66ffff', 12));
-console.log('store');
+store.dispatch(action.applyPencil('rgba(1, 1, 1, 1)', 12));
+
+store.dispatch(action.applyPencil('#66ff66', 13));
+
+store.dispatch(action.applyEraser(13));
+
 unsubscribe();
 
 export default store;

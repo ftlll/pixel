@@ -14,18 +14,17 @@ export function setColor (color) {
     }
 };
 
-// export function paintPixel(grid, id) {
-//     return {
-//         type: type.PAINT_PIXEL,
-//         gird,
-//         id
-//     }
-// }
-
 export function applyPencil(color, id) {
     return {
         type: type.APPLY_PENCIL,
         color,
+        id
+    }
+}
+
+export function applyEraser(id) {
+    return {
+        type: type.APPLY_ERASER,
         id
     }
 }
