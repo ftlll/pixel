@@ -1,20 +1,27 @@
 import{List, Map} from 'immutable';
 import * as type from '../actions/actionTypes';
 
+
 const drawPixel = (grid, color, id) => {
-    grid.set(id, color);
+    return grid.set(id, color);
 }
 
-const applyPencil = (grid, {color, id}) => {
-    drawPixel(grid, color, id);
-    return grid;
+const applyPencilToGrid = (grid, {color, id}) => {
+    const newGrid = drawPixel(grid, color, id);
+    return newGrid;
 }
 
-export default function(selectedCanvas, action) {
+const applyPencil = (canvas, action) => {
+    const newGrid = applyPencilToGrid(canvas.get('grid'), action);
+    const newCanvas = canvas.set('grid', newGrid);
+    return newCanvas;
+};
+
+export default function(canvas, action) {
     switch (action.type) {
         case type.APPLY_PENCIL:
-            return applyPencil(selectedCanvas, action);
+            return applyPencil(canvas, action);
         default:
-            return selectedCanvas;
+            return canvas;
     }
 }
