@@ -29,6 +29,14 @@ export function applyEraser(id) {
     }
 }
 
+export function applyPaintBucket(color, id) {
+    return {
+        type: type.APPLY_PAINT_BUCKET,
+        color,
+        id
+    }
+}
+
 export function undo() {
     return ActionCreators.undo();
 };

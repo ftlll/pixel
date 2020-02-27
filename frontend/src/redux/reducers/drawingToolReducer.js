@@ -1,4 +1,4 @@
-import * as types from '../actions/actionTypes';
+import * as type from '../actions/actionTypes';
 import { bindActionCreators } from 'redux';
 
 const PENCIL = 'PENCIL';

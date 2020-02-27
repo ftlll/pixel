@@ -23,12 +23,18 @@ const applyEraser = (canvas, action) => {
     return newCanvas;
 }
 
+const applyPaintBucket = (canvas, action) => {
+
+}
+
 export default function(canvas, action) {
     switch (action.type) {
         case type.APPLY_PENCIL:
             return applyPencil(canvas, action);
         case type.APPLY_ERASER:
             return applyEraser(canvas, action);
+        case type.APPLY_PAINT_BUCKET:
+            return applyPaintBucket(canvas, action);
         default:
             return canvas;
     }
