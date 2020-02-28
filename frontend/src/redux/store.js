@@ -17,7 +17,7 @@ store.dispatch(action.applyPencil('rgba(1, 1, 1, 1)', 12));
 
 store.dispatch(action.applyPencil('#66ff66', 13));
 
-store.dispatch(action.applyEraser(13));
+store.dispatch(action.applyPaintBucket('#66ff66', 132, 16, 16));
 
 unsubscribe();
 

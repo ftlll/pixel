@@ -29,11 +29,13 @@ export function applyEraser(id) {
     }
 }
 
-export function applyPaintBucket(color, id) {
+export function applyPaintBucket(color, id, columns, rows) {
     return {
         type: type.APPLY_PAINT_BUCKET,
         color,
-        id
+        id,
+        columns,
+        rows
     }
 }
 
