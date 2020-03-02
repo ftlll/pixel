@@ -5,7 +5,7 @@ const switchTool = (drawingTool = tool.PENCIL, action) => {
     if (drawingTool === tool) {
         return tool.PENCIL;
     } else {
-        return tool;
+        return action.tool;
     }
 }
 
@@ -14,7 +14,7 @@ export default function drawingToolReducer(drawingTool = tool.PENCIL, action) {
         case type.SET_INIT_STATE:
             return tool.PENCIL;
         case type.SWITCH_TOOL:
-            return switchTool(drawingTool, action.tool);
+            return switchTool(drawingTool, action);
         default:
             return drawingTool;
     }
