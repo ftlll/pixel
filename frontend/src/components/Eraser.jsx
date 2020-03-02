@@ -19,10 +19,7 @@ const mapStateToProps = state => ({
 });
   
 const mapDispatchToProps = dispatch => ({
-    switchEraser: () => {
-        dispatch(switchTool(tool.ERASER));
-        console.log(store.getState());
-    }
+    switchEraser: () => dispatch(switchTool(tool.ERASER))
 });
 
 const EraserContainer = connect(mapStateToProps, mapDispatchToProps)(Eraser);
