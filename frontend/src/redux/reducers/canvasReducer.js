@@ -1,13 +1,13 @@
 import{List, Map} from 'immutable';
 import * as type from '../actions/actionTypes';
 
-const initGrid = (numCells) => {
-    let grid = [];
-    for(let i = 0; i < numCells; i++) {
-        grid.push('');
-    }
-    return grid;
-}
+// const initGrid = (numCells) => {
+//     let grid = [];
+//     for(let i = 0; i < numCells; i++) {
+//         grid.push('');
+//     }
+//     return grid;
+// }
 
 const initCanvas = (action = {})  => {
   const options = action.options || {};

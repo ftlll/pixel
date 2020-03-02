@@ -39,6 +39,13 @@ export function applyPaintBucket(color, id, columns, rows) {
     }
 }
 
+export function switchTool(tool) {
+    return {
+        type: type.SWITCH_TOOL,
+        tool
+    };
+}
+
 export function undo() {
     return ActionCreators.undo();
 };

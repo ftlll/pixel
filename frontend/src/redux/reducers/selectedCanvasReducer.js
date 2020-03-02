@@ -1,4 +1,4 @@
-import{List, Map} from 'immutable';
+//import{List, Map} from 'immutable';
 import * as type from '../actions/actionTypes';
 
 const GRID_INIT_COLOR = 'rgba(49, 49, 49, 1)';

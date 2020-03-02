@@ -1,4 +1,4 @@
-import { List, Map } from 'immutable';
+import { Map } from 'immutable';
 import canvasReducer from './canvasReducer';
 import selectedCanvasReducer from './selectedCanvasReducer';
 import drawingToolReducer from './drawingToolReducer';
@@ -32,6 +32,7 @@ function partialReducer(state, action) {
 
 export default function(state = generateDefaultState(), action) {
   return partialReducer(state, action).merge({
+    drawingTool: drawingToolReducer(state.get('drawingTool'), action),
     canvas: pipeReducers([canvasReducer, selectedCanvasReducer])
       (state.get('canvas'),
        action),

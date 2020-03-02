@@ -1,17 +1,11 @@
 import { createStore } from "redux";
-import undoable, { includeAction } from 'redux-undo';
+//import undoable, { includeAction } from 'redux-undo';
 import reducer from "./reducers/reducer";
 import * as action from './actions/action';
 
 let store = createStore(reducer);
 
-// store.dispatch(action.init());
-
-// store.dispatch(action.setColor('#ffffff'));
-
-console.log(store.getState().get('canvas').get('grid'));
-
-const unsubscribe = store.subscribe(() => console.log(store.getState().get('canvas').get('grid')))
+const unsubscribe = store.subscribe(() => console.log(store.getState()));
 
 store.dispatch(action.applyPencil('rgba(1, 1, 1, 1)', 12));
 
