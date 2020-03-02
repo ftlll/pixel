@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import * as tool from '../redux/toolTypes';
 import { switchTool } from '../redux/actions/action';
-import store from '../redux/store';
 
 const Eraser = ({ usingEraser, switchEraser}) => {
     return (
