@@ -14,24 +14,34 @@ export function setColor (color) {
     }
 };
 
-export function applyPencil(color, id) {
-    return {
-        type: type.APPLY_PENCIL,
-        color,
-        id
-    }
-}
+// export function applyPencil(color, id) {
+//     return {
+//         type: type.APPLY_PENCIL,
+//         color,
+//         id
+//     }
+// }
 
-export function applyEraser(id) {
-    return {
-        type: type.APPLY_ERASER,
-        id
-    }
-}
+// export function applyEraser(id) {
+//     return {
+//         type: type.APPLY_ERASER,
+//         id
+//     }
+// }
 
-export function applyPaintBucket(color, id, columns, rows) {
+// export function applyPaintBucket(color, id, columns, rows) {
+//     return {
+//         type: type.APPLY_PAINT_BUCKET,
+//         color,
+//         id,
+//         columns,
+//         rows
+//     }
+// }
+
+export function applyTools(color, id, columns, rows, drawingTool) {
     return {
-        type: type.APPLY_PAINT_BUCKET,
+        type: `APPLY_${drawingTool}`,
         color,
         id,
         columns,

@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { applyTools } from '../redux/actions/action';
 import Grid from './Grid';
 
 class Canvas extends React.Component {
@@ -20,21 +21,33 @@ class Canvas extends React.Component {
             height: 400,
             width: 400,
         };
-        return (<Grid style={style} cells={cells}/>);
+        return (
+            <Grid
+              style={style}
+              cells={cells}
+              drawingTool={props.drawingTool}
+            />
+        );
     }
 }
 
 const mapStateToProps = state => {
     const canvas = state.get('canvas');
+    const drawingTool = state.get('drawingTool');
     return {
         grid: canvas.get('grid'),
+        drawingTool,
         columns: canvas.get('columns')
     };
 };
 
+const mapDispatchToProps = dispatch => ({
+    applyTools: cellProps => dispatch(applyTools(cellProps))
+});
+
 const CanvasContainer = connect(
     mapStateToProps,
-    //mapDispatchToProps
+    mapDispatchToProps
   )(Canvas);
 
 export default CanvasContainer;
