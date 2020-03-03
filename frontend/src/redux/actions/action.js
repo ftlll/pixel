@@ -14,31 +14,6 @@ export function setColor (color) {
     }
 };
 
-// export function applyPencil(color, id) {
-//     return {
-//         type: type.APPLY_PENCIL,
-//         color,
-//         id
-//     }
-// }
-
-// export function applyEraser(id) {
-//     return {
-//         type: type.APPLY_ERASER,
-//         id
-//     }
-// }
-
-// export function applyPaintBucket(color, id, columns, rows) {
-//     return {
-//         type: type.APPLY_PAINT_BUCKET,
-//         color,
-//         id,
-//         columns,
-//         rows
-//     }
-// }
-
 export function applyTools(color, id, columns, rows, drawingTool) {
     return {
         type: `APPLY_${drawingTool}`,
@@ -49,10 +24,10 @@ export function applyTools(color, id, columns, rows, drawingTool) {
     }
 }
 
-export function switchTool(tool) {
+export function switchTool(drawingTool) {
     return {
         type: type.SWITCH_TOOL,
-        tool
+        drawingTool
     };
 }
 
