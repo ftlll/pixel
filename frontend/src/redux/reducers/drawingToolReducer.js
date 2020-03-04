@@ -5,7 +5,7 @@ const switchTool = (drawingTool = tool.PENCIL, action) => {
     if (drawingTool === tool) {
         return tool.PENCIL;
     } else {
-        return action.tool;
+        return action.drawingTool;
     }
 }
 

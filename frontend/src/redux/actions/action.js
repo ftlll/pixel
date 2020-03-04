@@ -14,24 +14,9 @@ export function setColor (color) {
     }
 };
 
-export function applyPencil(color, id) {
+export function applyTools({color = '' , id, columns, rows, drawingTool}) {
     return {
-        type: type.APPLY_PENCIL,
-        color,
-        id
-    }
-}
-
-export function applyEraser(id) {
-    return {
-        type: type.APPLY_ERASER,
-        id
-    }
-}
-
-export function applyPaintBucket(color, id, columns, rows) {
-    return {
-        type: type.APPLY_PAINT_BUCKET,
+        type: `APPLY_${drawingTool}`,
         color,
         id,
         columns,
@@ -39,10 +24,10 @@ export function applyPaintBucket(color, id, columns, rows) {
     }
 }
 
-export function switchTool(tool) {
+export function switchTool(drawingTool) {
     return {
         type: type.SWITCH_TOOL,
-        tool
+        drawingTool
     };
 }
 

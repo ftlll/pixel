@@ -8,12 +8,18 @@ class Grid extends React.Component {
     }
     
     render() {
-        const {style, cells} = this.props;
-        
+        const { style, cells } = this.props;
+
         return (
             <div style={style}>
                 {cells.map((cell, i) => {
-                    return (<Cell cell={cell} key={cell.id}/>)
+                    return (
+                        <Cell cell={cell}
+                          key={cell.id}
+                          id={i}
+                          drawHandler={this.props.drawHandler}
+                        />
+                    )
                 })}
             </div>
         );

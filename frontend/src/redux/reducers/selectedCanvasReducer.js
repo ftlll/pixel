@@ -38,7 +38,7 @@ const getSameColorAdjCells = (grid, color, id, columns, rows) => {
     }
 
     // test bottom cell
-    if (id <= (columns - 1) * rows) {
+    if (id < (columns - 1) * rows) {
       if (isSameColor(grid.get(id + columns), color)) {
         sameColorAdjCells.push(id + columns);
       }
