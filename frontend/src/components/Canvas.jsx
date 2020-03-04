@@ -1,9 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { applyTools } from '../redux/actions/action';
+import drawHandler from '../utils/drawHandler';
 import Grid from './Grid';
 
 class Canvas extends React.Component {
+    constructor(props) {
+        super(props);
+        this.drawHandler = drawHandler(this);
+    }
+
     shouldComponentUpdate(newProps) {
         const { cells } = this.props;
         return newProps.cells !== cells;
@@ -26,6 +32,7 @@ class Canvas extends React.Component {
               style={style}
               cells={cells}
               drawingTool={props.drawingTool}
+              drawHandler={this.drawHandler}
             />
         );
     }
@@ -37,7 +44,8 @@ const mapStateToProps = state => {
     return {
         grid: canvas.get('grid'),
         drawingTool,
-        columns: canvas.get('columns')
+        columns: canvas.get('columns'),
+        rows: canvas.get('rows')
     };
 };
 

@@ -9,12 +9,12 @@ class Cell extends React.Component {
         return updated;
     }
 
-    onMouseDown = (id) => {
-        console.log(id);
-    }
-
     render() {
-        const {cell: {color, width, id}} = this.props;
+        const {
+            cell: {color, width},
+            id,
+            drawHandler
+            } = this.props;
         const styles = {
             width: `${width}%`,
             height: `${width}%`,
@@ -24,7 +24,7 @@ class Cell extends React.Component {
         return (
             <div
               style={styles} className='cell'
-              onMouseDown={() => this.onMouseDown(id)}
+              onMouseDown={(ev) => drawHandler.onMouseDown(id, ev)}
             />
         );
     }

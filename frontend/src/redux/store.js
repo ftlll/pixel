@@ -8,13 +8,34 @@ let store = createStore(reducer);
 
 const unsubscribe = store.subscribe(() => console.log(store.getState()));
 
-store.dispatch(action.applyTools('rgba(1, 1, 1, 1)', 12, 16, 16, tool.PENCIL));
+ store.dispatch(action.applyTools({ 
+    color: 'rgba(1, 1, 1, 1)',
+    id: 12,
+    columns: 16,
+    rows: 16,
+    drawingTool: tool.PENCIL}));
 
-store.dispatch(action.applyTools('#66ff66', 13, 16, 16, tool.PENCIL));
+store.dispatch(action.applyTools({ 
+    color: 'rgba(23, 23, 134, 1)',
+    id: 123,
+    ww: 2,
+    columns: 16,
+    rows: 16,
+    drawingTool: tool.PENCIL}));
 
-store.dispatch(action.applyTools('#66ff66', 132, 16, 16, tool.PAINT_BUCKET));
+store.dispatch(action.applyTools({ 
+    color: 'yellow',
+    id: 14,
+    columns: 16,
+    rows: 16,
+    drawingTool: tool.PAINT_BUCKET }));
 
-store.dispatch(action.applyTools('', 132, 16, 16, tool.ERASER));
+store.dispatch(action.applyTools({ 
+    color: undefined,
+    id: 234,
+    columns: 16,
+    rows: 16,
+    drawingTool: tool.ERASER}));    
 
 unsubscribe();
 

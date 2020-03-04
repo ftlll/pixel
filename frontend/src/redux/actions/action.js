@@ -14,7 +14,10 @@ export function setColor (color) {
     }
 };
 
-export function applyTools(color, id, columns, rows, drawingTool) {
+export function applyTools({color = '' , id, columns, rows, drawingTool}) {
+    console.log(color);
+    console.log(id);
+    console.log(drawingTool);
     return {
         type: `APPLY_${drawingTool}`,
         color,
