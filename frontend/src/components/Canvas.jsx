@@ -11,8 +11,8 @@ class Canvas extends React.Component {
     }
 
     shouldComponentUpdate(newProps) {
-        const { cells } = this.props;
-        return newProps.cells !== cells;
+        const { grid } = this.props;
+        return newProps.grid !== grid;
     }
     
     render() {

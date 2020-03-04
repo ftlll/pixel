@@ -18,7 +18,6 @@ const unsubscribe = store.subscribe(() => console.log(store.getState()));
 store.dispatch(action.applyTools({ 
     color: 'rgba(23, 23, 134, 1)',
     id: 123,
-    ww: 2,
     columns: 16,
     rows: 16,
     drawingTool: tool.PENCIL}));
