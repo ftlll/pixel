@@ -4,6 +4,7 @@ import './css/imports.css';
 import CanvasContainer from './components/Canvas';
 //import ColorPicker from './components/ColorPicker';
 import EraserContainer from './components/Eraser';
+import PaletteGridContainer from './components/PaletteGrid';
 
 class App extends React.Component {
   constructor() {
@@ -32,7 +33,7 @@ class App extends React.Component {
     return (
       <div className='background'>
         <CanvasContainer/>
-        
+        <PaletteGridContainer />
         <EraserContainer />
       </div>
     );

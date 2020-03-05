@@ -2,6 +2,7 @@ import { Map } from 'immutable';
 import canvasReducer from './canvasReducer';
 import selectedCanvasReducer from './selectedCanvasReducer';
 import drawingToolReducer from './drawingToolReducer';
+import paletteReducer from './paletteReducer';
 import * as type from '../actions/actionTypes';
 
 function setInitialState(state) {
@@ -32,9 +33,10 @@ function partialReducer(state, action) {
 
 export default function(state = generateDefaultState(), action) {
   return partialReducer(state, action).merge({
-    drawingTool: drawingToolReducer(state.get('drawingTool'), action),
     canvas: pipeReducers([canvasReducer, selectedCanvasReducer])
       (state.get('canvas'),
-       action),
+      action),
+    drawingTool: drawingToolReducer(state.get('drawingTool'), action),
+    palette: paletteReducer(state.get('palette'), action)
   });
 }

@@ -15,7 +15,7 @@ class Cell extends React.Component {
             id,
             drawHandler
             } = this.props;
-        const styles = {
+        const style = {
             width: `${width}%`,
             height: `${width}%`,
             backgroundColor:  color || CELL_NULL_COLOR
@@ -23,7 +23,7 @@ class Cell extends React.Component {
 
         return (
             <div
-              style={styles} className='cell'
+              style={style} className='cell'
               onMouseDown={(ev) => drawHandler.onMouseDown(id, ev)}
             />
         );
