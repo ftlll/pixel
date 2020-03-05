@@ -7,8 +7,8 @@ const drawPixel = (grid, color, id) => {
     return grid.set(id, color);
 }
 
-const applyPencilToGrid = (grid, {color, id}) => {
-    const newGrid = drawPixel(grid, color, id);
+const applyPencilToGrid = (grid, {paletteColor, id}) => {
+    const newGrid = drawPixel(grid, paletteColor, id);
     return newGrid;
 }
 
@@ -60,7 +60,7 @@ const getSameColorAdjCells = (grid, color, id, columns, rows) => {
     return sameColorAdjCells;
 };
 
-const applyPaintBucketToGrid = (grid, { id, color, columns, rows }) => {
+const applyPaintBucketToGrid = (grid, { id, paletteColor, columns, rows }) => {
     const originalColor = grid.get(id);
     const cellQueue = [id];
     let newGrid = grid;
@@ -69,13 +69,13 @@ const applyPaintBucketToGrid = (grid, { id, color, columns, rows }) => {
 
     while (cellQueue.length > 0) {
       currentId = cellQueue.shift();
-      newGrid = drawPixel(newGrid, color, currentId);
+      newGrid = drawPixel(newGrid, paletteColor, currentId);
       adjCells = getSameColorAdjCells(newGrid, originalColor, currentId, columns, rows);
 
       for(let i = 0; i < adjCells.length; i++) {
           let adjId = adjCells[i];
           let adjColor = newGrid.get(adjId);
-          if (cellQueue.indexOf(adjId) === -1 && adjColor !== color) {
+          if (cellQueue.indexOf(adjId) === -1 && adjColor !== paletteColor) {
             cellQueue.push(adjId);
           }
       }

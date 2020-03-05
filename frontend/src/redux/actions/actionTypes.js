@@ -7,4 +7,5 @@ export const APPLY_ERASER = `APPLY_${tool.ERASER}`;
 export const APPLY_PAINT_BUCKET = `APPLY_${tool.PAINT_BUCKET}`;
 export const APPLY_EYE_DROPPER = `APPLY_${tool.EYE_DROPPER}`;
 export const SWITCH_TOOL = 'SWITCH_TOOL';
+export const SELECT_PALETTE_COLOR = 'SELECT_PALETTE_COLOR';
 

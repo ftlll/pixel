@@ -7,17 +7,10 @@ export function init() {
     }
 }
 
-export function setColor (color) {
-    return {
-        type: type.SET_COLOR,
-        color
-    }
-};
-
-export function applyTools({color = '' , id, columns, rows, drawingTool}) {
+export function applyTools({paletteColor = '' , id, columns, rows, drawingTool}) {
     return {
         type: `APPLY_${drawingTool}`,
-        color,
+        paletteColor,
         id,
         columns,
         rows
@@ -28,6 +21,13 @@ export function switchTool(drawingTool) {
     return {
         type: type.SWITCH_TOOL,
         drawingTool
+    };
+}
+
+export function selectPaletteColor(id) {
+    return {
+        type: type.SELECT_PALETTE_COLOR,
+        id
     };
 }
 
