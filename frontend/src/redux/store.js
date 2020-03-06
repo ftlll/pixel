@@ -1,41 +1,28 @@
 import { createStore } from "redux";
-//import undoable, { includeAction } from 'redux-undo';
+import undoable, { includeAction } from 'redux-undo';
 import reducer from "./reducers/reducer";
-import * as action from './actions/action';
-import * as tool from './toolTypes';
+import {
+    APPLY_ERASER,
+    APPLY_EYE_DROPPER,
+    APPLY_PAINT_BUCKET,
+    APPLY_PENCIL
+} from './actions/actionTypes';
 
-let store = createStore(reducer);
+const createIncludedActions = () =>
+  includeAction([
+    APPLY_ERASER,
+    APPLY_EYE_DROPPER,
+    APPLY_PAINT_BUCKET,
+    APPLY_PENCIL
+  ]);
+
+let store = createStore(undoable(reducer, {
+    filter: createIncludedActions(),
+    debug: true
+    })
+);
 
 const unsubscribe = store.subscribe(() => console.log(store.getState()));
-
- store.dispatch(action.applyTools({ 
-    paletteColor: 'rgba(1, 1, 1, 1)',
-    id: 12,
-    columns: 16,
-    rows: 16,
-    drawingTool: tool.PENCIL}));
-
-store.dispatch(action.applyTools({ 
-    paletteColor: 'rgba(23, 23, 134, 1)',
-    id: 123,
-    columns: 16,
-    rows: 16,
-    drawingTool: tool.PENCIL}));
-
-store.dispatch(action.applyTools({ 
-    paletteColor: 'yellow',
-    id: 14,
-    columns: 16,
-    rows: 16,
-    drawingTool: tool.PAINT_BUCKET }));
-
-store.dispatch(action.applyTools({ 
-    paletteColor: undefined,
-    id: 234,
-    columns: 16,
-    rows: 16,
-    drawingTool: tool.ERASER}));    
-
 
 unsubscribe();
 

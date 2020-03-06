@@ -31,7 +31,7 @@ class PaletteGrid extends React.Component {
 }
 
 const mapStateToProps = state => {
-    const palette = state.get('palette').toObject();
+    const palette = state.present.get('palette').toObject();
     return {
         grid: palette.grid,
         active: palette.active

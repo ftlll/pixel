@@ -15,7 +15,7 @@ const Eraser = ({ usingEraser, switchEraser}) => {
 };
 
 const mapStateToProps = state => ({
-    usingEraser: state.get('drawingTool') === tool.ERASER
+    usingEraser: state.present.get('drawingTool') === tool.ERASER
 });
   
 const mapDispatchToProps = dispatch => ({

@@ -6,6 +6,7 @@ import CanvasContainer from './components/Canvas';
 import EraserContainer from './components/Eraser';
 import PaletteGridContainer from './components/PaletteGrid';
 import PaintBucketContainer from './components/PaintBucket';
+import UndoRedoContainer from './components/UndoRedo';
 
 class App extends React.Component {
   constructor() {
@@ -37,6 +38,7 @@ class App extends React.Component {
         <PaletteGridContainer />
         <EraserContainer />
         <PaintBucketContainer />
+        <UndoRedoContainer />
       </div>
     );
   }
