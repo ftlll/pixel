@@ -4,7 +4,17 @@ import { List, Map } from 'immutable';
 
 const initPaletteGrid = () => {
     return List([
-        '#F8766D','#F37B59', '#ED8141'
+        '#ff0000',
+        '#ff3300',
+        '#ff9900',
+        '#ffff00',
+        '#99ff00',
+        '#00ff00',
+        '#00ffff',
+        '#0000ff',
+        '#6600ff',
+        '#ff00ff',
+        '#ff0066'
     ]).map((color, i) => Map({ color, id: i}));
 };
 
