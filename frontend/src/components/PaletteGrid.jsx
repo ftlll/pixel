@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-// import { selectPaletteColor } from '../store/actions/action';
+import { selectPaletteColor } from '../redux/actions/action';
 import PaletteCell from './PaletteCell';
 
 class PaletteGrid extends React.Component { 
@@ -10,17 +10,18 @@ class PaletteGrid extends React.Component {
     }
 
     render() {
-        const { grid, active } = this.props;
+        const { grid, active, selectPaletteColor } = this.props;
         const width = 100 / 6;
         return (
             <div>
-                {grid.map((color, i) => {
+                {grid.map((cell, i) => {
                     return (
-                        <PaletteCell color={color}
-                          acive = {active}
-                          width = {width}
-                          key={i}
+                        <PaletteCell color={cell.get('color')}
+                          acive={active}
+                          width={width}
+                          key={cell.get('id')}
                           id={i}
+                          selectPaletteColor={selectPaletteColor}
                         />
                     )
                 })}
@@ -37,9 +38,13 @@ const mapStateToProps = state => {
     };
 };
 
-const mapDispatchToProps = dispatch => ({
-
-});
+const mapDispatchToProps = dispatch =>   
+  bindActionCreators(
+    {
+      selectPaletteColor
+    },
+    dispatch
+);
 
 const PaletteGridContainer = connect(
     mapStateToProps,
