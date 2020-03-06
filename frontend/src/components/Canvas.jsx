@@ -39,9 +39,9 @@ class Canvas extends React.Component {
 }
 
 const mapStateToProps = state => {
-    const canvas = state.get('canvas');
-    const drawingTool = state.get('drawingTool');
-    const palette = state.get('palette');
+    const canvas = state.present.get('canvas');
+    const drawingTool = state.present.get('drawingTool');
+    const palette = state.present.get('palette');
     const activeIndex = palette.get('active');
     const paletteColor = palette.getIn(['grid', activeIndex === -1 ? 0: activeIndex, 'color']);
     return {

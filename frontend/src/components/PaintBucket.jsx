@@ -14,7 +14,7 @@ const PaintBucket = ({ usingPaintBucket, switchPaintBucket}) => {
 };
 
 const mapStateToProps = state => ({
-    usingPaintBucket: state.get('drawingTool') === tool.PAINT_BUCKET
+    usingPaintBucket: state.present.get('drawingTool') === tool.PAINT_BUCKET
 });
   
 const mapDispatchToProps = dispatch => ({

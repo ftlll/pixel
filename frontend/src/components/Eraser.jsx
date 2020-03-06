@@ -9,12 +9,13 @@ const Eraser = ({ usingEraser, switchEraser}) => {
           type="button"
           aria-label="Eraser Tool"
           onClick={switchEraser}
+          className="eraser"
         />
     );
 };
 
 const mapStateToProps = state => ({
-    usingEraser: state.get('drawingTool') === tool.ERASER
+    usingEraser: state.present.get('drawingTool') === tool.ERASER
 });
   
 const mapDispatchToProps = dispatch => ({
