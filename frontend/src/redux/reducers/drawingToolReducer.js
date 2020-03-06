@@ -2,7 +2,7 @@ import * as type from '../actions/actionTypes';
 import * as tool from '../toolTypes';
 
 const switchTool = (drawingTool = tool.PENCIL, action) => {
-    if (drawingTool === tool) {
+    if (drawingTool === action.drawingTool) {
         return tool.PENCIL;
     } else {
         return action.drawingTool;
