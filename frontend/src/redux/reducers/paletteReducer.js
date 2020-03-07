@@ -25,8 +25,12 @@ const initPalette = () => {
     });
 };
 
-const selectPaletteColor = (palette, id) => {
-    return palette.set('active', id);
+const selectPaletteColor = (palette, action) => {
+    return palette.set('active', action.id);
+};
+
+const applyEyeDropper = (palette, action) => {
+
 };
 
 export default function (palette = initPalette(), action) {
@@ -34,7 +38,9 @@ export default function (palette = initPalette(), action) {
         case type.SET_INIT_STATE:
             return initPalette();
         case type.SELECT_PALETTE_COLOR:
-            return selectPaletteColor(palette, action.id);
+            return selectPaletteColor(palette, action);
+        case type.APPLY_EYE_DROPPER:
+            return applyEyeDropper(palette, action);
         default:
             return palette;
     }     

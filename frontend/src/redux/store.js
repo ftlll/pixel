@@ -22,8 +22,4 @@ let store = createStore(undoable(reducer, {
     })
 );
 
-const unsubscribe = store.subscribe(() => console.log(store.getState()));
-
-unsubscribe();
-
 export default store;
