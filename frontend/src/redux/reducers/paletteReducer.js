@@ -25,8 +25,38 @@ const initPalette = () => {
     });
 };
 
-const selectPaletteColor = (palette, id) => {
-    return palette.set('active', id);
+const selectPaletteColor = (palette, action) => {
+    return palette.set('active', action.id);
+};
+
+const disablePaletteColor = (palette, action) => {
+    if ( action.drawingTool === tool.ERASER ) {
+        return palette.set('active', -1);
+    }
+    return palette;
+};
+
+const searchForColor = (grid, color) => {
+    for (let i = 0; i < grid.size - 1; i++) {
+        if (grid.getIn([i, 'color']) === color) {
+            return i;
+        }
+    }
+    return -1;
+}
+
+const applyEyeDropper = (palette, action) => {
+    const color = action.color;
+    const grid = palette.get('grid');
+    const index = searchForColor(grid, color);
+    if (index !== -1) {
+        return palette.set('active', index);
+    }
+    const location = grid.size - 1;
+    return palette.merge({
+        grid: grid.setIn([location, 'color'], color),
+        active: location
+    });
 };
 
 export default function (palette = initPalette(), action) {
@@ -34,7 +64,11 @@ export default function (palette = initPalette(), action) {
         case type.SET_INIT_STATE:
             return initPalette();
         case type.SELECT_PALETTE_COLOR:
-            return selectPaletteColor(palette, action.id);
+            return selectPaletteColor(palette, action);
+        case type.APPLY_EYE_DROPPER:
+            return applyEyeDropper(palette, action);
+        case type.SWITCH_TOOL:
+            return disablePaletteColor(palette, action);
         default:
             return palette;
     }     

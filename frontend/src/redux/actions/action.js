@@ -7,10 +7,11 @@ export function init() {
     }
 }
 
-export function applyTools({paletteColor = '' , id, columns, rows, drawingTool}) {
+export function applyTools({paletteColor = '', color , id, columns, rows, drawingTool}) {
     return {
         type: `APPLY_${drawingTool}`,
         paletteColor,
+        color,
         id,
         columns,
         rows

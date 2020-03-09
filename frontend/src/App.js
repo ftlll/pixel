@@ -4,6 +4,7 @@ import './css/imports.css';
 import CanvasContainer from './components/Canvas';
 //import ColorPicker from './components/ColorPicker';
 import EraserContainer from './components/Eraser';
+import EyeDropperContainer from './components/EyeDropper';
 import PaletteGridContainer from './components/PaletteGrid';
 import PaintBucketContainer from './components/PaintBucket';
 import UndoRedoContainer from './components/UndoRedo';
@@ -38,6 +39,7 @@ class App extends React.Component {
         <PaletteGridContainer />
         <EraserContainer />
         <PaintBucketContainer />
+        <EyeDropperContainer/>
         <UndoRedoContainer />
       </div>
     );
