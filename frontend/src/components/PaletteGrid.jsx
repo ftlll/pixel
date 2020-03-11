@@ -5,9 +5,6 @@ import { selectPaletteColor } from '../redux/actions/action';
 import PaletteCell from './PaletteCell';
 
 class PaletteGrid extends React.Component { 
-    constructor(props) {
-        super(props);
-    }
 
     render() {
         const { grid, active, selectPaletteColor } = this.props;
