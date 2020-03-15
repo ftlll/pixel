@@ -32,6 +32,13 @@ export function selectPaletteColor(id) {
     };
 }
 
+export function addCustomColor(color) {
+    return {
+        type: type.ADD_CUSTOM_COLOR,
+        color
+    };
+}
+
 export function undo() {
     return ActionCreators.undo();
 };

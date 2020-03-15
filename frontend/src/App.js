@@ -8,6 +8,7 @@ import EyeDropperContainer from './components/EyeDropper';
 import PaletteGridContainer from './components/PaletteGrid';
 import PaintBucketContainer from './components/PaintBucket';
 import UndoRedoContainer from './components/UndoRedo';
+import Popup from './components/Popup';
 
 class App extends React.Component {
   constructor() {
@@ -41,6 +42,8 @@ class App extends React.Component {
         <PaintBucketContainer />
         <EyeDropperContainer/>
         <UndoRedoContainer />
+        <div onClick={() => this.setPopUp('upload')}>Upload</div>
+        <Popup visible={this.state.popUpShown} close={() => this.closePopUp()}/>
       </div>
     );
   }
