@@ -1,7 +1,17 @@
 import React from 'react';
 import Modal from 'react-awesome-modal';
+import Dropzone from 'react-dropzone'
 
 class Popup extends React.Component {
+    fileProcess = event => {
+        this.setState({
+            file: event.target.files[0]
+        });
+    }
+
+    fileUpload = () => {
+        console.log(this.state);
+    }
     render() {
         return (
             <Modal 
@@ -10,11 +20,11 @@ class Popup extends React.Component {
                 height="80%"
                 effect="fadeInUp"
                 onClickAway={() => this.props.close()}>
-                <div>
-                    <h1>Title</h1>
-                    <h1>Title</h1><h1>Title</h1><h1>Title</h1><h1>Title</h1>
-                    <p>Some Contents</p>
-                    <a onClick={() => this.props.close()}>Close</a>
+                <div className='modal-content'>
+                    <a className='popup-close' onClick={() => this.props.close()}>x</a>
+                    <div className='popup-header'>Upload</div>
+                    <input type="file" onChange={this.fileProcess}></input>
+                    <button onClick={this.fileUpload}>upload</button>
                 </div>
             </Modal>
         );
