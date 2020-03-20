@@ -10,8 +10,21 @@ class Popup extends React.Component {
     }
 
     fileUpload = () => {
-        console.log(this.state);
+        const data = new FormData();
+        data.append('file', this.state.file);
+        data.append('filename', '1.jpg');
+        console.log(data);
+        fetch('http://localhost:5000/api/pixelize', {
+            headers: {
+                'Access-Control-Allow-Origin': true,
+            },
+            method: 'POST',
+            body: data,
+        }).then(res => {
+            console.log(res);
+        })
     }
+
     render() {
         return (
             <Modal 

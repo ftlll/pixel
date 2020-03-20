@@ -18,7 +18,7 @@ class Upload extends React.Component {
     data.append('file', this.uploadInput.files[0]);
     data.append('filename', this.fileName.value);
 
-    fetch('http://localhost:5000/upload', {
+    fetch('http://localhost:5000/api/pixelize', {
       method: 'POST',
       body: data,
     }).then((response) => {
