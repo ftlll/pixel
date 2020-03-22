@@ -18,6 +18,12 @@ def allowed_file(fileName):
     else:
         return False
 
+def rgb_to_grey(image):
+    if image.mode != 'RGB':
+        image = image.convert('RGB')
+    image = image.convert('L')
+    return image
+
 @app.route('/api/pixelize', methods=['GET', 'POST'])
 def pixel():
     if (request.method == 'POST'):
@@ -30,8 +36,18 @@ def pixel():
             file = request.files['file']
             filename = file.filename
             if allowed_file(filename):
+                #save the file into uploads folder in order to process it
                 file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-
+                image = Image.open(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+                width, height = image.size
+                #pixels = image.load()
+                # for x in range(width):
+                #     for y in range(height):
+                #         print(pixels[x, y])
+                image = rgb_to_grey(image)
+                image.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+                #remove file after process the file
+                #os.remove(os.path.join(app.config['UPLOAD_FOLDER'], filename))
                 return jsonify({
                     "err": "no err"
                 }), 200
