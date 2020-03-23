@@ -1,6 +1,7 @@
 from backend import creat_app
-from flask import Flask, jsonify, request
+from flask import Flask, json, request, jsonify
 from PIL import Image
+from numpy import asarray
 import os
 
 app = creat_app()
@@ -24,13 +25,29 @@ def rgb_to_grey(image):
     image = image.convert('L')
     return image
 
-@app.route('/api/pixelize', methods=['GET', 'POST'])
+def resize(image, height, width):
+    image = image.resize((height,width), resample=Image.BILINEAR)
+    image = image.resize(image.size,Image.NEAREST)
+    return image
+
+def pixelate(data, width, height):
+    grid = []
+    for x in range(0, width):
+        row = []
+        for y in range(0, height):
+            [R, G, B, A] = data[x,y]
+            color = 'rgba(' + str(R) + ',' + str(G) + ',' + str(B) + ',' + str(A) + ')'
+            row.append(color)
+        grid.append(row)
+    return grid
+
+@app.route('/api/pixelate', methods=['GET', 'POST'])
 def pixel():
     if (request.method == 'POST'):
         if 'file' not in request.files:
             print('No file attached in request')
             return jsonify({
-                "err": "No file attached in request"
+                "msg": "No file attached in request"
             }), 400
         else:
             file = request.files['file']
@@ -39,21 +56,33 @@ def pixel():
                 #save the file into uploads folder in order to process it
                 file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
                 image = Image.open(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+                print(image.mode)
+                if image.mode == 'RGB':
+                    channel = 3
+                elif image.mode == 'RGBA':
+                    channel = 4
+                elif image.mode == 'L':
+                    channel = 1
+                else:
+                    channel = 1
                 width, height = image.size
-                #pixels = image.load()
-                # for x in range(width):
-                #     for y in range(height):
-                #         print(pixels[x, y])
-                image = rgb_to_grey(image)
-                image.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+                data = image.load()
+                if channel == 4:
+                    grid = pixelate(data, width, height)
+                else:
+                    grid = []
+        
+                #image.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
                 #remove file after process the file
-                #os.remove(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+                os.remove(os.path.join(app.config['UPLOAD_FOLDER'], filename))
                 return jsonify({
-                    "err": "no err"
-                }), 200
+                    'grid': grid,
+                    'rows': height,
+                    'columns': width
+                })
             else:
                 return jsonify({
-                    "err": "No file selected"
+                    "msg": "No file selected"
                 }), 400
 
 
