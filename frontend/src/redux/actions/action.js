@@ -7,6 +7,15 @@ export function init() {
     }
 }
 
+export function importPixelate({grid, columns, rows}) {
+    return {
+        type: type.IMPORT_PIXELATE,
+        grid,
+        columns,
+        rows
+    };
+}
+
 export function applyTools({paletteColor = '', color , id, columns, rows, drawingTool}) {
     return {
         type: `APPLY_${drawingTool}`,

@@ -1,28 +1,21 @@
 import React from 'react';
 import Modal from 'react-awesome-modal';
+import { connect } from 'react-redux';
+import { importPixelate } from '../redux/actions/action';
 import Dropzone from 'react-dropzone'
 
 class Popup extends React.Component {
+    constructor(props) {
+        super(props);
+
+    }
     fileProcess = event => {
         this.setState({
             file: event.target.files[0]
         });
     }
-
     fileUpload = () => {
-        const data = new FormData();
-        data.append('file', this.state.file);
-        data.append('filename', '1.jpg');
-        console.log(data);
-        fetch('http://localhost:5000/api/pixelize', {
-            headers: {
-                'Access-Control-Allow-Origin': true,
-            },
-            method: 'POST',
-            body: data,
-        }).then(res => {
-            console.log(res);
-        })
+        this.props.fileUpload()
     }
 
     render() {
@@ -44,4 +37,34 @@ class Popup extends React.Component {
     }
 }
 
-export default Popup;
+const mapStateToProps = state => ({
+    
+});
+  
+const mapDispatchToProps = dispatch => ({
+    fileUpload: () => {
+        const data = new FormData();
+        console.log('called');
+        if(this.state.file) {
+            data.append('file', this.state.file);
+            fetch('http://localhost:5000/api/pixelate', {
+                headers: {
+                    'Access-Control-Allow-Origin': true,
+                },
+                method: 'POST',
+                body: data,
+            }).then(res => {
+                return res.json();
+            }).then(data => {
+                console.log(data);
+                dispatch(importPixelate(data))
+            })
+        } else {
+            console.log("no file attached");
+        }
+    }
+});
+
+const PopupContainer = connect(mapStateToProps, mapDispatchToProps)(Popup);
+
+export default PopupContainer;

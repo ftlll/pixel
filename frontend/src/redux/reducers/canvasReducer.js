@@ -1,14 +1,6 @@
 import{List, Map} from 'immutable';
 import * as type from '../actions/actionTypes';
 
-// const initGrid = (numCells) => {
-//     let grid = [];
-//     for(let i = 0; i < numCells; i++) {
-//         grid.push('');
-//     }
-//     return grid;
-// }
-
 const initCanvas = (action = {})  => {
   const options = action.options || {};
   const columns = parseInt(options.columns, 10) || 16;
@@ -26,10 +18,24 @@ const initCanvas = (action = {})  => {
   })
 }
 
+const importPixelate = (action) => {
+  const columns = action.columns;
+  const rows = action.rows;
+  const grid = action.grid;
+
+  return Map({
+    grid,
+    columns,
+    rows
+  })
+}
+
 export default function(canvas = initCanvas(), action) {
     switch (action.type) {
       case type.SET_INIT_STATE:
         return initCanvas(action);
+      case type.IMPORT_PIXELATE:
+        return importPixelate(action);
       default:
         return canvas;
     }
