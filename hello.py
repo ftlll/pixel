@@ -30,16 +30,23 @@ def resize(image, height, width):
     image = image.resize(image.size,Image.NEAREST)
     return image
 
-def pixelate(data, width, height):
-    grid = []
-    for x in range(0, width):
-        row = []
-        for y in range(0, height):
-            [R, G, B, A] = data[x,y]
-            color = 'rgba(' + str(R) + ',' + str(G) + ',' + str(B) + ',' + str(A) + ')'
-            row.append(color)
-        grid.append(row)
-    return grid
+def pixelate(data, width, height, channel):
+    if channel == 4:
+        grid = []
+        for x in range(0, width):
+            for y in range(0, height):
+                [R, G, B, A] = data[x,y]
+                color = 'rgba(' + str(R) + ',' + str(G) + ',' + str(B) + ',' + str(A) + ')'
+                grid.append(color)
+        return grid
+    else:
+        grid = [] 
+        for x in range(0, 22):
+            for y in range(0, 20):
+                [R, G, B, A] = [255, 128, 0, 255]
+                color = 'rgba(' + str(R) + ',' + str(G) + ',' + str(B) + ',' + str(A) + ')'
+                grid.append(color)
+        return grid
 
 @app.route('/api/pixelate', methods=['GET', 'POST'])
 def pixel():
@@ -67,18 +74,15 @@ def pixel():
                     channel = 1
                 width, height = image.size
                 data = image.load()
-                if channel == 4:
-                    grid = pixelate(data, width, height)
-                else:
-                    grid = []
+                grid = pixelate(data, width, height, 1)
         
                 #image.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
                 #remove file after process the file
                 os.remove(os.path.join(app.config['UPLOAD_FOLDER'], filename))
                 return jsonify({
                     'grid': grid,
-                    'rows': height,
-                    'columns': width
+                    'rows': 22,
+                    'columns': 20
                 })
             else:
                 return jsonify({
