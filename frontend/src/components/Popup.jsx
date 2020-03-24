@@ -7,7 +7,7 @@ import Dropzone from 'react-dropzone'
 class Popup extends React.Component {
     constructor(props) {
         super(props);
-
+        this.state = {};
     }
     fileProcess = event => {
         this.setState({
@@ -15,7 +15,7 @@ class Popup extends React.Component {
         });
     }
     fileUpload = () => {
-        this.props.fileUpload()
+        this.props.fileUpload(this.state)
     }
 
     render() {
@@ -42,11 +42,11 @@ const mapStateToProps = state => ({
 });
   
 const mapDispatchToProps = dispatch => ({
-    fileUpload: () => {
+    fileUpload: (state) => {
         const data = new FormData();
         console.log('called');
-        if(this.state.file) {
-            data.append('file', this.state.file);
+        if(state.file) {
+            data.append('file', state.file);
             fetch('http://localhost:5000/api/pixelate', {
                 headers: {
                     'Access-Control-Allow-Origin': true,

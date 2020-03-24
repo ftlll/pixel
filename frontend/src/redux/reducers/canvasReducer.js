@@ -21,7 +21,7 @@ const initCanvas = (action = {})  => {
 const importPixelate = (action) => {
   const columns = action.columns;
   const rows = action.rows;
-  const grid = action.grid;
+  const grid = List(action.grid);
 
   return Map({
     grid,
