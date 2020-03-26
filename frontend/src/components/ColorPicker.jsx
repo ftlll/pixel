@@ -1,77 +1,58 @@
 import React from 'react'
-import reactCSS from 'reactcss'
-import { SketchPicker } from 'react-color'
-import { useSelector, useDispatch } from 'react-redux';
-import { setColor } from '../redux/actions/action'; 
+import Picker from 'react-color'
+import { connect } from 'react-redux';
+import { applyColorPicker, switchTool } from '../redux/actions/action'; 
+import { PENCIL } from '../redux/toolTypes';
 
 class ColorPicker extends React.Component {
   state = {
-    displayColorPicker: false,
-    color: {
-      r: '49',
-      g: '49',
-      b: '49',
-      a: '1',
-    },
+    visible: false,
   };
 
   handleClick = () => {
-    this.setState({ displayColorPicker: !this.state.displayColorPicker })
+    this.setState({ visible: !this.state.visible })
   };
 
   handleClose = () => {
-    this.setState({ displayColorPicker: false })
-  };
-
-  handleChange = (color) => {
-    this.setState({ color: color.rgb })
+    this.setState({ visible: false })
   };
 
   render() {
-
-    const styles = reactCSS({
-      'default': {
-        color: {
-          width: '36px',
-          height: '14px',
-          borderRadius: '2px',
-          background: `rgba(${ this.state.color.r }, ${ this.state.color.g }, ${ this.state.color.b }, ${ this.state.color.a })`,
-        },
-        swatch: {
-          padding: '5px',
-          background: '#fff',
-          borderRadius: '1px',
-          boxShadow: '0 0 0 1px rgba(0,0,0,.1)',
-          display: 'inline-block',
-          cursor: 'pointer',
-        },
-        popover: {
-          position: 'absolute',
-          zIndex: '2',
-        },
-        cover: {
-          position: 'fixed',
-          top: '0px',
-          right: '0px',
-          bottom: '0px',
-          left: '0px',
-        },
-      },
-    });
+    const { color, applyColorPicker, applyPencil } = this.props;
+    this.applyColorPicker = (color) => {
+      color = color.rgb;
+      let colorString = 'rgba(' + color.r + ',' + color.g + ',' + color.b + ',' + color.a + ')';
+      applyColorPicker(colorString);
+      applyPencil();
+    };
 
     return (
       <div>
-        <div style={ styles.swatch } onClick={ this.handleClick }>
-          <div style={ styles.color } />
-        </div>
-        { this.state.displayColorPicker ? <div style={ styles.popover }>
-          <div style={ styles.cover } onClick={ this.handleClose }/>
-          <SketchPicker color={ this.state.color } onChange={ this.handleChange } />
+        <button type='button' onClick={ this.handleClick }>COLOR PICKER
+        </button>
+        { this.state.visible ? <div className='popover'>
+          <div className='cover' onClick={ this.handleClose }/>
+          <Picker color={ color } onChange={this.applyColorPicker} onClose={this.handleClose} type="sketch"/>
         </div> : null }
-
       </div>
     )
   }
 }
 
-export default ColorPicker;
+const mapStateToProps = state => {
+  const palette = state.present.get('palette').toObject();
+  const grid = palette.grid;
+  const active = palette.active;
+  return {
+      color: (active === -1) ? 'rgba(49,49,49,1)' : grid.getIn([active, 'color'])
+  };
+};
+
+const mapDispatchToProps = dispatch => ({
+  applyColorPicker: (color) => dispatch(applyColorPicker(color)),
+  applyPencil: () => dispatch(switchTool(PENCIL))
+});
+
+const ColorPickerContainer = connect(mapStateToProps, mapDispatchToProps)(ColorPicker);
+
+export default ColorPickerContainer;

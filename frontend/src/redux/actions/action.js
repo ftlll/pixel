@@ -47,9 +47,9 @@ export function selectPaletteColor(id) {
     };
 }
 
-export function addCustomColor(color) {
+export function applyColorPicker(color) {
     return {
-        type: type.ADD_CUSTOM_COLOR,
+        type: type.APPLY_COLOR_PICKER,
         color
     };
 }
