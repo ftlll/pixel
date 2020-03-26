@@ -2,7 +2,7 @@ import React from 'react';
 import './css/imports.css';
 
 import CanvasContainer from './components/Canvas';
-//import ColorPicker from './components/ColorPicker';
+import ColorPickerContainer from './components/ColorPicker';
 import EraserContainer from './components/Eraser';
 import EyeDropperContainer from './components/EyeDropper';
 import PaletteGridContainer from './components/PaletteGrid';
@@ -44,6 +44,7 @@ class App extends React.Component {
         <PaintBucketContainer />
         <EyeDropperContainer/>
         <UndoRedoContainer />
+        <ColorPickerContainer />
         <div onClick={() => this.setPopUp('upload')}>Upload</div>
         <PopupContainer visible={this.state.popUpShown} close={() => this.closePopUp()}/>
       </div>

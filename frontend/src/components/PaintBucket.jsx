@@ -8,8 +8,9 @@ const PaintBucket = ({ usingPaintBucket, switchPaintBucket}) => {
         <button
           type="button"
           aria-label="Paint Bucket Tool"
-          onClick={switchPaintBucket}
-        />
+          onClick={switchPaintBucket}>
+              PAINT BUCKET
+        </button>
     );
 };
 

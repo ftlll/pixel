@@ -59,6 +59,23 @@ const applyEyeDropper = (palette, action) => {
     });
 };
 
+const applyColorPicker = (palette, action) => {
+    const color = action.color;
+    const grid = palette.get('grid');
+    const active = palette.get('active');
+    if (active === -1) {
+        return palette.merge({
+            grid: grid.setIn([active, 'color'], color),
+            active: grid.size - 1
+        });
+    } else {
+        return palette.merge({
+            grid: grid.setIn([active, 'color'], color),
+            active: active
+        });
+    }
+};
+
 export default function (palette = initPalette(), action) {
     switch (action.type) {
         case type.SET_INIT_STATE:
@@ -69,6 +86,8 @@ export default function (palette = initPalette(), action) {
             return applyEyeDropper(palette, action);
         case type.SWITCH_TOOL:
             return disablePaletteColor(palette, action);
+        case type.APPLY_COLOR_PICKER:
+            return applyColorPicker(palette, action);
         default:
             return palette;
     }     

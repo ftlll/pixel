@@ -3,6 +3,11 @@ import React from 'react';
 const CELL_NULL_COLOR = 'rgba(49, 49, 49, 0.5)';
 
 class PlatteCell extends React.Component {
+    shouldComponentUpdate(nextProps) {
+        const { color } = this.props;
+        return color !== nextProps.color;
+    }
+
     render() {
         const { width, color, active, selectPaletteColor, id } = this.props;
 
