@@ -25,6 +25,9 @@ class Cell extends React.Component {
             <div
               style={style} className='cell'
               onMouseDown={(ev) => drawHandler.onMouseDown(id, ev)}
+              onMouseOver={ev => drawHandler.onMouseOver(id, ev)}
+              onFocus={ev => drawHandler.onMouseOver(id, ev)}
+              onTouchStart={ev => drawHandler.onMouseDown(id, ev)}
             />
         );
     }

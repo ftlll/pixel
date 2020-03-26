@@ -6,15 +6,36 @@ const getCellActionProps = (props, id) => ({
   ...props
 });
 
-const drawHandler = (canvas) => {
+const drawHandlerProvider = canvas => {
+    const drawHandlers = (grid) => {
+        return {
+            onMouseDown(id, ev) {
+                ev.preventDefault();
+                const { props } = grid;
+                const actionProps = getCellActionProps(props, id);
+                props.applyTools(actionProps);
+                canvas.setState({
+                    pressed: true
+                });
+            },
+            onMouseOver(id, ev) {
+                ev.preventDefault();
+                const { props } = grid;
+                const actionProps = getCellActionProps(props, id);
+                if (canvas.state.pressed) {
+                    props.applyTools(actionProps);
+                }
+            },
+        }
+    };
     return {
-        onMouseDown(id, ev) {
-            ev.preventDefault();
-            const { props } = canvas;
-            const actionProps = getCellActionProps(props, id);
-            props.applyTools(actionProps);
+        onMouseUp() {
+            canvas.setState({
+                pressed: false
+            });
         },
+        drawHandlers
     }
-};
+} 
 
-export default drawHandler;
+export default drawHandlerProvider;
