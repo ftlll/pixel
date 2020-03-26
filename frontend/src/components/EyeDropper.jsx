@@ -9,8 +9,9 @@ const EyeDropper = ({ usingEyeDropper, switchEyeDropper}) => {
           type="button"
           aria-label="EyeDropper Tool"
           onClick={switchEyeDropper}
-          className="eraser"
-        />
+          className="eyeDropper">
+              EYE DROPPER
+        </button>
     );
 };
 
