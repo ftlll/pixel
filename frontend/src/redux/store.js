@@ -5,7 +5,8 @@ import {
     APPLY_ERASER,
     APPLY_EYE_DROPPER,
     APPLY_PAINT_BUCKET,
-    APPLY_PENCIL
+    APPLY_PENCIL,
+    CLEAR
 } from './actions/actionTypes';
 
 const createIncludedActions = () =>
@@ -13,7 +14,8 @@ const createIncludedActions = () =>
     APPLY_ERASER,
     APPLY_EYE_DROPPER,
     APPLY_PAINT_BUCKET,
-    APPLY_PENCIL
+    APPLY_PENCIL,
+    CLEAR
   ]);
 
 let store = createStore(undoable(reducer, {

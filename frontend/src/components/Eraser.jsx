@@ -9,8 +9,9 @@ const Eraser = ({ usingEraser, switchEraser}) => {
           type="button"
           aria-label="Eraser Tool"
           onClick={switchEraser}
-          className="eraser"
-        />
+          className="eraser">
+              ERASER
+        </button>
     );
 };
 

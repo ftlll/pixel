@@ -33,6 +33,7 @@ const importPixelate = (action) => {
 export default function(canvas = initCanvas(), action) {
     switch (action.type) {
       case type.SET_INIT_STATE:
+      case type.CLEAR:
         return initCanvas(action);
       case type.IMPORT_PIXELATE:
         return importPixelate(action);
