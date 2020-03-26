@@ -1,13 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { applyTools } from '../redux/actions/action';
-import drawHandler from '../utils/drawHandler';
+import drawHandlerProvider from '../utils/drawHandler';
 import Grid from './Grid';
 
 class Canvas extends React.Component {
     constructor(props) {
         super(props);
-        this.drawHandler = drawHandler(this);
+        this.state = {pressed: false};
+        this.drawHandlerProvider = drawHandlerProvider(this);
     }
 
     shouldComponentUpdate(newProps) {
@@ -28,12 +29,16 @@ class Canvas extends React.Component {
             width: 400,
         };
         return (
-            <Grid
-              style={style}
-              cells={cells}
-              drawingTool={props.drawingTool}
-              drawHandler={this.drawHandler}
-            />
+            <div onMouseUp={this.drawHandlerProvider.onMouseUp}
+                onTouchEnd={this.drawHandlerProvider.onMouseUp}
+                onTouchCancel={this.drawHandlerProvider.onMouseUp}>
+                <Grid
+                style={style}
+                cells={cells}
+                drawingTool={props.drawingTool}
+                drawHandler={this.drawHandlerProvider.drawHandlers(this)}
+                />
+            </div>
         );
     }
 }

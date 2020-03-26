@@ -2,13 +2,13 @@ import React from 'react';
 import Modal from 'react-awesome-modal';
 import { connect } from 'react-redux';
 import { importPixelate } from '../redux/actions/action';
-import Dropzone from 'react-dropzone'
+//import Dropzone from 'react-dropzone'
 
 class Popup extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {};
+    componentWillMount() {
+        this.setState({});
     }
+
     fileProcess = event => {
         this.setState({
             file: event.target.files[0]
@@ -27,7 +27,7 @@ class Popup extends React.Component {
                 effect="fadeInUp"
                 onClickAway={() => this.props.close()}>
                 <div className='modal-content'>
-                    <a className='popup-close' onClick={() => this.props.close()}>x</a>
+                    <div className='popup-close' onClick={() => this.props.close()}>x</div>
                     <div className='popup-header'>Upload</div>
                     <input type="file" onChange={this.fileProcess}></input>
                     <button onClick={this.fileUpload}>upload</button>
