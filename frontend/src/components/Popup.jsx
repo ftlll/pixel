@@ -5,10 +5,7 @@ import { importPixelate } from '../redux/actions/action';
 //import Dropzone from 'react-dropzone'
 
 class Popup extends React.Component {
-    componentWillMount() {
-        this.setState({});
-    }
-
+    state = {};
     fileProcess = event => {
         this.setState({
             file: event.target.files[0]
@@ -36,10 +33,6 @@ class Popup extends React.Component {
         );
     }
 }
-
-const mapStateToProps = state => ({
-    
-});
   
 const mapDispatchToProps = dispatch => ({
     fileUpload: (state) => {
@@ -56,15 +49,14 @@ const mapDispatchToProps = dispatch => ({
             }).then(res => {
                 return res.json();
             }).then(data => {
-                console.log(data);
                 dispatch(importPixelate(data))
             })
         } else {
-            console.log("no file attached");
+            alert("no file attached");
         }
     }
 });
 
-const PopupContainer = connect(mapStateToProps, mapDispatchToProps)(Popup);
+const PopupContainer = connect(null, mapDispatchToProps)(Popup);
 
 export default PopupContainer;

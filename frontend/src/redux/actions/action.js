@@ -7,6 +7,12 @@ export function init() {
     }
 }
 
+export function clear() {
+    return {
+        type: type.CLEAR
+    }
+}
+
 export function importPixelate({grid, columns, rows}) {
     return {
         type: type.IMPORT_PIXELATE,
