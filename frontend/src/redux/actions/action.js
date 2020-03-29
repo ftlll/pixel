@@ -13,12 +13,23 @@ export function clear() {
     }
 }
 
-export function importPixelate({grid, columns, rows}) {
+export function changeDimensions(columns, rows, newColumns, newRows) {
+    return {
+        type: type.CHANGE_DIMENSIONS,
+        columns,
+        rows,
+        newColumns,
+        newRows
+    }
+}
+
+export function importPixelate({grid, columns, rows, options}) {
     return {
         type: type.IMPORT_PIXELATE,
         grid,
         columns,
-        rows
+        rows,
+        options
     };
 }
 
