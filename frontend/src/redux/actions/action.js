@@ -13,11 +13,9 @@ export function clear() {
     }
 }
 
-export function changeDimensions(columns, rows, newColumns, newRows) {
+export function changeDimensions(newColumns, newRows) {
     return {
         type: type.CHANGE_DIMENSIONS,
-        columns,
-        rows,
         newColumns,
         newRows
     }
