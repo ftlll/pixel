@@ -50,7 +50,7 @@ const mapStateToProps = state => {
     const activeIndex = palette.get('active');
     const paletteColor = palette.getIn(['grid', activeIndex === -1 ? 0: activeIndex, 'color']);
     return {
-        grid: canvas.get('grid'),
+        grid: canvas.get('grids').get(canvas.get('active')),
         paletteColor,
         drawingTool,
         columns: canvas.get('columns'),

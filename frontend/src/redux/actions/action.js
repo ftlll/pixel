@@ -21,10 +21,10 @@ export function changeDimensions(newColumns, newRows) {
     }
 }
 
-export function importPixelate({grid, columns, rows, options}) {
+export function importPixelate({grids, columns, rows, options}) {
     return {
         type: type.IMPORT_PIXELATE,
-        grid,
+        grids,
         columns,
         rows,
         options

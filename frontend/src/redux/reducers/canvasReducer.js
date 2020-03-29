@@ -6,19 +6,20 @@ const initCanvas = (action = {})  => {
   const columns = parseInt(options.columns, 10) || 16;
   const rows = parseInt(options.rows, 10) || 16;
   const size = parseInt(options.size, 10) || 10;
-  const duration = parseInt(options.duration, 10) || 1;
 
   let grid = List();
   for(let i = 0; i < rows * columns; i++) {
     grid = grid.push('');
   }
+  let grids = List();
+  grids = grids.push(grid);
 
   return Map({
-    grid,
+    grids,
+    active: 0,
     columns,
     rows,
-    size,
-    duration
+    size
   })
 }
 
@@ -26,16 +27,15 @@ const importPixelate = (action) => {
   const columns = action.columns;
   const rows = action.rows;
   const options = action.options;
-  const grid = List(action.grid);
+  const grids = List(action.grids);
   const size = parseInt(options.size, 10) || 10;
-  const duration = parseInt(options.duration, 10) || 1;
 
   return Map({
-    grid,
+    grids,
+    active: 0,
     columns,
     rows,
-    size,
-    duration
+    size
   })
 }
 
@@ -72,16 +72,20 @@ const changeDimensionForOne = (grid, columns, rows, newColumns, newRows) => {
 }
 
 const changeDimension = (canvas, action) => {
-  const grid = canvas.get('grid');
   const columns = canvas.get('columns');
   const rows = canvas.get('rows');
   const newColumns = action.newColumns;
   const newRows = action.newRows;
-  const newGrid = changeDimensionForOne(grid, columns, rows, newColumns, newRows);
+  const grids = canvas.get('grids').map(grid =>
+    Map({
+      grids: changeDimensionForOne(grid, columns, rows, newColumns, newRows),
+    })
+  );
+  
   return canvas.merge({
+    grids,
     columns: newColumns,
-    rows: newRows,
-    grid: newGrid
+    rows: newRows
   });
 };
 
