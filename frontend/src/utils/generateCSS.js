@@ -16,7 +16,7 @@ export function generatePixelDrawCss(frame, columns, cellSize, type) {
 }
   
 export function getCssImageClassOutput(frame, columns, cellSize) {
-    return getImageCssClassOutput(frame.get('grid'), {
+    return getImageCssClassOutput(frame, {
         format: 'string',
         pSize: cellSize,
         c: columns,
