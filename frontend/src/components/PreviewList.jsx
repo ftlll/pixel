@@ -14,7 +14,7 @@ class PreviewList extends React.Component {
             canvas={List([grid])}
             columns={columns}
             rows={rows}
-            cellSize={2}
+            cellSize={3}
             active={0}
           />
         ));
