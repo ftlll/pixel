@@ -10,7 +10,7 @@ import PaintBucketContainer from './components/PaintBucket';
 import UndoRedoContainer from './components/UndoRedo';
 import PopupContainer from './components/Popup';
 import ClearContainer from './components/Clear';
-import PreviewListContainer from './components/PreviewList';
+import FrameListContainer from './components/FrameList';
 
 class App extends React.Component {
   constructor() {
@@ -39,7 +39,7 @@ class App extends React.Component {
     return (
       <div className='background'>
         <CanvasContainer/>
-        <PreviewListContainer/>
+        <FrameListContainer/>
         <ClearContainer />
         <PaletteGridContainer />
         <EraserContainer />

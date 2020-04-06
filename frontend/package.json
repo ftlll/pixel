@@ -46,8 +46,8 @@
     "redux-devtools": "^3.5.0",
     "minimist": "^1.2.5"
   },
-  "resolutions":{ 
-    "minimist": "^1.2.5" 
+  "resolutions": {
+    "minimist": "^1.2.5"
   },
   "preinstall": "npx npm-force-resolutions"
 }

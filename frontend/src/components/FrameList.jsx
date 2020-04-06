@@ -1,21 +1,24 @@
 import React from 'react';
-import { List } from 'immutable';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actions from '../redux/actions/action';
-import Preview from './Preview';
+import Frame from './Frame';
 
-class PreviewList extends React.Component {
+class FrameList extends React.Component {
     getFrames() {
-        const { grids, columns, rows } = this.props;
-        return grids.map((grid, key) => (
-          <Preview
-            key={key}
-            canvas={List([grid])}
+        const { grids, columns, rows, actions } = this.props;
+        return grids.map((grid, index) => (
+          <Frame 
+            key={index}
+            id={index}
+            grid={grid}
             columns={columns}
             rows={rows}
-            cellSize={3}
-            active={0}
+            actions={{
+              switchFrame: actions.switchFrame,
+              deleteFrame: actions.deleteFrame,
+              addNewFrame: actions.addNewFrame 
+            }}
           />
         ));
     }
@@ -34,8 +37,8 @@ const mapDispatchToProps = dispatch => ({
   actions: bindActionCreators(actions, dispatch)
 });
 
-const PreviewListContainer = connect(
+const FrameListContainer = connect(
   mapStateToProps,
   mapDispatchToProps
-)(PreviewList);
-export default PreviewListContainer;
+)(FrameList);
+export default FrameListContainer;
