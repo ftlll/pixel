@@ -44,7 +44,7 @@
   "homepage": "/backend/static/build",
   "devDependencies": {
     "redux-devtools": "^3.5.0",
-    "minimist": "^1.2.5"
+    "minimist": "^1.2.3"
   },
   "resolutions": {
     "minimist": "^1.2.5"
