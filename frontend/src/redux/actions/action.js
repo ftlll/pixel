@@ -63,6 +63,33 @@ export function applyColorPicker(color) {
     };
 }
 
+export function addNewFrame() {
+    return {
+        type: type.ADD_NEW_FRAME,
+    }
+};
+
+export function addDuplicatedFrame(id) {
+    return {
+        type: type.ADD_DUPLICATED_FRAME,
+        id
+    }
+};
+
+export function deleteFrame(id) {
+    return {
+        type: type.DELETE_FRAME,
+        id
+    }
+}
+
+export function switchFrame(id) {
+    return {
+        type: type.SWITCH_FRAME,
+        id
+    }
+}
+
 export function undo() {
     return ActionCreators.undo();
 };

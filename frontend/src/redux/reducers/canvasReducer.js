@@ -89,6 +89,46 @@ const changeDimension = (canvas, action) => {
   });
 };
 
+const addNewFrame = (canvas, action) => {
+  const grids = canvas.get('grids');
+  const columns = canvas.get('columns');
+  const rows = canvas.get('rows');
+  let grid = List();
+  for(let i = 0; i < rows * columns; i++) {
+    grid = grid.push('');
+  }
+  const newGrids = grids.insert(grids.size, grid);
+  return canvas.merge({
+    grids: newGrids,
+    active: grids.size
+  }); 
+};
+
+const addDuplicatedFrame = (canvas, action) => {
+  const grids = canvas.get('grids');
+  const grid = grids.get(action.id);
+  const newGrids = grids.insert(action.id, grid);
+  return canvas.merge({
+    grids: newGrids,
+    active: action.id + 1
+  }); 
+};
+
+const deleteFrame = (canvas, action) => {
+  const grids = canvas.get('grids');
+  const newGrids = grids.remove(action.id);
+  return canvas.merge({
+    grids: newGrids,
+    active: action.id
+  }); 
+};
+
+const switchFrame = (canvas, action) => {
+  return canvas.merge({
+    active: action.id
+  }); 
+}
+
 export default function(canvas = initCanvas(), action) {
     switch (action.type) {
       case type.SET_INIT_STATE:
@@ -98,6 +138,14 @@ export default function(canvas = initCanvas(), action) {
         return changeDimension(canvas, action);
       case type.IMPORT_PIXELATE:
         return importPixelate(action);
+      case type.ADD_NEW_FRAME:
+        return addNewFrame(canvas);
+      case type.ADD_DUPLICATED_FRAME:
+        return addDuplicatedFrame(canvas, action);
+      case type.DELETE_FRAME:
+        return deleteFrame(canvas, action);
+      case type.SWITCH_FRAME:
+        return switchFrame(canvas, action);
       default:
         return canvas;
     }
