@@ -1,5 +1,6 @@
 import React from 'react';
 import { List } from 'immutable';
+import Draggable from 'react-draggable';
 import Preview from './Preview';
 
 class Frame extends React.Component {
@@ -17,6 +18,7 @@ class Frame extends React.Component {
             actions.deleteFrame(id);
         }
         return (
+            <Draggable axis="y">
             <div onClick={switchFrame}>
                 <Preview
                     key={id}
@@ -29,6 +31,7 @@ class Frame extends React.Component {
                 <div onClick={addDuplicate}>+</div>
                 <div onClick={deleteFrame}>-</div>
             </div>
+            </Draggable>
         );
     }
 };
