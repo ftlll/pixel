@@ -1,6 +1,6 @@
 import React from 'react';
 import { List } from 'immutable';
-import Draggable from 'react-draggable';
+import { Draggable } from 'react-beautiful-dnd';
 import Preview from './Preview';
 
 class Frame extends React.Component {
@@ -18,20 +18,27 @@ class Frame extends React.Component {
             actions.deleteFrame(id);
         }
         return (
-            <Draggable axis="y">
-            <div onClick={switchFrame}>
-                <Preview
-                    key={id}
-                    canvas={List([grid])}
-                    columns={columns}
-                    rows={rows}
-                    cellSize={3}
-                    active={0}
-                />
-                <div onClick={addDuplicate}>+</div>
-                <div onClick={deleteFrame}>-</div>
-            </div>
+            <div>
+            <Draggable key={id} draggableId={id.toString()} index={id}>
+                {provided => (
+                    <div onClick={switchFrame}
+                    {...provided.draggableProps}
+                    {...provided.dragHandleProps}
+                    ref={provided.innerRef}>
+                        <Preview
+                            key={id}
+                            canvas={List([grid])}
+                            columns={columns}
+                            rows={rows}
+                            cellSize={3}
+                            active={0}
+                        />
+                        <div onClick={addDuplicate}>+</div>
+                        <div onClick={deleteFrame}>-</div>
+                    </div>
+                )}
             </Draggable>
+            </div>
         );
     }
 };
