@@ -129,6 +129,22 @@ const switchFrame = (canvas, action) => {
   }); 
 }
 
+const reorderFrame = (canvas, action) => {
+  let grids = canvas.get('grids');
+  const { initIndex, finalIndex } = action;
+  const moveForward = initIndex < finalIndex;
+  const insertPos = finalIndex + (moveForward ? 1 : 0);
+  const deletePos = initIndex + (moveForward ? 0 : 1);
+  const grid = grids.get(initIndex);
+  grids = grids.splice(insertPos, 0, grid)
+            .splice(deletePos, 1);
+
+  return canvas.merge({
+    grids,
+    active: finalIndex
+  });
+};
+
 export default function(canvas = initCanvas(), action) {
     switch (action.type) {
       case type.SET_INIT_STATE:
@@ -146,6 +162,8 @@ export default function(canvas = initCanvas(), action) {
         return deleteFrame(canvas, action);
       case type.SWITCH_FRAME:
         return switchFrame(canvas, action);
+      case type.REORDER_FRAMES:
+        return reorderFrame(canvas, action);
       default:
         return canvas;
     }

@@ -1,0 +1,10 @@
+.frames-handler {
+    width: 200px;
+    background-color: blue;
+}
+
+.framesHandlerContext {
+    width: 200px;
+    height: 400px;
+    background-color: green;
+}

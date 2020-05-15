@@ -90,6 +90,14 @@ export function switchFrame(id) {
     }
 }
 
+export function reorderFrame(initIndex, finalIndex) {
+    return {
+      type: type.REORDER_FRAMES,
+      initIndex,
+      finalIndex
+    };
+}
+
 export function undo() {
     return ActionCreators.undo();
 };
