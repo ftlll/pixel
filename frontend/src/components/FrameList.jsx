@@ -7,13 +7,27 @@ import Frame from './Frame';
 
 class FrameList extends React.Component {
     onDragEnd = result => {
-      //
+      const { destination, source } = result;
+      const { actions } = this.props;
+
+      if (!destination) {
+        return;
+      }
+
+      if (
+        destination.droppableId === source.droppableId &&
+        destination.index === source.index
+      ) {
+        return;
+      }
+
+      actions.reorderFrame(source.index, destination.index);
     }
 
     getFrames() {
         const { grids, columns, rows, actions } = this.props;
         return grids.map((grid, index) => (
-          <Frame 
+          <Frame
             key={index}
             id={index}
             grid={grid}
@@ -22,24 +36,26 @@ class FrameList extends React.Component {
             actions={{
               switchFrame: actions.switchFrame,
               deleteFrame: actions.deleteFrame,
-              addNewFrame: actions.addNewFrame 
+              addDuplicatedFrame: actions.addDuplicatedFrame, 
             }}
           />
         ));
     }
     render() {
         return (
-          <DragDropContext onDragEnd = {this.onDragEnd}>
-            <Droppable droppableId="droppable" direction="horizontal">
-            {provided => (
-              <div ref={provided.innerRef}
-              {...provided.droppableProps}>
-              {this.getFrames()}
-              {provided.placeholder}
-              </div>
-            )}
-            </Droppable>
-          </DragDropContext>
+          <div className='frames-handler'>
+            <DragDropContext onDragEnd = {this.onDragEnd} className='framesHandlerContext'>
+              <Droppable droppableId="droppable" direction="horizontal" className='frames-handler'>
+              {provided => (
+                <div ref={provided.innerRef}
+                {...provided.droppableProps}>
+                {this.getFrames()}
+                {provided.placeholder}
+                </div>
+              )}
+              </Droppable>
+            </DragDropContext>
+          </div>
         );
     }
 }

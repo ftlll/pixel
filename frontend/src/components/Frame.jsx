@@ -11,7 +11,7 @@ class Frame extends React.Component {
         };
     
         const addDuplicate = () => {
-            actions.addNewFrame();
+            actions.addDuplicatedFrame(id);
         }
     
         const deleteFrame = () => {
@@ -30,7 +30,7 @@ class Frame extends React.Component {
                             canvas={List([grid])}
                             columns={columns}
                             rows={rows}
-                            cellSize={3}
+                            cellSize={5}
                             active={0}
                         />
                         <div onClick={addDuplicate}>+</div>
