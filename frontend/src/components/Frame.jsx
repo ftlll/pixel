@@ -18,13 +18,13 @@ class Frame extends React.Component {
             actions.deleteFrame(id);
         }
         return (
-            <div>
             <Draggable key={id} draggableId={id.toString()} index={id}>
                 {provided => (
                     <div onClick={switchFrame}
                     {...provided.draggableProps}
                     {...provided.dragHandleProps}
-                    ref={provided.innerRef}>
+                    ref={provided.innerRef}
+                    className='frame'>
                         <Preview
                             key={id}
                             canvas={List([grid])}
@@ -38,7 +38,6 @@ class Frame extends React.Component {
                     </div>
                 )}
             </Draggable>
-            </div>
         );
     }
 };

@@ -8,3 +8,10 @@
     height: 400px;
     background-color: green;
 }
+
+.frame {
+    border: 1px solid grey;
+    border-radius: 2px;
+    padding: 8px;
+    margin-bottom: 5px;
+}

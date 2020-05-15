@@ -45,7 +45,7 @@ class FrameList extends React.Component {
         return (
           <div className='frames-handler'>
             <DragDropContext onDragEnd = {this.onDragEnd} className='framesHandlerContext'>
-              <Droppable droppableId="droppable" direction="horizontal" className='frames-handler'>
+              <Droppable droppableId="droppable" direction="vertical" className='frames-handler'>
               {provided => (
                 <div ref={provided.innerRef}
                 {...provided.droppableProps}>
