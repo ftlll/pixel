@@ -1,0 +1,27 @@
+.cell {
+    display: flex;
+    float: left;
+    border: 2px solid #585858;
+    border-width: 0 2px 2px 0;
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+  }
+
+.background {
+    padding: 1em 4em 2em 4em;
+    background-color: lightgrey;
+}
+
+.side-bar {
+    display: inline-block;
+    height: 500px;
+    width: 150px
+}
+
+.canvas {
+    display: inline-block;
+    margin: 10em;
+}

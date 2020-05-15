@@ -1,12 +1,5 @@
 .frames-handler {
-    width: 200px;
-    background-color: blue;
-}
-
-.framesHandlerContext {
-    width: 200px;
-    height: 400px;
-    background-color: green;
+    width: 150px;
 }
 
 .frame {
@@ -14,4 +7,26 @@
     border-radius: 2px;
     padding: 8px;
     margin-bottom: 5px;
+}
+
+.preview {
+  border: 1px solid grey;
+  background-color: silver;
+  color: white;
+  width: 70px;
+  height: 84px;
+  margin: 0 0.3em;
+  flex: 0 0 auto;
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  opacity: 0.4;
+}
+
+.frame-add {
+    display: inline-block;
+}
+
+.frame-delete {
+    display: inline-block;
 }

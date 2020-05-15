@@ -38,8 +38,28 @@ class App extends React.Component {
   render() {
     return (
       <div className='background'>
-        <CanvasContainer/>
-        <FrameListContainer/>
+        <div className='header'>
+          <div className="col-2-3">
+            <h2>PIXEL HUB</h2>
+          </div>
+          <div className="col-1-3">
+            <h5>by <a target="_blank" href="https://github.com/ftlll">FTL</a></h5>
+            <iframe
+              src="https://ghbtns.com/github-btn.html?user=ftlll&repo=pixel&type=star&count=false"
+              frameborder="0" scrolling="0" width="100px" height="20px"
+            >
+            </iframe>
+          </div>
+        </div>
+        <div className='side-bar'>
+          <FrameListContainer/>
+        </div>
+        <div className='canvas'>
+          <CanvasContainer/>
+        </div>
+        <div className='buttons'>
+
+        </div>
         <ClearContainer />
         <PaletteGridContainer />
         <EraserContainer />

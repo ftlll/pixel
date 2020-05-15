@@ -1,8 +1,8 @@
 @charset 'UTF-8';
 
 @import 'fonts/fonts.css';
+@import 'layout/general.css';
 @import 'layout/header.css';
-@import 'layout/cell.css';
 @import 'components/popUp.css';
 @import 'components/eraser.css';
 @import 'components/colorPicker.css';
