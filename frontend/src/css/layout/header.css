@@ -1,0 +1,18 @@
+.header {
+    padding: 0 1em;
+}
+
+.header .title {
+    display: inline-block;
+}
+
+.header .author {
+    float: right;
+}
+
+.name {
+    text-align: right;
+    margin-top: 1em;
+    top: 1em;
+    position: relative;
+}
