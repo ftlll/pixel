@@ -39,10 +39,10 @@ class App extends React.Component {
     return (
       <div className='background'>
         <div className='header'>
-          <div className="col-2-3">
+          <div className='title'>
             <h2>PIXEL HUB</h2>
           </div>
-          <div className="col-1-3">
+          <div className="author">
             <h5>by <a target="_blank" href="https://github.com/ftlll">FTL</a></h5>
             <iframe
               src="https://ghbtns.com/github-btn.html?user=ftlll&repo=pixel&type=star&count=false"
@@ -54,7 +54,7 @@ class App extends React.Component {
         <div className='side-bar'>
           <FrameListContainer/>
         </div>
-        <div className='canvas'>
+        {/* <div className='canvas'>
           <CanvasContainer/>
         </div>
         <div className='buttons'>
@@ -68,7 +68,7 @@ class App extends React.Component {
         <UndoRedoContainer />
         <ColorPickerContainer />
         <div onClick={() => this.setPopUp('upload')}>Upload</div>
-        <PopupContainer visible={this.state.popUpShown} close={() => this.closePopUp()}/>
+        <PopupContainer visible={this.state.popUpShown} close={() => this.closePopUp()}/> */}
       </div>
     );
   }
