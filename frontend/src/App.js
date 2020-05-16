@@ -1,6 +1,7 @@
 import React from 'react';
 import './css/imports.css';
 
+import HeaderContainer from './components/Header';
 import CanvasContainer from './components/Canvas';
 import ColorPickerContainer from './components/ColorPicker';
 import EraserContainer from './components/Eraser';
@@ -38,26 +39,14 @@ class App extends React.Component {
   render() {
     return (
       <div className='background'>
-        <div className='header'>
-          <div className='title'>
-            <h2>PIXEL HUB</h2>
-          </div>
-          <div className="author">
-            <h5>by <a target="_blank" href="https://github.com/ftlll">FTL</a></h5>
-            <iframe
-              src="https://ghbtns.com/github-btn.html?user=ftlll&repo=pixel&type=star&count=false"
-              frameborder="0" scrolling="0" width="100px" height="20px"
-            >
-            </iframe>
-          </div>
-        </div>
+        <HeaderContainer/>
         <div className='side-bar'>
           <FrameListContainer/>
         </div>
-        {/* <div className='canvas'>
+        <div className='canvas'>
           <CanvasContainer/>
         </div>
-        <div className='buttons'>
+        {/* <div className='buttons'>
 
         </div>
         <ClearContainer />
