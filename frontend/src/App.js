@@ -39,25 +39,28 @@ class App extends React.Component {
   render() {
     return (
       <div className='background'>
+        <div className='app'>
         <HeaderContainer/>
-        <div className='side-bar'>
-          <FrameListContainer/>
+        <div className='app-content'>
+          <div className='side-bar'>
+            <FrameListContainer/>
+          </div>
+          <div className='canvas'>
+            <CanvasContainer/>
+          </div>
         </div>
-        <div className='canvas'>
-          <CanvasContainer/>
-        </div>
-        {/* <div className='buttons'>
-
-        </div>
-        <ClearContainer />
-        <PaletteGridContainer />
-        <EraserContainer />
-        <PaintBucketContainer />
-        <EyeDropperContainer/>
-        <UndoRedoContainer />
-        <ColorPickerContainer />
-        <div onClick={() => this.setPopUp('upload')}>Upload</div>
-        <PopupContainer visible={this.state.popUpShown} close={() => this.closePopUp()}/> */}
+        {/* <div className='tools'>
+          <ClearContainer />
+          <PaletteGridContainer />
+          <EraserContainer />
+          <PaintBucketContainer />
+          <EyeDropperContainer/>
+          <UndoRedoContainer />
+          <ColorPickerContainer />
+          <div onClick={() => this.setPopUp('upload')}>Upload</div>
+          <PopupContainer visible={this.state.popUpShown} close={() => this.closePopUp()}/>
+        </div> */}
+      </div>
       </div>
     );
   }
