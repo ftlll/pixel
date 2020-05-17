@@ -15,6 +15,7 @@ const initCanvas = (action = {})  => {
   grids = grids.push(grid);
 
   return Map({
+    name: 'name',
     grids,
     active: 0,
     columns,
@@ -36,6 +37,12 @@ const importPixelate = (action) => {
     columns,
     rows,
     size
+  })
+}
+
+const changeName = (canvas, action) => {
+  return canvas.merge({
+    name: action.name
   })
 }
 
@@ -150,6 +157,8 @@ export default function(canvas = initCanvas(), action) {
       case type.SET_INIT_STATE:
       case type.CLEAR:
         return initCanvas(action);
+      case type.CHANGE_NAME:
+        return changeName(canvas,action);
       case type.CHANGE_DIMENSIONS:
         return changeDimension(canvas, action);
       case type.IMPORT_PIXELATE:

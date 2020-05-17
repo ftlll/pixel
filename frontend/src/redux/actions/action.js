@@ -13,6 +13,13 @@ export function clear() {
     }
 }
 
+export function changeName(name) {
+    return {
+        type: type.CHANGE_NAME,
+        name
+    }
+}
+
 export function changeDimensions(newColumns, newRows) {
     return {
         type: type.CHANGE_DIMENSIONS,

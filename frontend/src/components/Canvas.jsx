@@ -31,7 +31,8 @@ class Canvas extends React.Component {
         return (
             <div onMouseUp={this.drawHandlerProvider.onMouseUp}
                 onTouchEnd={this.drawHandlerProvider.onMouseUp}
-                onTouchCancel={this.drawHandlerProvider.onMouseUp}>
+                onTouchCancel={this.drawHandlerProvider.onMouseUp}
+                className='canvas'>
                 <Grid
                 style={style}
                 cells={cells}
