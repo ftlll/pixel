@@ -1,6 +1,5 @@
 import React from 'react';
 import './css/imports.css';
-
 import HeaderContainer from './components/Header';
 import CanvasContainer from './components/Canvas';
 import ColorPickerContainer from './components/ColorPicker';
@@ -42,11 +41,22 @@ class App extends React.Component {
         <div className='app'>
         <HeaderContainer/>
         <div className='app-content'>
+          <div className='tool-bar'>
+            <ClearContainer />
+            <UndoRedoContainer />
+          </div>
           <div className='side-bar'>
             <FrameListContainer/>
           </div>
           <div className='canvas'>
             <CanvasContainer/>
+          </div>
+          <div className='tools'>
+            <PaletteGridContainer />
+            <EraserContainer />
+            <PaintBucketContainer />
+            <EyeDropperContainer/>
+            <ColorPickerContainer />
           </div>
         </div>
         {/* <div className='tools'>

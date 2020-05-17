@@ -10,9 +10,26 @@
     box-sizing: inherit;
 }
 
+button {
+    display: flex;
+    flex-direction: row;
+}
+
 .app {
     width: 90%;
     margin: auto;
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+}
+
+.app-content {
+    display: flex;
+    min-height: 0px;
+    width: 100%;
+    height: auto;
+    flex-direction: row;
+    flex : 1;
 }
 
 .background {
@@ -23,24 +40,21 @@
     background-color: lightgrey;
 }
 
-
 .side-bar {
-    margin-top: 1.6em;
+    padding-top: 1.6em;
     display: flex;
     float: left;
-    height: 100%;
-    width: 30%;
-    max-width: 150px;
-    min-height: 500px;
+    min-height: 0;
+    width: 150px;
 }
 
 .canvas {
-    display: inline-flex;
+    display: flex;
     padding: 10px;
     margin: 0 ,auto;
 }
 
 .tools {
-    display: inline-flex;
+    display: flex;
     padding: 10px;
 }

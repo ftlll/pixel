@@ -1,7 +1,20 @@
 //import{List, Map} from 'immutable';
 import * as type from '../actions/actionTypes';
+import { List } from 'immutable';
 
 const GRID_INIT_COLOR = 'rgba(49, 49, 49, 1)';
+
+const clear = (canvas, action) => {
+  const active = canvas.get('active');
+  const columns = canvas.get('columns');
+  const rows = canvas.get('rows');
+  let grid = List();
+  for(let i = 0; i < rows * columns; i++) {
+    grid = grid.push('');
+  }
+  const newCanvas = canvas.setIn(['grids', active], grid);
+  return newCanvas;
+}
 
 const drawPixel = (grid, color, id) => {
   return grid.set(id, color);
@@ -97,6 +110,8 @@ const applyPaintBucket = (canvas, action) => {
 
 export default function(canvas, action) {
     switch (action.type) {
+        case type.CLEAR:
+            return clear(canvas, action);
         case type.APPLY_PENCIL:
             return applyPencil(canvas, action);
         case type.APPLY_ERASER:

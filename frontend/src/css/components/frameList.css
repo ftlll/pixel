@@ -1,13 +1,21 @@
-.frames-list {
-    display: inline-flex;
-    flex-wrap: nowrap;
-    padding-bottom: 0.5em;
-    background-color: darkgray;
+.frames-handler {
+    background-color: darkgrey;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2em;
+    min-height: 0px;
+}
+
+.frames-list-content {
+    display: flex;
+    flex: 1;
+    min-height: 0;
     overflow: scroll;
 }
 
 .frames-list-add {
-    display: inline-block;
+    display: flex;
+    min-height: 0px;
     height: 20px;
     width: 120px;
 }
