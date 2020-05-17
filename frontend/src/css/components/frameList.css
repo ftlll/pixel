@@ -1,9 +1,15 @@
-.frames-handler {
+.frames-list {
     display: inline-flex;
     flex-wrap: nowrap;
     padding-bottom: 0.5em;
     background-color: darkgray;
     overflow: scroll;
+}
+
+.frames-list-add {
+    display: inline-block;
+    height: 20px;
+    width: 120px;
 }
 
 .frame {
