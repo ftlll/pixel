@@ -19,14 +19,14 @@ const UndoRedo = props => {
         onClick={() => {
           undo();
         }}>
-        REDO
+        UNDO
       </button>
       <button
         type="button"
         onClick={() => {
           redo();
         }}>
-        UNDO
+        REDO
       </button>
     </div>
   );

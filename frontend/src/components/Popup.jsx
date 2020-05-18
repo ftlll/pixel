@@ -24,7 +24,7 @@ class Popup extends React.Component {
                 effect="fadeInUp"
                 onClickAway={() => this.props.close()}>
                 <div className='modal-content'>
-                    <div className='popup-close' onClick={() => this.props.close()}>x</div>
+                    <button className='popup-close' onClick={() => this.props.close()}>x</button>
                     <div className='popup-header'>Upload</div>
                     <input type="file" onChange={this.fileProcess}></input>
                     <button onClick={this.fileUpload}>upload</button>

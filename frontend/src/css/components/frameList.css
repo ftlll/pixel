@@ -1,9 +1,24 @@
 .frames-handler {
-    display: inline-flex;
-    flex-wrap: nowrap;
-    padding-bottom: 0.5em;
-    background-color: darkgray;
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+    margin-bottom: 2em;
+    min-height: 0px;
+}
+
+.frames-list-content {
+    background-color: darkgrey;
+    display: flex;
+    flex: 1;
+    min-height: 0;
     overflow: scroll;
+}
+
+.frames-list-add {
+    display: flex;
+    min-height: 0px;
+    height: 20px;
+    width: 120px;
 }
 
 .frame {

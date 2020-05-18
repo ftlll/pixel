@@ -7,9 +7,21 @@ export function init() {
     }
 }
 
+export function newProject() {
+    return {
+        type: type.NEW_PROJECT
+    }
+}
+
 export function clear() {
     return {
         type: type.CLEAR
+    }
+}
+
+export function save() {
+    return {
+        type: type.SAVE
     }
 }
 

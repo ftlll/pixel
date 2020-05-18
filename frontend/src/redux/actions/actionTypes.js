@@ -2,7 +2,9 @@ import * as tool from '../toolTypes';
 
 export const SET_COLOR = 'SET_COLOR';
 export const SET_INIT_STATE = 'SET_INIT_STATE'; 
+export const NEW_PROJECT = 'NEW_PROJECT';
 export const CLEAR = 'CLEAR';
+export const SAVE = 'SAVE';
 export const CHANGE_NAME = 'CHANGE_NAME';
 export const CHANGE_DIMENSIONS = 'CHANGE_DIMENSIONS';
 export const IMPORT_PIXELATE = 'IMPORT_PIXELATE';

@@ -6,6 +6,7 @@ const Clear = ({ clear }) => {
     return (
         <button
             type="button"
+            className='clear'
             onClick={clear}>
             CLEAR
         </button>

@@ -41,20 +41,29 @@ class FrameList extends React.Component {
           />
         ));
     }
+
+    addNewFrame = () => {
+      const { actions } = this.props;
+      actions.addNewFrame()
+    }
+
     render() {
         return (
           <div className='frames-handler'>
-            <DragDropContext onDragEnd = {this.onDragEnd} className='framesHandlerContext'>
-              <Droppable droppableId="droppable" direction="vertical" className='frames-handler'>
-              {provided => (
-                <div ref={provided.innerRef}
-                {...provided.droppableProps}>
-                {this.getFrames()}
-                {provided.placeholder}
-                </div>
-              )}
-              </Droppable>
-            </DragDropContext>
+            <button type='button' className='frames-list-add' onClick={() => this.addNewFrame()}>+</button>
+            <div className='frames-list-content'>
+              <DragDropContext onDragEnd = {this.onDragEnd} className='framesHandlerContext'>
+                <Droppable droppableId="droppable" direction="vertical" className='frames-handler'>
+                {provided => (
+                  <div ref={provided.innerRef}
+                  {...provided.droppableProps}>
+                  {this.getFrames()}
+                  {provided.placeholder}
+                  </div>
+                )}
+                </Droppable>
+              </DragDropContext>
+            </div>
           </div>
         );
     }

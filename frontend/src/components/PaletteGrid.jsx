@@ -10,7 +10,7 @@ class PaletteGrid extends React.Component {
         const { grid, active, selectPaletteColor } = this.props;
         const width = 100 / 6;
         return (
-            <div>
+            <div className='palette'>
                 {grid.map((cell, i) => {
                     return (
                         <PaletteCell color={cell.get('color')}
@@ -18,6 +18,7 @@ class PaletteGrid extends React.Component {
                           width={width}
                           key={cell.get('id')}
                           id={i}
+                          className='palette-grid'
                           selectPaletteColor={selectPaletteColor}
                         />
                     )

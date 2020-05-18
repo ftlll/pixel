@@ -155,7 +155,7 @@ const reorderFrame = (canvas, action) => {
 export default function(canvas = initCanvas(), action) {
     switch (action.type) {
       case type.SET_INIT_STATE:
-      case type.CLEAR:
+      case type.NEW_PROJECT:
         return initCanvas(action);
       case type.CHANGE_NAME:
         return changeName(canvas,action);
