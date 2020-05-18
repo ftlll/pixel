@@ -56,11 +56,14 @@ class App extends React.Component {
           <div className='tools col-lg-4'>
             <div className='col-12'>
               <PaletteGridContainer />
+              <div> 
               <EraserContainer />
               <PaintBucketContainer />
               <EyeDropperContainer/>
-              <UndoRedoContainer />
               <ColorPickerContainer />
+              </div>
+
+              <UndoRedoContainer />
             </div>
           </div>
         </div>

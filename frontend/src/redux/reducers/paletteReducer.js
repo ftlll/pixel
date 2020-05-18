@@ -14,7 +14,8 @@ const initPaletteGrid = () => {
         '#0000ff',
         '#6600ff',
         '#ff00ff',
-        '#ff0066'
+        '#ff0066',
+        '','',''
     ]).map((color, i) => Map({ color, id: i}));
 };
 

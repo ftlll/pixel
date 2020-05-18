@@ -1,12 +1,11 @@
 .palette-grid {
-    height: 400px;
+    height: 200px;
 }
 
 .palette-cell {
-    border: 2px solid scorpion;
-    border-width: 2px;
+    border: 2px solid white;
 }
 
-.palette-cell .active {
-    border-color: dark;
+.palette-cell.active {
+    border-color: green;
 }
