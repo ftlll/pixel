@@ -8,17 +8,16 @@ class PaletteGrid extends React.Component {
 
     render() {
         const { grid, active, selectPaletteColor } = this.props;
-        const width = 100 / 6;
+        const width = 100 / 8;
         return (
-            <div className='palette'>
+            <div className='palette-grid'>
                 {grid.map((cell, i) => {
                     return (
                         <PaletteCell color={cell.get('color')}
-                          acive={active}
+                          acive={i === active}
                           width={width}
                           key={cell.get('id')}
                           id={i}
-                          className='palette-grid'
                           selectPaletteColor={selectPaletteColor}
                         />
                     )

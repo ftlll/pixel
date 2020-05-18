@@ -1,4 +1,12 @@
 .palette-grid {
-    display: inline-block;
-    width: 500px;
+    height: 400px;
+}
+
+.palette-cell {
+    border: 2px solid scorpion;
+    border-width: 2px;
+}
+
+.palette-cell .active {
+    border-color: dark;
 }

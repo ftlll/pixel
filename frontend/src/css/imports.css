@@ -1,6 +1,8 @@
 @charset 'UTF-8';
 
+@import 'bootstrap.css';
 @import 'fonts/fonts.css';
+@import 'icon.css';
 @import 'layout/general.css';
 @import 'layout/header.css';
 @import 'components/popUp.css';

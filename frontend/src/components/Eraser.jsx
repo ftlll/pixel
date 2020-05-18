@@ -5,13 +5,9 @@ import { switchTool } from '../redux/actions/action';
 
 const Eraser = ({ usingEraser, switchEraser}) => {
     return (
-        <button
-          type="button"
-          aria-label="Eraser Tool"
+        <i aria-label="Eraser Tool"
           onClick={switchEraser}
-          className="eraser">
-              ERASER
-        </button>
+          className="eraser fas fa-eraser" />
     );
 };
 

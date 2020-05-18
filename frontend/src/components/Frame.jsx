@@ -33,8 +33,8 @@ class Frame extends React.Component {
                             cellSize={5}
                             active={0}
                         />
-                        <div onClick={addDuplicate} className='frame-add'>+</div>
-                        <div onClick={deleteFrame} className='frame-delete'>-</div>
+                        <i onClick={addDuplicate} className='frame-add fas fa-copy' />
+                        <i onClick={deleteFrame} className='frame-delete fas fa-trash-alt' />
                     </div>
                 )}
             </Draggable>
