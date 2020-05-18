@@ -9,6 +9,7 @@ import PaletteGridContainer from './components/PaletteGrid';
 import PaintBucketContainer from './components/PaintBucket';
 import UndoRedoContainer from './components/UndoRedo';
 import PopupContainer from './components/Popup';
+import NewProjectContainer from './components/NewProject';
 import ClearContainer from './components/Clear';
 import FrameListContainer from './components/FrameList';
 
@@ -40,11 +41,12 @@ class App extends React.Component {
       <div className='background'>
         <div className='app'>
         <HeaderContainer/>
-        <div className='app-content'>
-          <div className='tool-bar'>
+        <div className='tool-bar'>
+            <NewProjectContainer/>
             <ClearContainer />
-            <UndoRedoContainer />
-          </div>
+            <button className='upload' onClick={() => this.setPopUp('upload')}>UPLOAD</button>
+        </div>
+        <div className='app-content'>
           <div className='side-bar'>
             <FrameListContainer/>
           </div>
@@ -68,8 +70,8 @@ class App extends React.Component {
           <UndoRedoContainer />
           <ColorPickerContainer />
           <div onClick={() => this.setPopUp('upload')}>Upload</div>
-          <PopupContainer visible={this.state.popUpShown} close={() => this.closePopUp()}/>
         </div> */}
+        <PopupContainer visible={this.state.popUpShown} close={() => this.closePopUp()}/>
       </div>
       </div>
     );

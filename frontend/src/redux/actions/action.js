@@ -19,6 +19,12 @@ export function clear() {
     }
 }
 
+export function save() {
+    return {
+        type: type.SAVE
+    }
+}
+
 export function changeName(name) {
     return {
         type: type.CHANGE_NAME,

@@ -10,11 +10,6 @@
     box-sizing: inherit;
 }
 
-button {
-    display: flex;
-    flex-direction: row;
-}
-
 .app {
     width: 90%;
     margin: auto;
@@ -40,6 +35,11 @@ button {
     background-color: lightgrey;
 }
 
+.tool-bar {
+    display: inline-block;
+    width: 100%;
+}
+
 .side-bar {
     padding-top: 1.6em;
     display: flex;
@@ -50,6 +50,8 @@ button {
 
 .canvas {
     display: flex;
+    margin-left: 10px;
+    margin-top: 15px;
     padding: 10px;
     margin: 0 ,auto;
 }
@@ -57,4 +59,12 @@ button {
 .tools {
     display: flex;
     padding: 10px;
+    flex-direction: column;
+    flex : 1;
+}
+
+.palette {
+    padding: 10px;
+    display: flex;
+    width: 100%;
 }

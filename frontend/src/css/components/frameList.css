@@ -1,12 +1,13 @@
 .frames-handler {
-    background-color: darkgrey;
     display: flex;
     flex-direction: column;
+    margin-left: 10px;
     margin-bottom: 2em;
     min-height: 0px;
 }
 
 .frames-list-content {
+    background-color: darkgrey;
     display: flex;
     flex: 1;
     min-height: 0;
