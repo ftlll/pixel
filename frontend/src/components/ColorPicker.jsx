@@ -28,8 +28,7 @@ class ColorPicker extends React.Component {
 
     return (
       <div>
-        <button type='button' onClick={ this.handleClick }>COLOR PICKER
-        </button>
+        <i className='fas fa-paint-brush' onClick={ this.handleClick } />
         { this.state.visible ? <div className='popover'>
           <div className='cover' onClick={ this.handleClose }/>
           <Picker color={ color } onChange={this.applyColorPicker} onClose={this.handleClose} type="sketch"/>

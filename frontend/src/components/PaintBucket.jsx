@@ -5,12 +5,9 @@ import { switchTool } from '../redux/actions/action';
 
 const PaintBucket = ({ usingPaintBucket, switchPaintBucket}) => {
     return (
-        <button
-          type="button"
-          aria-label="Paint Bucket Tool"
-          onClick={switchPaintBucket}>
-              PAINT BUCKET
-        </button>
+        <i aria-label="Paint Bucket Tool"
+          className='bucket fas fa-fill-drip'
+          onClick={switchPaintBucket}/>
     );
 };
 

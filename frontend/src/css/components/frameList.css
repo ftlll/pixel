@@ -24,16 +24,15 @@
 .frame {
     border: 1px solid grey;
     border-radius: 2px;
-    padding: 8px;
-    margin-bottom: 5px;
+    padding: 4px;
 }
 
 .preview {
   border: 1px solid grey;
   background-color: silver;
   color: white;
-  width: 70px;
-  height: 84px;
+  width: 80px;
+  height: 90px;
   margin: 0 0.3em;
   flex: 0 0 auto;
   display: inline-block;
@@ -44,8 +43,14 @@
 
 .frame-add {
     display: inline-block;
+    font-size: 20px;
+    height: 20px;
+    width: 20px;
 }
 
 .frame-delete {
     display: inline-block;
+    font-size: 20px;
+    height: 20px;
+    width: 20px;
 }

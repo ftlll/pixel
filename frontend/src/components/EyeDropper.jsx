@@ -5,13 +5,9 @@ import { switchTool } from '../redux/actions/action';
 
 const EyeDropper = ({ usingEyeDropper, switchEyeDropper}) => {
     return (
-        <button
-          type="button"
-          aria-label="EyeDropper Tool"
+        <i aria-label="EyeDropper Tool"
           onClick={switchEyeDropper}
-          className="eyeDropper">
-              EYE DROPPER
-        </button>
+          className="eyeDropper fas fa-eye-dropper" />
     );
 };
 

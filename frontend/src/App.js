@@ -47,18 +47,21 @@ class App extends React.Component {
             <button className='upload' onClick={() => this.setPopUp('upload')}>UPLOAD</button>
         </div>
         <div className='app-content'>
-          <div className='side-bar'>
+          <div className='side-bar col-lg-2'>
             <FrameListContainer/>
           </div>
-          <div className='canvas'>
+          <div className='canvas-container col-lg-6'>
             <CanvasContainer/>
           </div>
-          <div className='tools'>
-            <PaletteGridContainer />
-            <EraserContainer />
-            <PaintBucketContainer />
-            <EyeDropperContainer/>
-            <ColorPickerContainer />
+          <div className='tools col-lg-4'>
+            <div className='col-12'>
+              <PaletteGridContainer />
+              <EraserContainer />
+              <PaintBucketContainer />
+              <EyeDropperContainer/>
+              <UndoRedoContainer />
+              <ColorPickerContainer />
+            </div>
           </div>
         </div>
         {/* <div className='tools'>

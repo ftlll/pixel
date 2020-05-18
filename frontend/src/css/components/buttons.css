@@ -1,4 +1,4 @@
-button {
+button.newProject {
   font-family: 'minecraftia','Helvetica Neue Light','Helvetica Neue','Helvetica','Arial',sans-serif;
   text-align: center;
   background: none;
@@ -14,11 +14,7 @@ button {
   box-shadow: 0 5px 0 0 #707070;
 }
 
-button:hover {
-  background-color: #494747
-}
-
-button:active {
+button.newProject:active {
   background-color: #494747;
   transform: translateY(4px);
   box-shadow: 0 1px 0 0 #707070;
@@ -29,12 +25,82 @@ button:active {
   margin-left: 10px
 }
 
+button.clear {
+  font-family: 'minecraftia','Helvetica Neue Light','Helvetica Neue','Helvetica','Arial',sans-serif;
+  text-align: center;
+  background: none;
+  border: none;
+  outline: none;
+  border-radius: 2px;
+  padding: 10px;
+  font-size: 1em;
+  text-decoration: none;
+  transition-duration: 0.1s;
+  color: #bbb;
+  background-color: #313131;
+  box-shadow: 0 5px 0 0 #707070;
+}
+
+button.clear:active {
+  background-color: #494747;
+  transform: translateY(4px);
+  box-shadow: 0 1px 0 0 #707070;
+}
+
 .clear {
   width: 150px;
   margin-left: 10px
 }
 
+button.upload {
+  font-family: 'minecraftia','Helvetica Neue Light','Helvetica Neue','Helvetica','Arial',sans-serif;
+  text-align: center;
+  background: none;
+  border: none;
+  outline: none;
+  border-radius: 2px;
+  padding: 10px;
+  font-size: 1em;
+  text-decoration: none;
+  transition-duration: 0.1s;
+  color: #bbb;
+  background-color: #313131;
+  box-shadow: 0 5px 0 0 #707070;
+}
+
+button.upload:active {
+  background-color: #494747;
+  transform: translateY(4px);
+  box-shadow: 0 1px 0 0 #707070;
+}
+
 .upload {
   width: 150px;
   margin-left: 10px
+}
+
+button.frames-list-add {
+  font-family: 'minecraftia','Helvetica Neue Light','Helvetica Neue','Helvetica','Arial',sans-serif;
+  text-align: center;
+  background: none;
+  border: none;
+  outline: none;
+  border-radius: 2px;
+  padding: 10px;
+  font-size: 1em;
+  text-decoration: none;
+  transition-duration: 0.1s;
+  color: #bbb;
+  background-color: #313131;
+  box-shadow: 0 5px 0 0 #707070;
+}
+
+button.frames-list-add:active {
+  background-color: #494747;
+  transform: translateY(4px);
+  box-shadow: 0 1px 0 0 #707070;
+}
+
+.bucket {
+  background-color: rgba(0,0,0,0);
 }

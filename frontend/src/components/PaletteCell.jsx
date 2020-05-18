@@ -14,13 +14,13 @@ class PlatteCell extends React.Component {
         const handleClick = () => selectPaletteColor(id);
 
         const style = {
-            display: "inline-block",
             width: `${width}%`,
-            height: "30px",
+            height: `${width}%`,
             backgroundColor:  color || CELL_NULL_COLOR
         };
         return (
-            <div style={style} onClick={handleClick}/>
+            <button style={style} onClick={handleClick} 
+                className={`palette-cell ${active ? 'active' : ''}`}/>
         );
     };
 };
