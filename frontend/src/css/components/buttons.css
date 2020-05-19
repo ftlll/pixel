@@ -101,6 +101,137 @@ button.frames-list-add:active {
   box-shadow: 0 1px 0 0 #707070;
 }
 
+button.save {
+  font-family: 'minecraftia','Helvetica Neue Light','Helvetica Neue','Helvetica','Arial',sans-serif;
+  text-align: center;
+  background: none;
+  border: none;
+  outline: none;
+  border-radius: 2px;
+  padding: 10px;
+  font-size: 1em;
+  text-decoration: none;
+  transition-duration: 0.1s;
+  color: #bbb;
+  background-color: #313131;
+  box-shadow: 0 5px 0 0 #707070;
+}
+
+button.save:active {
+  background-color: #494747;
+  transform: translateY(4px);
+  box-shadow: 0 1px 0 0 #707070;
+}
+
+.eraser {
+  display: inline-block;
+  text-align: center;
+  font-size: 30px;
+  height: 50px;
+  width: 50px;
+}
+
+.eraser.active {
+  background-color: darkgray;
+}
+
 .bucket {
-  background-color: rgba(0,0,0,0);
+  display: inline-block;
+  text-align: center;
+  font-size: 30px;
+  height: 50px;
+  width: 50px;
+}
+
+.bucket.active {
+  background-color: darkgray;
+}
+
+.eye-dropper {
+  display: inline-block;
+  text-align: center;
+  font-size: 30px;
+  height: 50px;
+  width: 50px;
+}
+
+.eye-dropper.active {
+  background-color: darkgray;
+}
+
+.color-picker {
+  display: inline-block;
+  text-align: center;
+  font-size: 30px;
+  height: 50px;
+  width: 50px;
+}
+
+.color-picker.active {
+  background-color: darkgray;
+}
+
+.undo-redo {
+  display: inline-block;
+  width: 100%;
+}
+
+button.undo {
+  text-align: center;
+  background: none;
+  border: none;
+  outline: none;
+  border-radius: 2px;
+  padding: 10px;
+  font-size: 1em;
+  text-decoration: none;
+  transition-duration: 0.1s;
+  color: #bbb;
+  background-color: #313131;
+  box-shadow: 0 5px 0 0 #707070;
+}
+
+button.undo:active {
+  background-color: #494747;
+  transform: translateY(4px);
+  box-shadow: 0 1px 0 0 #707070;
+}
+
+.undo-container {
+  display: inline-block;
+  width: 50%;
+}
+
+.undo {
+  width: 100%;
+}
+
+button.redo {
+  text-align: center;
+  background: none;
+  border: none;
+  outline: none;
+  border-radius: 2px;
+  padding: 10px;
+  font-size: 1em;
+  text-decoration: none;
+  transition-duration: 0.1s;
+  color: #bbb;
+  background-color: #313131;
+  box-shadow: 0 5px 0 0 #707070;
+}
+
+button.redo:active {
+  background-color: #494747;
+  transform: translateY(4px);
+  box-shadow: 0 1px 0 0 #707070;
+}
+
+.redo-container {
+  display: inline-block;
+  width: 50%;
+}
+
+.redo {
+  width: 100%;
 }

@@ -1,6 +1,6 @@
 import * as type from '../actions/actionTypes';
 import * as tool from '../toolTypes';
-import { List, Map } from 'immutable';
+import { List, Map, fromJS } from 'immutable';
 
 const initPaletteGrid = () => {
     return List([
@@ -14,13 +14,22 @@ const initPaletteGrid = () => {
         '#0000ff',
         '#6600ff',
         '#ff00ff',
-        '#ff0066'
+        '#ff0066',
+        '','',''
     ]).map((color, i) => Map({ color, id: i}));
 };
 
 const initPalette = () => {
     return Map({
         grid: initPaletteGrid(),
+        active: 0
+    });
+};
+
+const setPalette = (palette, action) => {
+    const { paletteGrid } = action;
+    return fromJS({
+        grid: paletteGrid,
         active: 0
     });
 };
@@ -79,7 +88,10 @@ const applyColorPicker = (palette, action) => {
 export default function (palette = initPalette(), action) {
     switch (action.type) {
         case type.SET_INIT_STATE:
+        case type.NEW_PROJECT:
             return initPalette();
+        case type.SET_CANVAS:
+            return setPalette(palette, action);
         case type.SELECT_PALETTE_COLOR:
             return selectPaletteColor(palette, action);
         case type.APPLY_EYE_DROPPER:

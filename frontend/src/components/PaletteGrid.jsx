@@ -14,7 +14,7 @@ class PaletteGrid extends React.Component {
                 {grid.map((cell, i) => {
                     return (
                         <PaletteCell color={cell.get('color')}
-                          acive={i === active}
+                          active={active === i}
                           width={width}
                           key={cell.get('id')}
                           id={i}

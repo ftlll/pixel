@@ -6,7 +6,7 @@ import {
 
 const Preview = props => {
     const generatePreview = () => {
-        const { active, duration, canvas, columns, cellSize } = props;
+        const { active, duration, grids, columns, cellSize } = props;
         //const { canvas, columns, cellSize } = storedData || props;
 
         let cssString;
@@ -19,7 +19,7 @@ const Preview = props => {
         };
 
         cssString = generatePixelDrawCss(
-            canvas.get(active).toArray(),
+            grids.get(active),
             columns,
             cellSize,
             'string'

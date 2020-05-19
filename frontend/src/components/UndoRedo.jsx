@@ -14,14 +14,14 @@ const UndoRedo = props => {
 
   return (
     <div className="undo-redo">
-      <i className='fas fa-undo-alt'
-        onClick={() => {
-          undo();
-        }} />
-      <i className='fas fa-redo-alt'
-        onClick={() => {
-          redo();
-        }} />
+      <div className='undo-container'>
+        <button className='undo fas fa-undo-alt'
+          onClick={() => {undo()}} />
+      </div>
+      <div className='redo-container'>
+        <button className='redo fas fa-redo-alt'
+          onClick={() => {redo()}} />
+      </div>
     </div>
   );
 };

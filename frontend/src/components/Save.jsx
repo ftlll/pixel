@@ -1,10 +1,22 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { save } from '../redux/actions/action';
+import { saveProjectToStorage } from '../utils/localStorage';
 
-const Save = ({ save }) => {
+const Save = props => {
+    const save = () => {
+        const drawingToSave = {
+            grids: props.grids,
+            paletteGridData: props.paletteGridData,
+            cellSize: props.cellSize,
+            columns: props.columns,
+            rows: props.rows,
+            animate: props.grids.size > 1,
+        };
+      
+        saveProjectToStorage(localStorage, drawingToSave)
+    }
     return (
-        <button
+        <button className='save'
             type="button"
             onClick={save}>
             SAVE
@@ -12,12 +24,23 @@ const Save = ({ save }) => {
     );
 };
 
+const mapStateToProps = state => {
+    const canvas = state.present.get('canvas');
+    return {
+      grids: canvas.get('grids'),
+      columns: canvas.get('columns'),
+      rows: canvas.get('rows'),
+      cellSize: state.present.get('cellSize'),
+      paletteGridData: state.present.getIn(['palette', 'grid'])
+    };
+  };
+
 const mapDispatchToProps = dispatch => ({
-    save: () => dispatch(save())
+
 });
   
 const SaveContainer = connect(
-    null,
+    mapStateToProps,
     mapDispatchToProps
 )(Save);
 

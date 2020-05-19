@@ -19,9 +19,14 @@ export function clear() {
     }
 }
 
-export function save() {
+export function setCanvas(grids, paletteGrid, cellSize, columns, rows) {
     return {
-        type: type.SAVE
+        type: type.SET_CANVAS,
+        grids,
+        paletteGrid,
+        cellSize,
+        columns,
+        rows
     }
 }
 
