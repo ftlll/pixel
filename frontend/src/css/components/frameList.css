@@ -19,6 +19,12 @@
     min-height: 0px;
     height: 20px;
     width: 120px;
+    margin-bottom: 10px;
+}
+
+.frames-list-add > div {
+    width: 100%;
+    text-align: center;
 }
 
 .frame {

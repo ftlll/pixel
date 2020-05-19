@@ -50,7 +50,7 @@ class FrameList extends React.Component {
     render() {
         return (
           <div className='frames-handler'>
-            <button type='button' className='frames-list-add' onClick={() => this.addNewFrame()}>+</button>
+            <button type='button' className='frames-list-add' onClick={() => this.addNewFrame()}><div>+</div></button>
             <div className='frames-list-content'>
               <DragDropContext onDragEnd = {this.onDragEnd} className='framesHandlerContext'>
                 <Droppable droppableId="droppable" direction="vertical" className='frames-handler'>

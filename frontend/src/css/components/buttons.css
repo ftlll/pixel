@@ -123,6 +123,11 @@ button.save:active {
   box-shadow: 0 1px 0 0 #707070;
 }
 
+.save {
+  width: 150px;
+  margin-left: 10px
+}
+
 .eraser {
   display: inline-block;
   text-align: center;
