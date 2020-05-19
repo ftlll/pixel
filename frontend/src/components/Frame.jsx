@@ -27,7 +27,7 @@ class Frame extends React.Component {
                     className='frame'>
                         <Preview
                             key={id}
-                            canvas={List([grid])}
+                            grids={List([grid])}
                             columns={columns}
                             rows={rows}
                             cellSize={5}

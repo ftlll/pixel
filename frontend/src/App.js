@@ -1,5 +1,6 @@
 import React from 'react';
 import './css/imports.css';
+import init from './utils/startup';
 import HeaderContainer from './components/Header';
 import CanvasContainer from './components/Canvas';
 import ColorPickerContainer from './components/ColorPicker';
@@ -11,6 +12,7 @@ import UndoRedoContainer from './components/UndoRedo';
 import PopupContainer from './components/Popup';
 import NewProjectContainer from './components/NewProject';
 import ClearContainer from './components/Clear';
+import SaveContainer from './components/Save';
 import FrameListContainer from './components/FrameList';
 
 class App extends React.Component {
@@ -20,6 +22,11 @@ class App extends React.Component {
       popUpType: null,
       popUpShown: false
     };
+  }
+
+  componentDidMount() {
+    const { dispatch } = this.props;
+    init(dispatch, localStorage);
   }
 
   setPopUp(type) {
@@ -44,6 +51,7 @@ class App extends React.Component {
         <div className='tool-bar'>
             <NewProjectContainer/>
             <ClearContainer />
+            <SaveContainer />
             <button className='upload' onClick={() => this.setPopUp('upload')}>UPLOAD</button>
         </div>
         <div className='app-content'>
@@ -62,19 +70,11 @@ class App extends React.Component {
               <EyeDropperContainer/>
               <ColorPickerContainer />
               </div>
-
               <UndoRedoContainer />
             </div>
           </div>
         </div>
         {/* <div className='tools'>
-          <ClearContainer />
-          <PaletteGridContainer />
-          <EraserContainer />
-          <PaintBucketContainer />
-          <EyeDropperContainer/>
-          <UndoRedoContainer />
-          <ColorPickerContainer />
           <div onClick={() => this.setPopUp('upload')}>Upload</div>
         </div> */}
         <PopupContainer visible={this.state.popUpShown} close={() => this.closePopUp()}/>

@@ -1,4 +1,4 @@
-import{List, Map} from 'immutable';
+import{List, Map, fromJS} from 'immutable';
 import * as type from '../actions/actionTypes';
 
 const initCanvas = (action = {})  => {
@@ -23,6 +23,18 @@ const initCanvas = (action = {})  => {
     size
   })
 }
+
+const setCanvas = (canvas, action) => {
+  const { grids, columns, rows, cellSize } = action;
+  
+  return fromJS({
+    grids,
+    columns,
+    rows,
+    size: cellSize,
+    active: 0
+  });
+};
 
 const importPixelate = (action) => {
   const columns = action.columns;
@@ -157,6 +169,8 @@ export default function(canvas = initCanvas(), action) {
       case type.SET_INIT_STATE:
       case type.NEW_PROJECT:
         return initCanvas(action);
+      case type.SET_CANVAS:
+        return setCanvas(canvas, action);
       case type.CHANGE_NAME:
         return changeName(canvas,action);
       case type.CHANGE_DIMENSIONS:
