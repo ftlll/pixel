@@ -1,4 +1,4 @@
-import{List, Map, fromJS} from 'immutable';
+import{ List, Map, fromJS } from 'immutable';
 import * as type from '../actions/actionTypes';
 
 const initCanvas = (action = {})  => {
@@ -6,6 +6,7 @@ const initCanvas = (action = {})  => {
   const columns = parseInt(options.columns, 10) || 16;
   const rows = parseInt(options.rows, 10) || 16;
   const size = parseInt(options.size, 10) || 10;
+  const duration = parseInt(options.duration, 10) || 5;
 
   let grid = List();
   for(let i = 0; i < rows * columns; i++) {
@@ -20,18 +21,20 @@ const initCanvas = (action = {})  => {
     active: 0,
     columns,
     rows,
-    size
+    size,
+    duration
   })
 }
 
 const setCanvas = (canvas, action) => {
-  const { grids, columns, rows, cellSize } = action;
+  const { grids, columns, rows, cellSize, duration } = action;
   
   return fromJS({
     grids,
     columns,
     rows,
     size: cellSize,
+    duration,
     active: 0
   });
 };
@@ -42,13 +45,15 @@ const importPixelate = (action) => {
   const options = action.options;
   const grids = List(action.grids);
   const size = parseInt(options.size, 10) || 10;
+  const duration = parseInt(options.duration, 10) || 5;
 
   return Map({
     grids,
     active: 0,
     columns,
     rows,
-    size
+    size,
+    duration
   })
 }
 
@@ -59,9 +64,10 @@ const changeName = (canvas, action) => {
 }
 
 const changeDimensionForOne = (grid, columns, rows, newColumns, newRows) => {
-  const dRow = rows - newRows;
-  const dCol = columns - newColumns;
+  const dRow = newRows - rows;
+  const dCol = newColumns - columns;
   let newGrid = grid;
+
   if (dRow > 0) {
     for (let i = 0; i < columns; i++) {
       for (let j = 0; j < dRow; j++) {
@@ -70,7 +76,7 @@ const changeDimensionForOne = (grid, columns, rows, newColumns, newRows) => {
     }
   } else if (dRow < 0) {
     for (let i = 0; i < columns; i++) {
-      for (let j = 0; j < dRow; j++) {
+      for (let j = dRow; j < 0; j++) {
         newGrid = newGrid.splice(-1, 1);
       }
     }
@@ -82,9 +88,7 @@ const changeDimensionForOne = (grid, columns, rows, newColumns, newRows) => {
     }
   } else if (dCol < 0) {
     for (let i = columns * rows; i > 0; i -= columns) {
-      for (let j = 0; j < dCol; j++) {
-        newGrid = newGrid.splice(i - 1, 1);
-      }
+      newGrid = newGrid.splice(i + dCol, -dCol);
     }
   }
   return newGrid;
@@ -93,19 +97,33 @@ const changeDimensionForOne = (grid, columns, rows, newColumns, newRows) => {
 const changeDimension = (canvas, action) => {
   const columns = canvas.get('columns');
   const rows = canvas.get('rows');
-  const newColumns = action.newColumns;
-  const newRows = action.newRows;
-  let grids = List();
-  canvas.get('grids').toArray().forEach(grid =>
-    grids.push(changeDimensionForOne(grid, columns, rows, newColumns, newRows))
-  );
+  const { newColumns, newRows } = action;
+  let newGrids = List();
+  const grids = canvas.get('grids');
+  grids.forEach(grid => {
+    newGrids = newGrids.push(changeDimensionForOne(grid, columns, rows, newColumns, newRows))
+  });
   
   return canvas.merge({
-    grids,
+    grids: newGrids,
     columns: newColumns,
     rows: newRows
   });
 };
+
+const changeDuration = (canvas, action) => {
+  const duration = action.duration;
+  return canvas.merge({
+    duration
+  }); 
+}
+
+const changeCellSize = (canvas, action) => {
+  const size = action.size;
+  return canvas.merge({
+    size
+  }); 
+}
 
 const addNewFrame = (canvas, action) => {
   const grids = canvas.get('grids');
@@ -174,6 +192,10 @@ export default function(canvas = initCanvas(), action) {
         return changeName(canvas,action);
       case type.CHANGE_DIMENSIONS:
         return changeDimension(canvas, action);
+      case type.CHANGE_DURATION:
+        return changeDuration(canvas, action);
+      case type.CHANGE_DURATION:
+        return changeCellSize(canvas, action);
       case type.IMPORT_PIXELATE:
         return importPixelate(action);
       case type.ADD_NEW_FRAME:

@@ -45,6 +45,20 @@ export function changeDimensions(newColumns, newRows) {
     }
 }
 
+export function changeDuration (duration) {
+    return {
+        type: type.CHANGE_DURATION,
+        duration
+    }
+}
+
+export function changeCellSize (size) {
+    return {
+        type: type.CHANGE_CELL_SIZE,
+        size
+    }
+}
+
 export function importPixelate({grids, columns, rows, options}) {
     return {
         type: type.IMPORT_PIXELATE,

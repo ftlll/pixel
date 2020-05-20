@@ -43,7 +43,7 @@ export function generateAnimationCSSData(frames, columns, cellSize) {
         let interval = (index === size - 1)
           ? 100
           : Math.round((index + 1) * equalPercentage * 10) / 10;
-        console.log(interval);
+
         let newFrame = Map({
             grid: frame,
             interval

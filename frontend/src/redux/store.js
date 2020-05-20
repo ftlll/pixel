@@ -25,12 +25,5 @@ let store = createStore(undoable(reducer, {
     })
 );
 
-// store.dispatch(
-//   actions.changeDimensions(
-//     17,17
-//   )
-// )
-
-// store.getState();
 
 export default store;
