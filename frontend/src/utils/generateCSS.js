@@ -4,8 +4,9 @@ import {
     getAnimationKeyframes,
     getAnimationCssClassOutput
 } from 'box-shadow-pixels';
+import { List, Map } from 'immutable';
   
-const PIXELART_CSS_CLASS_NAME = 'pixelart-to-css';
+const PIXELART_CSS_CLASS_NAME = 'pixel-art-hub';
 
 export function generatePixelDrawCss(frame, columns, cellSize, type) {
     return getImageData(frame, {
@@ -34,7 +35,22 @@ export function exportAnimationData(frames, columns, cellSize, duration) {
 }
   
 export function generateAnimationCSSData(frames, columns, cellSize) {
-    return getAnimationKeyframes(frames, {
+    let newFrames = List();
+    let size = frames.size;
+
+    const equalPercentage = 100 / size;
+    frames.forEach((frame, index) => {
+        let interval = (index === size - 1)
+          ? 100
+          : Math.round((index + 1) * equalPercentage * 10) / 10;
+        console.log(interval);
+        let newFrame = Map({
+            grid: frame,
+            interval
+        });
+        newFrames = newFrames.push(newFrame);
+    })
+    return getAnimationKeyframes(newFrames, {
         pSize: cellSize,
         c: columns
     });

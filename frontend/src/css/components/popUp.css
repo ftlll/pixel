@@ -1,6 +1,10 @@
 .popup-content {
     height: 100%;
-    width: 100%
+    width: 100%;
+}
+
+.popup-content.hide {
+    display: none;
 }
 
 .popup-close {
@@ -10,9 +14,12 @@
     top: 10px;
     right: 20px;
     cursor: pointer;
+    width: 40px;
 }
 
 .popup-header {
-    margin-top: 20px;
+    display: inline-block;
+    width: 100%;
+    padding-top: 10px;
     text-align: center;
 }

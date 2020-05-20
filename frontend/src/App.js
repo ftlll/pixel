@@ -14,6 +14,7 @@ import NewProjectContainer from './components/NewProject';
 import ClearContainer from './components/Clear';
 import SaveContainer from './components/Save';
 import FrameListContainer from './components/FrameList';
+import ChangeDimensionContainer from './components/ChangeDimension';
 
 class App extends React.Component {
   constructor() {
@@ -44,6 +45,7 @@ class App extends React.Component {
   }
 
   render() {
+    const { popUpShown, popUpType } = this.state;
     return (
       <div className='background'>
         <div className='app'>
@@ -52,7 +54,8 @@ class App extends React.Component {
             <NewProjectContainer/>
             <ClearContainer />
             <SaveContainer />
-            <button className='upload' onClick={() => this.setPopUp('upload')}>UPLOAD</button>
+            <button className='upload' onClick={() => this.setPopUp('import')}>IMPORT</button>
+            <button className='upload' onClick={() => this.setPopUp('export')}>EXPORT</button>
         </div>
         <div className='app-content'>
           <div className='side-bar col-lg-2'>
@@ -71,13 +74,14 @@ class App extends React.Component {
               <ColorPickerContainer />
               </div>
               <UndoRedoContainer />
+              <ChangeDimensionContainer />
             </div>
           </div>
         </div>
         {/* <div className='tools'>
           <div onClick={() => this.setPopUp('upload')}>Upload</div>
         </div> */}
-        <PopupContainer visible={this.state.popUpShown} close={() => this.closePopUp()}/>
+        <PopupContainer visible={popUpShown} popUpType={popUpType} close={() => this.closePopUp()}/>
       </div>
       </div>
     );

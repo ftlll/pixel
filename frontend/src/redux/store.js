@@ -1,6 +1,7 @@
 import { createStore } from "redux";
 import undoable, { includeAction } from 'redux-undo';
 import reducer from "./reducers/reducer";
+import * as actions from './actions/action';
 import {
     APPLY_ERASER,
     APPLY_EYE_DROPPER,
@@ -23,5 +24,13 @@ let store = createStore(undoable(reducer, {
     debug: true
     })
 );
+
+// store.dispatch(
+//   actions.changeDimensions(
+//     17,17
+//   )
+// )
+
+// store.getState();
 
 export default store;
