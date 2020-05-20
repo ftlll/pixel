@@ -23,7 +23,8 @@ const initialSetup = (dispatch, storage) => {
   //         paletteGridData,
   //         cellSize,
   //         columns,
-  //         rows
+  //         rows,
+  //         duration
   //       )
   //     );
   //   }

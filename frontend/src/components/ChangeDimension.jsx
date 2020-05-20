@@ -14,16 +14,24 @@ const ChangeDimension = props => {
   return (
     <div>
       <div className="duration">
-        <label htmlFor="duration__input">
-          Duration
+        <label> ROWS
+          <input
+            type="number"
+            value={rows}
+            onChange={event => {
+              changeHeight(event.target.value);
+            }}
+          />
+        </label>
+      </div>
+      <div className="duration">
+        <label> COLUMNS
           <input
             type="number"
             value={columns}
             onChange={event => {
-              console.log(event.target.value);
-              changeHeight(event.target.value);
+              changeWidth(event.target.value);
             }}
-            id="duration__input"
           />
         </label>
       </div>

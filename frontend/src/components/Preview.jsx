@@ -27,7 +27,6 @@ const Preview = props => {
             columns,
             cellSize
           )
-          console.log(animationData);
         } else {
           cssString = generatePixelDrawCss(
             grids.get(active),

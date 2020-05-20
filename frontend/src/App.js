@@ -78,9 +78,6 @@ class App extends React.Component {
             </div>
           </div>
         </div>
-        {/* <div className='tools'>
-          <div onClick={() => this.setPopUp('upload')}>Upload</div>
-        </div> */}
         <PopupContainer visible={popUpShown} popUpType={popUpType} close={() => this.closePopUp()}/>
       </div>
       </div>
