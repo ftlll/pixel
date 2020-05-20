@@ -2,7 +2,8 @@ import React from 'react';
 import Modal from 'react-awesome-modal';
 import { connect } from 'react-redux';
 import { importPixelate } from '../redux/actions/action';
-//import Dropzone from 'react-dropzone'
+import Preview from './Preview';
+import Dropzone from 'react-dropzone';
 
 class Popup extends React.Component {
     state = {};
@@ -15,25 +16,78 @@ class Popup extends React.Component {
         this.props.fileUpload(this.state)
     }
 
+    getImportContent = (importType) => {
+
+    }
+
+    getExportContent = (exportType) => {
+
+    }
+
+    getModalContent = (popUpType) => {
+        let content;
+        switch (popUpType) {
+            case 'import':
+                content = (
+                    <div className='modal-content'>
+                        <button className='popup-close' onClick={() => this.props.close()}>x</button>
+                        <div className='popup-header'>Import</div>
+                        <input type="file" onChange={this.fileProcess}></input>
+                        <button onClick={this.fileUpload}>Upload</button>
+                    </div>);
+                break;
+            case 'export':
+                content = (
+                    <div className='modal-content'>
+                        <button className='popup-close' onClick={() => this.props.close()}>x</button>
+                        <div className='popup-header'>Export</div>
+                        <Preview
+                            key="0"
+                            grids={this.props.grids}
+                            columns={this.props.columns}
+                            rows={this.props.rows}
+                            cellSize={5}
+                            duration={5}
+                            active={0}
+                            animate={true}
+                        />
+                    </div>
+                );
+                break;
+            default:
+        }
+        return content;
+    }
+
     render() {
+        const { visible, popUpType } = this.props;
         return (
-            <Modal 
-                visible={this.props.visible}
+            <Modal visible={visible}
                 width="80%"
                 height="80%"
                 effect="fadeInUp"
                 onClickAway={() => this.props.close()}>
-                <div className='modal-content'>
-                    <button className='popup-close' onClick={() => this.props.close()}>x</button>
-                    <div className='popup-header'>Upload</div>
-                    <input type="file" onChange={this.fileProcess}></input>
-                    <button onClick={this.fileUpload}>upload</button>
-                </div>
+                {this.getModalContent(popUpType)}
             </Modal>
         );
     }
 }
   
+const mapStateToProps = state => {
+    const canvas = state.present.get('canvas');
+    const active = canvas.get('active');
+    return {
+      grids: canvas.get('grids'),
+      active,
+      activeGrid: canvas.getIn(['grids', active]),
+      paletteGridData: state.present.getIn(['palette', 'grid']),
+      columns: canvas.get('columns'),
+      rows: canvas.get('rows'),
+      cellSize: state.present.get('size'),
+      duration: state.present.get('duration')
+    };
+  };
+
 const mapDispatchToProps = dispatch => ({
     fileUpload: (state) => {
         const data = new FormData();
@@ -57,6 +111,6 @@ const mapDispatchToProps = dispatch => ({
     }
 });
 
-const PopupContainer = connect(null, mapDispatchToProps)(Popup);
+const PopupContainer = connect(mapStateToProps, mapDispatchToProps)(Popup);
 
 export default PopupContainer;

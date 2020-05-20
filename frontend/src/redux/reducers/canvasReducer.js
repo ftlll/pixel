@@ -95,10 +95,9 @@ const changeDimension = (canvas, action) => {
   const rows = canvas.get('rows');
   const newColumns = action.newColumns;
   const newRows = action.newRows;
-  const grids = canvas.get('grids').map(grid =>
-    Map({
-      grids: changeDimensionForOne(grid, columns, rows, newColumns, newRows),
-    })
+  let grids = List();
+  canvas.get('grids').toArray().forEach(grid =>
+    grids.push(changeDimensionForOne(grid, columns, rows, newColumns, newRows))
   );
   
   return canvas.merge({

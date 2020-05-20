@@ -22,7 +22,8 @@ button.newProject:active {
 
 .newProject {
   width: 150px;
-  margin-left: 10px
+  margin-left: 10px;
+  margin-bottom: 10px;
 }
 
 button.clear {
@@ -49,7 +50,8 @@ button.clear:active {
 
 .clear {
   width: 150px;
-  margin-left: 10px
+  margin-left: 10px;
+  margin-bottom: 10px;
 }
 
 button.upload {
@@ -76,7 +78,8 @@ button.upload:active {
 
 .upload {
   width: 150px;
-  margin-left: 10px
+  margin-left: 10px;
+  margin-bottom: 10px;
 }
 
 button.frames-list-add {
@@ -239,4 +242,26 @@ button.redo:active {
 
 .redo {
   width: 100%;
+}
+
+button.popup-close {
+  font-family: 'minecraftia','Helvetica Neue Light','Helvetica Neue','Helvetica','Arial',sans-serif;
+  text-align: center;
+  background: none;
+  border: none;
+  outline: none;
+  border-radius: 2px;
+  padding: 10px;
+  font-size: 1em;
+  text-decoration: none;
+  transition-duration: 0.1s;
+  color: #bbb;
+  background-color: #313131;
+  box-shadow: 0 5px 0 0 #707070;
+}
+
+button.popup-close:active {
+  background-color: #494747;
+  transform: translateY(4px);
+  box-shadow: 0 1px 0 0 #707070;
 }
