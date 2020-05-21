@@ -26,13 +26,41 @@ class ColorPicker extends React.Component {
       applyPencil();
     };
 
+    const styles = {
+      picker: {
+        position: 'relative',
+        bottom: '5em',
+        left: '-250px'
+      },
+      popover: {
+        position: 'absolute',
+        zIndex: '2',
+        right: -250,
+        top: 155
+      },
+      cover: {
+        position: 'fixed',
+        top: 0,
+        right: 0,
+        bottom: 0,
+        left: 0
+      }
+    };
+
     return (
-      <div className={`color-picker ${usingColorPicker ? 'active': ''}`}>
+      <div className={`color-picker ${this.state.visible ? 'active': ''}`}>
         <i className='fas fa-paint-brush' onClick={ this.handleClick } />
-        { this.state.visible ? <div className='popover'>
-          <div className='cover' onClick={ this.handleClose }/>
-          <Picker color={ color } onChange={this.applyColorPicker} onClose={this.handleClose} type="sketch"/>
-        </div> : null }
+          <div style={styles.picker}>
+              { this.state.visible ? 
+                  <div style={styles.popover}>
+                    <div
+                      style={styles.cover}
+                      onClick={this.handleClose}
+                    />
+                    <Picker color={ color } onChange={this.applyColorPicker} onClose={this.handleClose} type="sketch"/>
+                </div>
+         : null }
+          </div>
       </div>
     )
   }

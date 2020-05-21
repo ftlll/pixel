@@ -1,11 +1,12 @@
 .palette-grid {
-    height: 200px;
+    text-align: center;
+    margin: 0.5em 0;
 }
 
 .palette-cell {
-    border: 2px solid white;
+    border: 3px solid lightgrey;
 }
 
 .palette-cell.active {
-    border-color: green;
+    border-color: white;
 }

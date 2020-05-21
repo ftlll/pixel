@@ -1,21 +1,29 @@
+.picker {
+    position: relative;
+    bottom: 5em;
+    left: -250px;
+}
+
 .swatch {
-    padding: '5px';
+    padding: 5px;
     background: '#fff';
-    border-radius: '1px';
-    box-shadow: '0 0 0 1px rgba(0,0,0,.1)';
-    display: 'inline-block';
-    cursor: 'pointer';
+    border-radius: 1px;
+    box-shadow: 0 0 0 1px rgba(0,0,0,.1);
+    display: inline-block;
+    cursor: pointer;
 };
 
 .popover {
-    position: 'absolute';
-    z-index: '2';
+    position: absolute;
+    z-index: 2;
+    right: -250px;
+    top: 155px;
 };
 
 .cover {
-    position: 'fixed';
-    top: '0px';
-    right: '0px';
-    bottom: '0px';
-    left: '0px';
+    position: fixed;
+    top: 0px;
+    right: 20px;
+    bottom: 0px;
+    left: 0px;
 };
