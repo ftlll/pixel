@@ -4,24 +4,31 @@ import FileSaver from 'file-saver';
 
 const Download = props => {
     const { canvas } = props;
-    const downloadIMG = () => {
-        fetch('http://localhost:5000/api/img', {
+    const downloadIMG = (type) => {
+        fetch('./api/img', {
             headers: {
                 'Access-Control-Allow-Origin': true,
                 'Content-Type': 'application/json',
             },
             method: 'POST',
             body: JSON.stringify({
+                type,
                 grids: canvas.get('grids'),
                 columns: canvas.get('columns'),
                 rows: canvas.get('rows'),
+                size: canvas.get('size'),
                 active: canvas.get('active'),
             }),
         }).then(res => {
             return res.blob();
         })
         .then(blob => {
-            FileSaver.saveAs(blob, 'pil.gif');
+            if (type === 'gif') {
+                FileSaver.saveAs(blob, 'pil.gif');
+            } else if (type === 'png'){
+                FileSaver.saveAs(blob, 'pil.png');
+            }
+            
         })
     }
 

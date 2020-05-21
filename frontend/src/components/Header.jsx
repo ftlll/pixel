@@ -7,7 +7,7 @@ const Header = ({ changeName, name }) => {
     return (
       <div className='header'>
         <div className='title'>
-          <h2> PIXEL HUB </h2>
+          <h2> PIXEL ART HUB </h2>
         </div>
         <div className="author">
           <h5>GITHUB: <a target="_blank" href="https://github.com/ftlll/pixel">FTL</a></h5>
