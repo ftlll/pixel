@@ -55,7 +55,8 @@ const Preview = props => {
       const { columns, rows, cellSize } = storedData || props;
       const style = {
         width: columns * cellSize,
-        height: rows * cellSize
+        height: rows * cellSize,
+        position: 'relative'
       };
     
       return (
