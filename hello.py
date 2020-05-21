@@ -1,6 +1,6 @@
 from backend import creat_app
-from flask import Flask, json, request, jsonify
-from PIL import Image
+from flask import Flask, json, request, jsonify, send_file
+from PIL import Image, ImageDraw
 from numpy import asarray
 import os
 
@@ -88,7 +88,66 @@ def pixel():
                 return jsonify({
                     "msg": "No file selected"
                 }), 400
+                
 
+def hex_to_rgb(color):
+    color = color.lstrip('#')
+    lv = len(color)
+    return tuple(int(color[i:i + lv // 3], 16) for i in range(0, lv, lv // 3))
+
+
+def getRGBAData(color):
+    if color[0] == '#':
+        return hex_to_rgb(color)
+    elif color[:4] == 'rgba':
+        color = color.lstrip('rgba(')
+        color = color.rstrip(')')
+        color = tuple(color.split(",")) 
+        [r, g, b, a] = color
+        color = (int(r), int(g), int(b), round(255 * float(a)))
+        return color
+
+
+def encodePNG(grid, columns, rows, size):
+    width = columns * size
+    height = rows * size
+    img = Image.new('RGBA', (width, height))
+    for x in range(rows):
+        for y in range(columns):
+            if (grid[x * columns + y] != ''):
+                for a in range(size):
+                    for b in range(size):
+                        img.putpixel((size * y + a, size * x + b), getRGBAData(grid[x * columns + y]))
+    return img
+
+def savePNG(grid, columns, rows, size, num):
+    img = encodePNG(grid, columns, rows, size)
+    fileName = 'pil' + str(num) + '.png'
+    img.save(fileName)
+
+def encodeGIF(grids, columns, rows, size):
+    pngFiles = [encodePNG(grids[i], columns, rows, size) for i in range(len(grids))]
+    pngFiles[0].save('pil.gif', save_all=True, append_images=pngFiles[1:], duration=40, loop=0)
+
+@app.route('/api/img', methods=['GET', 'POST'])
+def encodeFile():
+    if (request.method == 'POST'):
+        columns = int(request.get_json()['columns'])
+        rows = int(request.get_json()['rows'])
+        grids = request.get_json()['grids']
+        active = 0
+        size = 5
+        fileType = 'gif'
+        if fileType == 'png':
+            savePNG(grids[active], columns, rows, size, active)
+            path = '../pil' + str(active) + '.png'
+            return send_file(path, as_attachment=True)
+        elif fileType == 'gif':
+            encodeGIF(grids, columns, rows, size)
+            path = '../pil.gif'
+            return send_file(path, as_attachment=True)
+
+    
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=8080)
