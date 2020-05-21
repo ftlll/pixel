@@ -91,7 +91,6 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => ({
     fileUpload: (state) => {
         const data = new FormData();
-        console.log('called');
         if(state.file) {
             data.append('file', state.file);
             fetch('http://localhost:5000/api/pixelate', {

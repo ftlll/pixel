@@ -42,18 +42,18 @@ const setCanvas = (canvas, action) => {
 const importPixelate = (action) => {
   const columns = action.columns;
   const rows = action.rows;
-  const options = action.options;
+  // const options = action.options;
   const grids = List(action.grids);
-  const size = parseInt(options.size, 10) || 10;
-  const duration = parseInt(options.duration, 10) || 5;
+  // const size = parseInt(action.size, 10) || 10;
+  // const duration = parseInt(action.duration, 10) || 5;
 
   return Map({
     grids,
     active: 0,
     columns,
     rows,
-    size,
-    duration
+    // size,
+    // duration
   })
 }
 

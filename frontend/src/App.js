@@ -15,6 +15,7 @@ import ClearContainer from './components/Clear';
 import SaveContainer from './components/Save';
 import FrameListContainer from './components/FrameList';
 import ChangeDimensionContainer from './components/ChangeDimension';
+import DownloadContainer from './components/Download';
 
 class App extends React.Component {
   constructor() {
@@ -75,6 +76,7 @@ class App extends React.Component {
               </div>
               <UndoRedoContainer />
               <ChangeDimensionContainer />
+              <DownloadContainer />
             </div>
           </div>
         </div>

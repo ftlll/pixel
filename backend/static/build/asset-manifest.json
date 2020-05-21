@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/backend/static/build/static/css/main.a551feab.chunk.css",
-    "main.js": "/backend/static/build/static/js/main.162a2d49.chunk.js",
-    "main.js.map": "/backend/static/build/static/js/main.162a2d49.chunk.js.map",
+    "main.css": "/backend/static/build/static/css/main.1d335942.chunk.css",
+    "main.js": "/backend/static/build/static/js/main.a821b3a7.chunk.js",
+    "main.js.map": "/backend/static/build/static/js/main.a821b3a7.chunk.js.map",
     "runtime-main.js": "/backend/static/build/static/js/runtime-main.2e80534e.js",
     "runtime-main.js.map": "/backend/static/build/static/js/runtime-main.2e80534e.js.map",
-    "static/js/2.64e35f28.chunk.js": "/backend/static/build/static/js/2.64e35f28.chunk.js",
-    "static/js/2.64e35f28.chunk.js.map": "/backend/static/build/static/js/2.64e35f28.chunk.js.map",
+    "static/js/2.43002c43.chunk.js": "/backend/static/build/static/js/2.43002c43.chunk.js",
+    "static/js/2.43002c43.chunk.js.map": "/backend/static/build/static/js/2.43002c43.chunk.js.map",
     "index.html": "/backend/static/build/index.html",
-    "precache-manifest.73fc093f08b490ee9a2277c389bd9d3c.js": "/backend/static/build/precache-manifest.73fc093f08b490ee9a2277c389bd9d3c.js",
+    "precache-manifest.6c4e2824f3871b634bb00616e0b3a26f.js": "/backend/static/build/precache-manifest.6c4e2824f3871b634bb00616e0b3a26f.js",
     "service-worker.js": "/backend/static/build/service-worker.js",
-    "static/css/main.a551feab.chunk.css.map": "/backend/static/build/static/css/main.a551feab.chunk.css.map",
-    "static/js/2.64e35f28.chunk.js.LICENSE.txt": "/backend/static/build/static/js/2.64e35f28.chunk.js.LICENSE.txt",
-    "static/media/imports.css": "/backend/static/build/static/media/Minecraftia Regular.bf3f245b.ttf"
+    "static/css/main.1d335942.chunk.css.map": "/backend/static/build/static/css/main.1d335942.chunk.css.map",
+    "static/js/2.43002c43.chunk.js.LICENSE.txt": "/backend/static/build/static/js/2.43002c43.chunk.js.LICENSE.txt",
+    "static/media/imports.css": "/backend/static/build/static/media/fa-solid-900.a8eedaad.woff"
   },
   "entrypoints": [
     "static/js/runtime-main.2e80534e.js",
-    "static/js/2.64e35f28.chunk.js",
-    "static/css/main.a551feab.chunk.css",
-    "static/js/main.162a2d49.chunk.js"
+    "static/js/2.43002c43.chunk.js",
+    "static/css/main.1d335942.chunk.css",
+    "static/js/main.a821b3a7.chunk.js"
   ]
 }

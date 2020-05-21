@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^7.1.2",
     "bootstrap": "^4.5.0",
     "box-shadow-pixels": "0.0.4",
+    "file-saver": "^2.0.2",
     "immutable": "^4.0.0-rc.12",
     "radium": "^0.26.0",
     "react": "^16.12.0",
