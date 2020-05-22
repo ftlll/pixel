@@ -136,7 +136,7 @@ button.save:active {
   text-align: center;
   font-size: 30px;
   height: 50px;
-  width: 50px;
+  width: 20%;
 }
 
 .eraser.active {
@@ -148,7 +148,7 @@ button.save:active {
   text-align: center;
   font-size: 30px;
   height: 50px;
-  width: 50px;
+  width: 20%;
 }
 
 .bucket.active {
@@ -160,7 +160,7 @@ button.save:active {
   text-align: center;
   font-size: 30px;
   height: 50px;
-  width: 50px;
+  width: 20%;
 }
 
 .eye-dropper.active {
@@ -172,7 +172,7 @@ button.save:active {
   text-align: center;
   font-size: 30px;
   height: 50px;
-  width: 50px;
+  width: 20%;
 }
 
 .color-picker.active {
@@ -181,7 +181,7 @@ button.save:active {
 
 .undo-redo {
   display: inline-block;
-  width: 100%;
+  margin: 10px
 }
 
 button.undo {
@@ -207,7 +207,8 @@ button.undo:active {
 
 .undo-container {
   display: inline-block;
-  width: 50%;
+  width: 40%;
+  margin-right: 30px;
 }
 
 .undo {
@@ -237,7 +238,7 @@ button.redo:active {
 
 .redo-container {
   display: inline-block;
-  width: 50%;
+  width: 40%;
 }
 
 .redo {

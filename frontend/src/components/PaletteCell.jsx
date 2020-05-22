@@ -9,7 +9,7 @@ const PlatteCell = props => {
 
     const style = {
         width: `${width}%`,
-        height: `${width}%`,
+        height: '30px',
         backgroundColor:  color || CELL_NULL_COLOR
     };
 

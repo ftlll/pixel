@@ -8,9 +8,10 @@ import Animation from './Animation';
 
 const Preview = props => {
     const generatePreview = () => {
-        const { active, duration, storedData } = props;
-        const { grids, columns, cellSize, animate } = props;
+        const { duration, storedData, active } = props;
+        const { grids, columns, cellSize, animate } =  storedData || props;
         const animation = grids.size > 1 && animate;
+
         let animationData;
         let cssString;
     
@@ -55,7 +56,8 @@ const Preview = props => {
       const { columns, rows, cellSize } = storedData || props;
       const style = {
         width: columns * cellSize,
-        height: rows * cellSize
+        height: rows * cellSize,
+        position: 'relative'
       };
     
       return (

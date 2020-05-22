@@ -25,7 +25,7 @@ class FrameList extends React.Component {
     }
 
     getFrames() {
-        const { grids, columns, rows, actions } = this.props;
+        const { grids, columns, rows, active, actions } = this.props;
         return grids.map((grid, index) => (
           <Frame
             key={index}
@@ -33,6 +33,7 @@ class FrameList extends React.Component {
             grid={grid}
             columns={columns}
             rows={rows}
+            active={active}
             actions={{
               switchFrame: actions.switchFrame,
               deleteFrame: actions.deleteFrame,

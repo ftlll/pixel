@@ -135,9 +135,9 @@ def encodeFile():
         columns = int(request.get_json()['columns'])
         rows = int(request.get_json()['rows'])
         grids = request.get_json()['grids']
-        active = 0
-        size = 5
-        fileType = 'gif'
+        active = int(request.get_json()['active'])
+        size = int(request.get_json()['size'])
+        fileType = request.get_json()['type']
         if fileType == 'png':
             savePNG(grids[active], columns, rows, size, active)
             path = '../pil' + str(active) + '.png'

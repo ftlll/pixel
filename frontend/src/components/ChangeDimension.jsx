@@ -12,9 +12,9 @@ const ChangeDimension = props => {
   };
 
   return (
-    <div>
+    <div className='col-12'>
       <div className="duration">
-        <label> ROWS
+        <div> ROWS </div>
           <input
             type="number"
             value={rows}
@@ -22,7 +22,6 @@ const ChangeDimension = props => {
               changeHeight(event.target.value);
             }}
           />
-        </label>
       </div>
       <div className="duration">
         <label> COLUMNS

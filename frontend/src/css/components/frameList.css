@@ -7,7 +7,8 @@
 }
 
 .frames-list-content {
-    background-color: darkgrey;
+    background-color: rgba(50, 50, 50, 0.3);
+    max-width: 140px;
     display: flex;
     flex: 1;
     min-height: 0;
@@ -28,35 +29,57 @@
 }
 
 .frame {
+    display: inline-block;
     border: 1px solid grey;
     border-radius: 2px;
-    padding: 4px;
+    padding: 5px;
+    margin-top: 12px;
+    margin-left: 12px;
+    opacity: 0.5;
 }
 
-.preview {
-  border: 1px solid grey;
-  background-color: silver;
-  color: white;
-  width: 80px;
-  height: 90px;
-  margin: 0 0.3em;
-  flex: 0 0 auto;
-  display: inline-block;
-  position: relative;
-  overflow: hidden;
-  opacity: 0.4;
+.frame.active {
+    opacity: 1;
 }
 
-.frame-add {
+.frame > .preview {
     display: inline-block;
-    font-size: 20px;
-    height: 20px;
+    border: 1px solid grey;
+    background-color: silver;
+    color: white;
+    max-width: 72px;
+    max-height: 72px;
+    min-width: 72px;
+    min-height: 72px;
+    margin: 0 0.3em;
+    flex: 0 0 auto;
+    overflow: hidden;
+    opacity: 0.4;
+}
+
+.frame-tools {
+    display: inline-block;
     width: 20px;
 }
 
-.frame-delete {
-    display: inline-block;
+.frame-add-icon {
     font-size: 20px;
     height: 20px;
     width: 20px;
+    cursor: copy;
+}
+
+.frame-add-icon2 {
+    font-size: 20px;
+    opacity: 0;
+    height: 25px;
+    width: 20px;
+    cursor: default;
+}
+
+.frame-delete-icon {
+    font-size: 20px;
+    height: 20px;
+    width: 20px;
+    cursor: pointer;
 }

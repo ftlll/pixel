@@ -1,27 +1,47 @@
 import React from 'react';
-import Modal from 'react-awesome-modal';
 import { connect } from 'react-redux';
-import { importPixelate } from '../redux/actions/action';
+import { bindActionCreators } from 'redux';
+import Modal from 'react-awesome-modal';
 import Preview from './Preview';
-import Dropzone from 'react-dropzone';
+import Upload from './Upload';
+import LocalData from './LocalData';
+import * as actions from '../redux/actions/action';
 
 class Popup extends React.Component {
-    state = {};
-    fileProcess = event => {
-        this.setState({
-            file: event.target.files[0]
-        });
+    constructor (props) {
+        super(props);
+        this.closeModal = () => {
+            props.close();
+        };
+        this.openModal = () => {
+            this.props.visible = true
+        };
     }
-    fileUpload = () => {
-        this.props.fileUpload(this.state)
-    }
-
     getImportContent = (importType) => {
-
+        const { actions } = this.props;
+        switch(importType) {
+            case 'upload':
+                return <Upload />;
+            case 'localData':
+                return (<LocalData actions={actions} close={this.closeModal} open={this.openModal}
+                   />);
+        }
     }
 
     getExportContent = (exportType) => {
-
+        switch(exportType) {
+            case 'preview':
+                return (<Preview
+                    key="0"
+                    grids={this.props.grids}
+                    columns={this.props.columns}
+                    rows={this.props.rows}
+                    cellSize={10}
+                    duration={5}
+                    active={0}
+                    animate={this.props.grids.size > 1}
+                />);
+        }
     }
 
     getModalContent = (popUpType) => {
@@ -32,8 +52,7 @@ class Popup extends React.Component {
                     <div className='modal-content'>
                         <button className='popup-close' onClick={() => this.props.close()}>x</button>
                         <div className='popup-header'>Import</div>
-                        <input type="file" onChange={this.fileProcess}></input>
-                        <button onClick={this.fileUpload}>Upload</button>
+                        {this.getImportContent('localData')}
                     </div>);
                 break;
             case 'export':
@@ -41,16 +60,7 @@ class Popup extends React.Component {
                     <div className='modal-content'>
                         <button className='popup-close' onClick={() => this.props.close()}>x</button>
                         <div className='popup-header'>Export</div>
-                        <Preview
-                            key="0"
-                            grids={this.props.grids}
-                            columns={this.props.columns}
-                            rows={this.props.rows}
-                            cellSize={5}
-                            duration={5}
-                            active={0}
-                            animate={true}
-                        />
+                        {this.getExportContent('preview')}
                     </div>
                 );
                 break;
@@ -89,25 +99,7 @@ const mapStateToProps = state => {
   };
 
 const mapDispatchToProps = dispatch => ({
-    fileUpload: (state) => {
-        const data = new FormData();
-        if(state.file) {
-            data.append('file', state.file);
-            fetch('http://localhost:5000/api/pixelate', {
-                headers: {
-                    'Access-Control-Allow-Origin': true,
-                },
-                method: 'POST',
-                body: data,
-            }).then(res => {
-                return res.json();
-            }).then(data => {
-                dispatch(importPixelate(data))
-            })
-        } else {
-            alert("no file attached");
-        }
-    }
+    actions: bindActionCreators(actions, dispatch)
 });
 
 const PopupContainer = connect(mapStateToProps, mapDispatchToProps)(Popup);

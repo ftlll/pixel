@@ -15,7 +15,9 @@ import ClearContainer from './components/Clear';
 import SaveContainer from './components/Save';
 import FrameListContainer from './components/FrameList';
 import ChangeDimensionContainer from './components/ChangeDimension';
-import DownloadContainer from './components/Download';
+import DurantionContainer from './components/Duration';
+import SizeContainer from './components/CellSize';
+import CellSizeContainer from './components/CellSize';
 
 class App extends React.Component {
   constructor() {
@@ -68,15 +70,16 @@ class App extends React.Component {
           <div className='tools col-lg-4'>
             <div className='col-12'>
               <PaletteGridContainer />
-              <div> 
-              <EraserContainer />
-              <PaintBucketContainer />
-              <EyeDropperContainer/>
-              <ColorPickerContainer />
+              <div className='draw-tools col-12'> 
+                <EraserContainer />
+                <PaintBucketContainer />
+                <EyeDropperContainer/>
+                <ColorPickerContainer />
               </div>
               <UndoRedoContainer />
               <ChangeDimensionContainer />
-              <DownloadContainer />
+              <DurantionContainer />
+              <CellSizeContainer />
             </div>
           </div>
         </div>
