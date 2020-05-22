@@ -15,7 +15,9 @@ import ClearContainer from './components/Clear';
 import SaveContainer from './components/Save';
 import FrameListContainer from './components/FrameList';
 import ChangeDimensionContainer from './components/ChangeDimension';
-import DownloadContainer from './components/Download';
+import DurantionContainer from './components/Duration';
+import SizeContainer from './components/CellSize';
+import CellSizeContainer from './components/CellSize';
 
 class App extends React.Component {
   constructor() {
@@ -76,6 +78,8 @@ class App extends React.Component {
               </div>
               <UndoRedoContainer />
               <ChangeDimensionContainer />
+              <DurantionContainer />
+              <CellSizeContainer />
             </div>
           </div>
         </div>

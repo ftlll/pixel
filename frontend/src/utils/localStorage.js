@@ -1,4 +1,4 @@
-const STORAGE_KEY = 'FTL';
+const STORAGE_KEY = 'PIXEL_ART_HUB';
 
 const saveDataToStorage = (storage, data) => {
     try {
@@ -46,3 +46,45 @@ export function saveProjectToStorage(storage, projectData) {
       return false;
     }
   }
+
+  export function removeProjectFromStorage(storage, indexToRemove) {
+    const dataStored = getDataFromStorage(storage);
+    if (dataStored) {
+      let newCurrent = 0;
+      dataStored.stored.splice(indexToRemove, 1);
+      if (dataStored.stored.length === 0) {
+        newCurrent = -1; // Empty collection
+      } else if (dataStored.current > indexToRemove) {
+        newCurrent = dataStored.current - 1; // Current is greater than the one to remove
+      }
+      dataStored.current = newCurrent;
+      return saveDataToStorage(storage, dataStored);
+    }
+    return false; // There was an error if it reaches this code
+  }
+  
+  /*
+    Returns the export code
+  */
+  export function generateExportString(projectData) {
+    try {
+      return JSON.stringify(projectData);
+    } catch (e) {
+      return 'Sorry, there was an error';
+    }
+  }
+  
+  /*
+    Returns project data ready from a exported data string
+  */
+  export function exportedStringToProjectData(projectData) {
+    if (projectData === '') {
+      return false;
+    }
+    try {
+      return JSON.parse(projectData);
+    } catch (e) {
+      return false;
+    }
+  }
+  
