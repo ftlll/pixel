@@ -25,8 +25,8 @@ class Canvas extends React.Component {
         }));
         
         const style = {
-            height: 400,
-            width: 400,
+            height: 600,
+            width: 600,
         };
         return (
             <div onMouseUp={this.drawHandlerProvider.onMouseUp}

@@ -1,0 +1,59 @@
+.pencil {
+    display: inline-block;
+    text-align: center;
+    font-size: 30px;
+    height: 50px;
+    width: 20%;
+  }
+  
+  .pencil.active {
+    background-color: darkgray;
+  }
+
+.eraser {
+    display: inline-block;
+    text-align: center;
+    font-size: 30px;
+    height: 50px;
+    width: 20%;
+  }
+  
+  .eraser.active {
+    background-color: darkgray;
+  }
+  
+  .bucket {
+    display: inline-block;
+    text-align: center;
+    font-size: 30px;
+    height: 50px;
+    width: 20%;
+  }
+  
+  .bucket.active {
+    background-color: darkgray;
+  }
+  
+  .eye-dropper {
+    display: inline-block;
+    text-align: center;
+    font-size: 30px;
+    height: 50px;
+    width: 20%;
+  }
+  
+  .eye-dropper.active {
+    background-color: darkgray;
+  }
+  
+  .color-picker {
+    display: inline-block;
+    text-align: center;
+    font-size: 30px;
+    height: 50px;
+    width: 20%;
+  }
+  
+  .color-picker.active {
+    background-color: darkgray;
+  }

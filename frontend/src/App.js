@@ -4,6 +4,7 @@ import init from './utils/startup';
 import HeaderContainer from './components/Header';
 import CanvasContainer from './components/Canvas';
 import ColorPickerContainer from './components/ColorPicker';
+import PencilContainer from './components/Pencil';
 import EraserContainer from './components/Eraser';
 import EyeDropperContainer from './components/EyeDropper';
 import PaletteGridContainer from './components/PaletteGrid';
@@ -71,6 +72,7 @@ class App extends React.Component {
             <div className='col-12'>
               <PaletteGridContainer />
               <div className='draw-tools col-12'> 
+                <PencilContainer />
                 <EraserContainer />
                 <PaintBucketContainer />
                 <EyeDropperContainer/>

@@ -17,6 +17,8 @@ export default function drawingToolReducer(drawingTool = tool.PENCIL, action) {
             return switchTool(drawingTool, action);
         case type.APPLY_EYE_DROPPER:
             return tool.PENCIL;
+        case type.APPLY_PENCIL:
+            return tool.PENCIL;
         case type.SELECT_PALETTE_COLOR:
             return drawingTool;
         default:
