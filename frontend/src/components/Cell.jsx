@@ -17,7 +17,7 @@ class Cell extends React.Component {
             } = this.props;
         const style = {
             width: `${width}%`,
-            height: `${width}%`,
+            paddingBottom: `${width}%`,
             backgroundColor:  color || CELL_NULL_COLOR
         };
 

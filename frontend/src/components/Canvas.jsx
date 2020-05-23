@@ -24,19 +24,14 @@ class Canvas extends React.Component {
             color
         }));
         
-        const style = {
-            height: 600,
-            width: 600,
-        };
         return (
             <div onMouseUp={this.drawHandlerProvider.onMouseUp}
                 onTouchEnd={this.drawHandlerProvider.onMouseUp}
-                onTouchCancel={this.drawHandlerProvider.onMouseUp}>
-                <Grid
-                style={style}
-                cells={cells}
-                drawingTool={props.drawingTool}
-                drawHandler={this.drawHandlerProvider.drawHandlers(this)}
+                onTouchCancel={this.drawHandlerProvider.onMouseUp}
+                className='canvas'>
+                <Grid cells={cells}
+                    drawingTool={props.drawingTool}
+                    drawHandler={this.drawHandlerProvider.drawHandlers(this)}
                 />
             </div>
         );

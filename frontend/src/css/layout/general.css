@@ -46,6 +46,7 @@
     float: left;
     min-height: 0;
     width: 150px;
+    padding-left: 0px !important;
 }
 
 .canvas-container {
