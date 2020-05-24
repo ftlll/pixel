@@ -4,6 +4,7 @@ import init from './utils/startup';
 import HeaderContainer from './components/Header';
 import CanvasContainer from './components/Canvas';
 import ColorPickerContainer from './components/ColorPicker';
+import PencilContainer from './components/Pencil';
 import EraserContainer from './components/Eraser';
 import EyeDropperContainer from './components/EyeDropper';
 import PaletteGridContainer from './components/PaletteGrid';
@@ -59,6 +60,7 @@ class App extends React.Component {
             <SaveContainer />
             <button className='upload' onClick={() => this.setPopUp('import')}>IMPORT</button>
             <button className='upload' onClick={() => this.setPopUp('export')}>EXPORT</button>
+            <button className='upload' onClick={() => this.setPopUp('preview')}>PREVIEW</button>
         </div>
         <div className='app-content'>
           <div className='side-bar col-lg-2'>
@@ -69,17 +71,18 @@ class App extends React.Component {
           </div>
           <div className='tools col-lg-4'>
             <div className='col-12'>
-              <PaletteGridContainer />
-              <div className='draw-tools col-12'> 
+              <UndoRedoContainer />
+              <ChangeDimensionContainer />
+              <DurantionContainer />
+              <CellSizeContainer />
+              <div className='draw-tools'> 
+                <PencilContainer />
                 <EraserContainer />
                 <PaintBucketContainer />
                 <EyeDropperContainer/>
                 <ColorPickerContainer />
               </div>
-              <UndoRedoContainer />
-              <ChangeDimensionContainer />
-              <DurantionContainer />
-              <CellSizeContainer />
+              <PaletteGridContainer />
             </div>
           </div>
         </div>

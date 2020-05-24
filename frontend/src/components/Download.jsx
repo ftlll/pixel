@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import FileSaver from 'file-saver';
 
 const Download = props => {
-    const { canvas } = props;
-    const downloadIMG = (type) => {
+    const { canvas, type } = props;
+    const downloadIMG = () => {
         fetch('./api/img', {
             headers: {
                 'Access-Control-Allow-Origin': true,
@@ -24,16 +24,16 @@ const Download = props => {
         })
         .then(blob => {
             if (type === 'gif') {
-                FileSaver.saveAs(blob, 'pil.gif');
+                FileSaver.saveAs(blob, 'pixel.gif');
             } else if (type === 'png'){
-                FileSaver.saveAs(blob, 'pil.png');
+                FileSaver.saveAs(blob, 'pixel.png');
             }
             
         })
     }
 
     return (
-        <div onClick={downloadIMG}>DOWNLOAD</div>
+        <button className='download' onClick={downloadIMG}>DOWNLOAD</button>
     );
 };
 

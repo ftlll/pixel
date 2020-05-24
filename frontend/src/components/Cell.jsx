@@ -1,6 +1,6 @@
 import React from 'react';
 
-const CELL_NULL_COLOR = 'rgba(49, 49, 49, 0.5)';
+const CELL_NULL_COLOR = 'rgba(49, 49, 49, 0.4)';
 
 class Cell extends React.Component {
     shouldComponentUpdate(nextProps) {
@@ -17,7 +17,7 @@ class Cell extends React.Component {
             } = this.props;
         const style = {
             width: `${width}%`,
-            height: `${width}%`,
+            paddingBottom: `${width}%`,
             backgroundColor:  color || CELL_NULL_COLOR
         };
 

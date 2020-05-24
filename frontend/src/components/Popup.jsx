@@ -2,14 +2,19 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Modal from 'react-awesome-modal';
+import Select from 'react-dropdown-select';
 import Preview from './Preview';
 import Upload from './Upload';
 import LocalData from './LocalData';
+import Download from './Download';
 import * as actions from '../redux/actions/action';
 
 class Popup extends React.Component {
     constructor (props) {
         super(props);
+        this.state = {
+            type: []
+        };
         this.closeModal = () => {
             props.close();
         };
@@ -17,53 +22,192 @@ class Popup extends React.Component {
             this.props.visible = true
         };
     }
+
+    changeType = (value) => {
+        this.setState({type: value[0].value});
+        console.log(this.state.type)
+    }
+
     getImportContent = (importType) => {
         const { actions } = this.props;
         switch(importType) {
-            case 'upload':
+            case 'upload image':
                 return <Upload />;
-            case 'localData':
+            case 'local data':
                 return (<LocalData actions={actions} close={this.closeModal} open={this.openModal}
                    />);
+            default:
+                return (<LocalData actions={actions} close={this.closeModal} open={this.openModal}
+                    />);
         }
     }
 
     getExportContent = (exportType) => {
+        let content, gifPreview;
+        const { grids, columns, rows, duration, active } = this.props;
+        const style = {textAlign: 'center'};
         switch(exportType) {
-            case 'preview':
-                return (<Preview
-                    key="0"
-                    grids={this.props.grids}
-                    columns={this.props.columns}
-                    rows={this.props.rows}
-                    cellSize={10}
-                    duration={5}
-                    active={0}
-                    animate={this.props.grids.size > 1}
-                />);
+            case 'download files':
+                gifPreview = (
+                    <div className='preview-animation'>
+                        <div style={style}>Animation</div>
+                        <Preview
+                            key="0"
+                            grids={grids}
+                            columns={columns}
+                            rows={rows}
+                            cellSize={10}
+                            duration={5}
+                            active={active}
+                            animate={true}
+                        />
+                        <Download type={'gif'}/>
+                    </div>
+                );
+                content = (
+                    <div className='preview-content'>
+                        <div className={`preview-frame ${grids.size > 1 ? '' : 'only'}`}>
+                            <div style={style}>Current Frame</div>
+                            <Preview
+                                key="0"
+                                grids={grids}
+                                columns={columns}
+                                rows={rows}
+                                cellSize={10}
+                                duration={5}
+                                active={active}
+                                animate={false}
+                            />
+                            <Download className='download-button' type={'png'}/>
+                        </div>
+                        {grids.size > 1 ? gifPreview : ''}
+                    </div>
+                );
+                return content;
+            case 'get css data':
+                return (<div> </div>);
+            default: 
+                gifPreview = (
+                    <div className='preview-animation'>
+                        <div style={style}>Animation</div>
+                        <Preview
+                            key="0"
+                            grids={grids}
+                            columns={columns}
+                            rows={rows}
+                            cellSize={10}
+                            duration={5}
+                            active={active}
+                            animate={true}
+                        />
+                        <Download type={'gif'}/>
+                    </div>
+                );
+                content = (
+                    <div className='preview-content'>
+                        <div className={`preview-frame ${grids.size > 1 ? '' : 'only'}`}>
+                            <div style={style}>Current Frame</div>
+                            <Preview
+                                key="0"
+                                grids={grids}
+                                columns={columns}
+                                rows={rows}
+                                cellSize={10}
+                                duration={5}
+                                active={active}
+                                animate={false}
+                            />
+                            <Download className='download-button' type={'png'}/>
+                        </div>
+                        {grids.size > 1 ? gifPreview : ''}
+                    </div>
+                );
+                return content;
         }
     }
 
+    getPreviewContent = () => {
+        const { grids, columns, rows, duration, active } = this.props;
+        const style = {textAlign: 'center'};
+        let gifPreview = (
+            <div className='preview-animation'>
+                <div style={style}>Animation</div>
+                <Preview
+                    key="0"
+                    grids={grids}
+                    columns={columns}
+                    rows={rows}
+                    cellSize={10}
+                    duration={3}
+                    active={active}
+                    animate={true}
+                />
+            </div>
+        );
+        let content = (
+            <div className='preview-content'>
+                <div className={`preview-frame ${grids.size > 1 ? '' : 'only'}`}>
+                    <div style={style}>Current Frame</div>
+                    <Preview
+                        key="0"
+                        grids={grids}
+                        columns={columns}
+                        rows={rows}
+                        cellSize={10}
+                        active={active}
+                        animate={false}
+                    />
+                </div>
+                {grids.size > 1 ? gifPreview : ''}
+            </div>
+        );
+        return content;
+    }
+
     getModalContent = (popUpType) => {
-        let content;
+        let content, options;
         switch (popUpType) {
             case 'import':
+                options = [{
+                    value: 'local data',
+                }, { value: 'upload image' }]
                 content = (
-                    <div className='modal-content'>
+                    <div>
                         <button className='popup-close' onClick={() => this.props.close()}>x</button>
                         <div className='popup-header'>Import</div>
-                        {this.getImportContent('localData')}
+                        <div className='dropdown-select'>
+                            <Select options={options} values={[{value: 'local data'}]}
+                                onChange={this.changeType}
+                                labelField='value' searchable={false}/>
+                        </div>
+                        {this.getImportContent(this.state.type)}
                     </div>);
                 break;
             case 'export':
+                options = [{
+                    value: 'download files',
+                }, { value: 'get css data' }]
                 content = (
-                    <div className='modal-content'>
+                    <div>
                         <button className='popup-close' onClick={() => this.props.close()}>x</button>
                         <div className='popup-header'>Export</div>
-                        {this.getExportContent('preview')}
+                        <div className='dropdown-select'>
+                            <Select options={options} values={[{value: 'download images'}]}
+                                onChange={this.changeType}
+                                labelField='value' searchable={false}/>
+                        </div>
+                        {this.getExportContent(this.state.type)}
                     </div>
                 );
                 break;
+            case 'preview':
+                content = (
+                    <div>
+                        <button className='popup-close' onClick={() => this.props.close()}>x</button>
+                        <div className='popup-header'>Preivew</div>
+                        {this.getPreviewContent()}
+                    </div>
+                );
             default:
         }
         return content;

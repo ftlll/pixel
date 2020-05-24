@@ -1,7 +1,6 @@
 import { createStore } from "redux";
 import undoable, { includeAction } from 'redux-undo';
 import reducer from "./reducers/reducer";
-import * as actions from './actions/action';
 import {
     APPLY_ERASER,
     APPLY_EYE_DROPPER,

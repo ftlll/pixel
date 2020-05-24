@@ -6,7 +6,6 @@ const Duration = props => {
   const { changeDuration, duration } = props;
 
   return (
-    <div>
       <div className="duration">
         <label> DURATION
           <input
@@ -18,7 +17,6 @@ const Duration = props => {
           />
         </label>
       </div>
-    </div>
   );
 };
 

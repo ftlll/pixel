@@ -21,7 +21,7 @@ button.newProject:active {
 }
 
 .newProject {
-  width: 150px;
+  width: 13%;
   margin-left: 10px;
   margin-bottom: 10px;
 }
@@ -49,7 +49,7 @@ button.clear:active {
 }
 
 .clear {
-  width: 150px;
+  width: 13%;
   margin-left: 10px;
   margin-bottom: 10px;
 }
@@ -77,7 +77,7 @@ button.upload:active {
 }
 
 .upload {
-  width: 150px;
+  width: 13%;
   margin-left: 10px;
   margin-bottom: 10px;
 }
@@ -127,61 +127,15 @@ button.save:active {
 }
 
 .save {
-  width: 150px;
-  margin-left: 10px
-}
-
-.eraser {
-  display: inline-block;
-  text-align: center;
-  font-size: 30px;
-  height: 50px;
-  width: 20%;
-}
-
-.eraser.active {
-  background-color: darkgray;
-}
-
-.bucket {
-  display: inline-block;
-  text-align: center;
-  font-size: 30px;
-  height: 50px;
-  width: 20%;
-}
-
-.bucket.active {
-  background-color: darkgray;
-}
-
-.eye-dropper {
-  display: inline-block;
-  text-align: center;
-  font-size: 30px;
-  height: 50px;
-  width: 20%;
-}
-
-.eye-dropper.active {
-  background-color: darkgray;
-}
-
-.color-picker {
-  display: inline-block;
-  text-align: center;
-  font-size: 30px;
-  height: 50px;
-  width: 20%;
-}
-
-.color-picker.active {
-  background-color: darkgray;
+  width: 13%;
+  margin-left: 10px;
+  margin-bottom: 10px;
 }
 
 .undo-redo {
   display: inline-block;
-  margin: 10px
+  margin: 10px;
+  width: 100%;
 }
 
 button.undo {
@@ -265,4 +219,84 @@ button.popup-close:active {
   background-color: #494747;
   transform: translateY(4px);
   box-shadow: 0 1px 0 0 #707070;
+}
+
+
+button.download {
+  font-family: 'minecraftia','Helvetica Neue Light','Helvetica Neue','Helvetica','Arial',sans-serif;
+  text-align: center;
+  background: none;
+  border: none;
+  outline: none;
+  border-radius: 2px;
+  padding: 10px;
+  font-size: 1em;
+  text-decoration: none;
+  transition-duration: 0.1s;
+  color: #bbb;
+  background-color: #313131;
+  box-shadow: 0 5px 0 0 #707070;
+}
+
+button.download:active {
+  background-color: #494747;
+  transform: translateY(4px);
+  box-shadow: 0 1px 0 0 #707070;
+}
+
+.download {
+  display: inline-block;
+  width: 120px;
+  margin-bottom: 10px;
+  margin-left: 25px
+}
+
+@media only screen 
+and (min-device-width : 320px) 
+and (max-device-width : 480px) { 
+  .save {
+    width: 40%;
+    margin-left: 10px;
+    margin-bottom: 10px;
+  }
+  .clear {
+    width: 40%;
+    margin-left: 10px;
+    margin-bottom: 10px;
+  }
+  .newProject {
+    width: 40%;
+    margin-left: 10px;
+    margin-bottom: 10px;
+  }
+  .upload {
+    width: 40%;
+    margin-left: 10px;
+    margin-bottom: 10px;
+  }
+}
+
+@media only screen 
+and (min-device-width : 480px) 
+and (max-device-width : 768px) { 
+  .save {
+    width: 28%;
+    margin-left: 10px;
+    margin-bottom: 10px;
+  }
+  .clear {
+    width: 28%;
+    margin-left: 10px;
+    margin-bottom: 10px;
+  }
+  .newProject {
+    width: 28%;
+    margin-left: 10px;
+    margin-bottom: 10px;
+  }
+  .upload {
+    width: 28%;
+    margin-left: 10px;
+    margin-bottom: 10px;
+  }
 }

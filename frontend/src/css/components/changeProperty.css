@@ -1,4 +1,15 @@
+.change-dimension {
+    margin: 10px;
+}
+
+.rows {
+    margin-bottom: 10px;
+}
+
 .duration {
-    display: inline;
-    height: 20px;
+    margin: 10px;
+}
+
+.cell-size {
+    margin: 10px;
 }

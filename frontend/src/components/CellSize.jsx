@@ -6,8 +6,7 @@ const CellSize = props => {
   const { changeCellSize, size } = props;
 
   return (
-    <div>
-      <div className="duration">
+      <div className="cell-size">
         <label> Cell Size
           <input
             type="number"
@@ -18,7 +17,6 @@ const CellSize = props => {
           />
         </label>
       </div>
-    </div>
   );
 };
 

@@ -23,3 +23,34 @@
     padding-top: 10px;
     text-align: center;
 }
+
+.preview-content {
+    width: 400px;
+    height: 100%;
+    margin: 30px auto;
+}
+
+.preview-frame {
+    display: inline-block;
+    margin: auto
+}
+
+.preview-frame.only {
+    display: inline-block;
+    width: 200px;
+    margin: 0 100px;
+}
+
+.download-button {
+    margin: 0 auto;
+}
+
+.preview-animation {
+    display: inline-block;
+    margin-left: 80px;
+}
+
+.dropdown-select {
+    width: 220px;
+    margin: 30px auto;
+}

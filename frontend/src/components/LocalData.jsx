@@ -4,7 +4,6 @@ import Preview from './Preview';
 import {
   getDataFromStorage,
   removeProjectFromStorage,
-  generateExportString,
   exportedStringToProjectData
 } from '../utils/localStorage';
 
@@ -36,14 +35,14 @@ export default class LoadData extends React.Component {
   }
 
   removeFromStorage(key, e) {
-    const { actions, open, close } = this.props;
+    const { actions, close } = this.props;
     e.stopPropagation();
     if (browserStorage) {
       const removed = removeProjectFromStorage(browserStorage, key);
       if (removed) {
         // actions.sendNotification('Drawing deleted');
         close();
-        open();
+        // open();
       }
     }
   }
@@ -82,10 +81,10 @@ export default class LoadData extends React.Component {
                 onClick={() => {
                   this.drawingClick(elem);
                 }}
-                // onKeyPress={() => {
-                //   this.drawingClick(elem);
-                // }}
-                className="load-drawing__drawing"
+                onKeyPress={() => {
+                  this.drawingClick(elem);
+                }}
+                className=""
                 role="button"
                 tabIndex={0}
               >
@@ -97,9 +96,9 @@ export default class LoadData extends React.Component {
                 />
                 <button
                   type="button"
-                  className="drawing__delete"
+                  className=""
                   onClick={event => {
-                    this.removeFromStorage(i, event);
+                    this.removeFromStorage(elem.id, event);
                   }}
                 />
               </div>
