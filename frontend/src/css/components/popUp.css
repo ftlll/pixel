@@ -49,3 +49,8 @@
     display: inline-block;
     margin-left: 80px;
 }
+
+.dropdown-select {
+    width: 220px;
+    margin: 30px auto;
+}
