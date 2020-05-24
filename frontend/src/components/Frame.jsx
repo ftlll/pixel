@@ -5,7 +5,7 @@ import Preview from './Preview';
 
 class Frame extends React.Component {
     render() {
-        const {grid, columns, rows, actions, id, active} = this.props;
+        const {grid, columns, rows, actions, id, active, size } = this.props;
         const switchFrame = () => {
             actions.switchFrame(id);
         };
@@ -34,11 +34,10 @@ class Frame extends React.Component {
                             active={0}
                         />
                         <div className="frame-tools">
-                            <i onClick={addDuplicate} className='frame-add-icon fas fa-copy' />
+                            <i role="button" onClick={addDuplicate} className='frame-add-icon fas fa-copy' />
                             <i className='frame-add-icon2 fas fa-copy' />
-                            <i onClick={deleteFrame} className='frame-delete-icon fas fa-trash-alt' />
+                            <i role="button" onClick={size !== (id + 1) ? deleteFrame: undefined} className={`frame-delete-icon fas fa-trash-alt ${size === (id + 1) ? 'disabled': ''}`}/>
                         </div>
-                        {/* <div className='frame-id'>{id}</div> */}
                     </div>
                 )}
             </Draggable>

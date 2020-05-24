@@ -34,6 +34,7 @@ class FrameList extends React.Component {
             columns={columns}
             rows={rows}
             active={active}
+            size={grids.size}
             actions={{
               switchFrame: actions.switchFrame,
               deleteFrame: actions.deleteFrame,
@@ -50,12 +51,22 @@ class FrameList extends React.Component {
 
     render() {
       const style = {
-        display: 'flex', flexDirection: 'column', marginLeft: '10px', marginBottom: '36px'
+        frameList: {
+          display: 'flex', flexDirection: 'column', marginLeft: '10px', marginBottom: '36px'
+        },
+        frameListContent: {
+          backgroundColor: 'rgba(50, 50, 50, 0.3)',
+          maxWidth: '140px',
+          display: 'flex',
+          flex: '1',
+          minHeight: '0',
+          overflow: 'scroll'
+        }
       };
         return (
-          <div style={style}>
+          <div style={style.frameList}>
             <button type='button' className='frames-list-add' onClick={() => this.addNewFrame()}><div>+</div></button>
-            <div className='frames-list-content'>
+            <div style={style.frameListContent}>
               <DragDropContext onDragEnd = {this.onDragEnd} className='framesHandlerContext'>
                 <Droppable droppableId="droppable" direction="vertical" className='frames-handler'>
                 {provided => (
