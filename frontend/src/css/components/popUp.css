@@ -1,3 +1,7 @@
+.popup {
+    overflow: scroll;
+}
+
 .popup-content {
     height: 100%;
     width: 100%;
