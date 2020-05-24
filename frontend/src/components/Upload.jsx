@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+// import Dropzone from 'react-dropzone'
 import { importPixelate } from '../redux/actions/action';
 
 class Upload extends React.Component {
@@ -9,17 +10,27 @@ class Upload extends React.Component {
         this.props.fileUpload(this.state)
     }
 
-    fileProcess = event => {
+    fileProcess = (file, rejectedFiles) => {
         this.setState({
-            file: event.target.files[0]
+            file
         });
     }
 
     render() {
         return (
-            <div>
+            <div className='upload'>
+                {/* <div>Drop</div>
+                <Dropzone onDrop={this.fileProcess} style={style}>
+                {({ getRootProps, getInputProps }) => (
+                    <div
+                        {...getRootProps()}
+                    >
+                        <input {...getInputProps()} />
+                    </div>
+                    )}
+                </Dropzone> */}
                 <input type="file" onChange={this.fileProcess}></input>
-                <button onClick={this.fileUpload}>Upload</button>
+                <button className='upload-button' onClick={this.fileUpload}>Upload</button>
             </div>
         );
     }

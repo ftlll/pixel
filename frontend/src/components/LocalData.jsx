@@ -59,7 +59,7 @@ export default class LoadData extends React.Component {
     close();
   }
 
-  giveMeDrawings() {
+  getDrawing() {
     if (browserStorage) {
       const dataStored = getDataFromStorage(browserStorage);
       if (dataStored) {
@@ -84,23 +84,20 @@ export default class LoadData extends React.Component {
                 onKeyPress={() => {
                   this.drawingClick(elem);
                 }}
-                className=""
-                role="button"
-                tabIndex={0}
-              >
+                className="local-data-preview"
+                tabIndex={0}>
                 <Preview
                   key={elem.id}
                   storedData={elem}
                   active={0}
                   duration={1}
                 />
-                <button
-                  type="button"
-                  className=""
+                <div className="local-data-delete"
                   onClick={event => {
                     this.removeFromStorage(elem.id, event);
-                  }}
-                />
+                  }}>
+                    <i className=' fas fa-trash-alt' />
+                  </div>
               </div>
             );
           });
@@ -111,19 +108,19 @@ export default class LoadData extends React.Component {
   }
 
   giveMeOptions(type) {
-        const drawings = this.giveMeDrawings();
+        const drawings = this.getDrawing();
         
         const drawingsStored = drawings.length > 0;
         return (
           <div className="load-drawing">
-            <h2>Select one of your awesome drawings</h2>
+            <h3>Select one of your saved drawings</h3>
             <div
               className={`load-drawing__container
                 ${!drawingsStored ? 'empty' : ''}`}
             >
               {drawingsStored
-                ? this.giveMeDrawings()
-                : 'Nothing awesome yet...'}
+                ? this.getDrawing()
+                : 'Nothing saved yet...'}
             </div>
           </div>
         );
