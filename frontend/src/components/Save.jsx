@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { saveProjectToStorage } from '../utils/localStorage';
+import { NotificationManager } from 'react-notifications';
 
 const Save = props => {
     const save = () => {
@@ -12,8 +13,8 @@ const Save = props => {
             rows: props.rows,
             animate: props.grids.size > 1,
         };
-      
-        saveProjectToStorage(localStorage, drawingToSave)
+        saveProjectToStorage(localStorage, drawingToSave);
+        NotificationManager.success('Saved to local storage successfully!');
     }
     return (
         <button className='save'
@@ -36,7 +37,7 @@ const mapStateToProps = state => {
   };
 
 const mapDispatchToProps = dispatch => ({
-
+    
 });
   
 const SaveContainer = connect(

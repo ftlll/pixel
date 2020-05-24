@@ -1,4 +1,6 @@
 import React from 'react';
+import 'react-notifications/lib/notifications.css';
+import {NotificationContainer} from 'react-notifications';
 import './css/imports.css';
 import init from './utils/startup';
 import HeaderContainer from './components/Header';
@@ -51,6 +53,7 @@ class App extends React.Component {
     const { popUpShown, popUpType } = this.state;
     return (
       <div className='background'>
+        <NotificationContainer/>
         <div className='app'>
         <HeaderContainer/>
         <div className='tool-bar'>

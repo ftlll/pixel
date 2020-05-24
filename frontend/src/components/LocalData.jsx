@@ -1,5 +1,6 @@
 import React from 'react';
 import { fromJS } from 'immutable';
+import { NotificationManager } from 'react-notifications';
 import Preview from './Preview';
 import {
   getDataFromStorage,
@@ -28,19 +29,19 @@ export default class LoadData extends React.Component {
 
       actions.setCanvas(grids, paletteGridData, cellSize, columns, rows);
       close();
-      //actions.sendNotification('Project successfully imported');
+      NotificationManager.success('Project successfully imported');
     } else {
-      //actions.sendNotification("Sorry, the project couldn't be imported");
+      NotificationManager.error('Sorry, there is some error importing project');
     }
   }
 
   removeFromStorage(key, e) {
-    const { actions, close } = this.props;
+    const { close } = this.props;
     e.stopPropagation();
     if (browserStorage) {
       const removed = removeProjectFromStorage(browserStorage, key);
       if (removed) {
-        // actions.sendNotification('Drawing deleted');
+        NotificationManager.success('Drawing deleted');
         close();
         // open();
       }
@@ -57,6 +58,7 @@ export default class LoadData extends React.Component {
       data.rows
     );
     close();
+    NotificationManager.success('Project successfully imported');
   }
 
   getDrawing() {
@@ -96,7 +98,7 @@ export default class LoadData extends React.Component {
                   onClick={event => {
                     this.removeFromStorage(elem.id, event);
                   }}>
-                    <i className=' fas fa-trash-alt' />
+                    <i className='fas fa-trash-alt' />
                   </div>
               </div>
             );
@@ -107,7 +109,7 @@ export default class LoadData extends React.Component {
     return [];
   }
 
-  giveMeOptions(type) {
+  getOptions(type) {
         const drawings = this.getDrawing();
         
         const drawingsStored = drawings.length > 0;
@@ -128,6 +130,6 @@ export default class LoadData extends React.Component {
 
   render() {
     const { loadType } = this.props;
-    return this.giveMeOptions(loadType);
+    return this.getOptions(loadType);
   }
 }

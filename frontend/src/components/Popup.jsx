@@ -194,7 +194,7 @@ class Popup extends React.Component {
                     value: 'local data',
                 }, { value: 'upload image' }]
                 content = (
-                    <div>
+                    <div className='popup'>
                         <button className='popup-close' onClick={() => this.props.close()}>x</button>
                         <div className='popup-header'>Import</div>
                         <div className='dropdown-select'>
@@ -212,7 +212,7 @@ class Popup extends React.Component {
                     value: 'get css data (current frame)'
                 }, { value: 'get css data (animation)' } ]
                 content = (
-                    <div>
+                    <div className='popup'>
                         <button className='popup-close' onClick={() => this.props.close()}>x</button>
                         <div className='popup-header'>Export</div>
                         <div className='dropdown-select'>
@@ -226,7 +226,7 @@ class Popup extends React.Component {
                 break;
             case 'preview':
                 content = (
-                    <div>
+                    <div className='popup'>
                         <button className='popup-close' onClick={() => this.props.close()}>x</button>
                         <div className='popup-header'>Preivew</div>
                         {this.getPreviewContent()}
