@@ -10,7 +10,7 @@ const Header = ({ changeName, name }) => {
           <h2> PIXEL ART HUB </h2>
         </div>
         <div className="author">
-          <h5>GITHUB: <a href="https://github.com/ftlll/pixel">FTL</a></h5>
+          <h5>GITHUB: <a href="https://github.com/ftlll/pixel" target="_blank" rel='noopener noreferrer'>FTL</a></h5>
         </div>
       </div>
     );
