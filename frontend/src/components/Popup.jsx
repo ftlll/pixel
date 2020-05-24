@@ -2,9 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Modal from 'react-awesome-modal';
+import Select from "react-dropdown-select";
 import Preview from './Preview';
 import Upload from './Upload';
 import LocalData from './LocalData';
+import Download from './Download';
 import * as actions from '../redux/actions/action';
 
 class Popup extends React.Component {
@@ -30,18 +32,84 @@ class Popup extends React.Component {
 
     getExportContent = (exportType) => {
         switch(exportType) {
-            case 'preview':
-                return (<Preview
-                    key="0"
-                    grids={this.props.grids}
-                    columns={this.props.columns}
-                    rows={this.props.rows}
-                    cellSize={10}
-                    duration={5}
-                    active={0}
-                    animate={this.props.grids.size > 1}
-                />);
+            case 'download':
+                const style = {textAlign: 'center'};
+                const { grids, columns, rows, duration, active } = this.props;
+                let gifPreview = (
+                    <div className='preview-animation'>
+                        <div style={style}>Animation</div>
+                        <Preview
+                            key="0"
+                            grids={grids}
+                            columns={columns}
+                            rows={rows}
+                            cellSize={10}
+                            duration={5}
+                            active={active}
+                            animate={true}
+                        />
+                        <Download type={'gif'}/>
+                    </div>
+                );
+                let content = (
+                    <div className='preview-content'>
+                        <div className={`preview-frame ${grids.size > 1 ? '' : 'only'}`}>
+                            <div style={style}>Current Frame</div>
+                            <Preview
+                                key="0"
+                                grids={grids}
+                                columns={columns}
+                                rows={rows}
+                                cellSize={10}
+                                duration={5}
+                                active={active}
+                                animate={false}
+                            />
+                            <Download className='download-button' type={'png'}/>
+                        </div>
+                        {grids.size > 1 ? gifPreview : ''}
+                    </div>
+                );
+                return content;
         }
+    }
+
+    getPreviewContent = () => {
+        const { grids, columns, rows, duration, active } = this.props;
+        const style = {textAlign: 'center'};
+        let gifPreview = (
+            <div className='preview-animation'>
+                <div style={style}>Animation</div>
+                <Preview
+                    key="0"
+                    grids={grids}
+                    columns={columns}
+                    rows={rows}
+                    cellSize={10}
+                    duration={3}
+                    active={active}
+                    animate={true}
+                />
+            </div>
+        );
+        let content = (
+            <div className='preview-content'>
+                <div className={`preview-frame ${grids.size > 1 ? '' : 'only'}`}>
+                    <div style={style}>Current Frame</div>
+                    <Preview
+                        key="0"
+                        grids={grids}
+                        columns={columns}
+                        rows={rows}
+                        cellSize={10}
+                        active={active}
+                        animate={false}
+                    />
+                </div>
+                {grids.size > 1 ? gifPreview : ''}
+            </div>
+        );
+        return content;
     }
 
     getModalContent = (popUpType) => {
@@ -49,7 +117,7 @@ class Popup extends React.Component {
         switch (popUpType) {
             case 'import':
                 content = (
-                    <div className='modal-content'>
+                    <div>
                         <button className='popup-close' onClick={() => this.props.close()}>x</button>
                         <div className='popup-header'>Import</div>
                         {this.getImportContent('localData')}
@@ -57,13 +125,21 @@ class Popup extends React.Component {
                 break;
             case 'export':
                 content = (
-                    <div className='modal-content'>
+                    <div>
                         <button className='popup-close' onClick={() => this.props.close()}>x</button>
                         <div className='popup-header'>Export</div>
-                        {this.getExportContent('preview')}
+                        {this.getExportContent('download')}
                     </div>
                 );
                 break;
+            case 'preview':
+                content = (
+                    <div>
+                        <button className='popup-close' onClick={() => this.props.close()}>x</button>
+                        <div className='popup-header'>Preivew</div>
+                        {this.getPreviewContent()}
+                    </div>
+                );
             default:
         }
         return content;
