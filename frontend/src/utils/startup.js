@@ -5,7 +5,6 @@ const initialSetup = (dispatch, storage) => {
   const dataStored = getDataFromStorage(storage);
 
   if (dataStored) {
-    console.log('local:', dataStored);
     // Load current project from the storage
     if (dataStored.current > 0) {
       const {
