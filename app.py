@@ -1,10 +1,10 @@
-from backend import creat_app
+from backend import create_app
 from flask import Flask, json, request, jsonify, send_file
 from PIL import Image, ImageDraw
 from numpy import asarray
 import os
 
-app = creat_app()
+app = create_app()
 
 app.config['UPLOAD_FOLDER'] = os.path.dirname(os.path.abspath(__file__)) + '/backend/uploads/'
 app.config["ALLOWED_IMAGE_EXTENSIONS"] = ["PNG", "JPG", "JPEG", "GIF"]
