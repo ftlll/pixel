@@ -49,8 +49,11 @@ class FrameList extends React.Component {
     }
 
     render() {
+      const style = {
+        display: 'flex', flexDirection: 'column', marginLeft: '10px', marginBottom: '36px'
+      };
         return (
-          <div className='frames-handler'>
+          <div style={style}>
             <button type='button' className='frames-list-add' onClick={() => this.addNewFrame()}><div>+</div></button>
             <div className='frames-list-content'>
               <DragDropContext onDragEnd = {this.onDragEnd} className='framesHandlerContext'>

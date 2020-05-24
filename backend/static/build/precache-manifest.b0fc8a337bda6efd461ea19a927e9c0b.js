@@ -1,23 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "f5cb52332dc8ea79e9571e74aab0b230",
+    "revision": "11d659d76b3b4f5d3d8bdf7c6f42fbfa",
     "url": "/backend/static/build/index.html"
   },
   {
-    "revision": "bdf60e66e5389f1c415f",
-    "url": "/backend/static/build/static/css/main.1d335942.chunk.css"
+    "revision": "f5b996f47aaceff6c9c9",
+    "url": "/backend/static/build/static/css/2.13458919.chunk.css"
   },
   {
-    "revision": "62a13a02dbc3ad8c3280",
-    "url": "/backend/static/build/static/js/2.43002c43.chunk.js"
+    "revision": "ac35dd2694df42ff7bab",
+    "url": "/backend/static/build/static/css/main.a0e57f76.chunk.css"
   },
   {
-    "revision": "27df78d2822439c2fc110c0a385025d0",
-    "url": "/backend/static/build/static/js/2.43002c43.chunk.js.LICENSE.txt"
+    "revision": "f5b996f47aaceff6c9c9",
+    "url": "/backend/static/build/static/js/2.876b15cc.chunk.js"
   },
   {
-    "revision": "bdf60e66e5389f1c415f",
-    "url": "/backend/static/build/static/js/main.a821b3a7.chunk.js"
+    "revision": "967c3aa677d48917bda81b3b2ff2693c",
+    "url": "/backend/static/build/static/js/2.876b15cc.chunk.js.LICENSE.txt"
+  },
+  {
+    "revision": "ac35dd2694df42ff7bab",
+    "url": "/backend/static/build/static/js/main.af854909.chunk.js"
   },
   {
     "revision": "197478eaa0bf2f328717",
@@ -102,5 +106,21 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "a8eedaadb16b569a48a061d4aafa2d2e",
     "url": "/backend/static/build/static/media/fa-solid-900.a8eedaad.woff"
+  },
+  {
+    "revision": "0b4ac1dc75df35e169b70d7719afe4cc",
+    "url": "/backend/static/build/static/media/notification.0b4ac1dc.ttf"
+  },
+  {
+    "revision": "5bee74caefdf9d0a834915f6c8eeb259",
+    "url": "/backend/static/build/static/media/notification.5bee74ca.svg"
+  },
+  {
+    "revision": "651771e1df95c807c99608188d0a4287",
+    "url": "/backend/static/build/static/media/notification.651771e1.woff"
+  },
+  {
+    "revision": "c0d3c94cd6112550c51d7d1ed13b9da1",
+    "url": "/backend/static/build/static/media/notification.c0d3c94c.eot"
   }
 ]);
