@@ -193,7 +193,7 @@ export default function(canvas = initCanvas(), action) {
         return changeDimension(canvas, action);
       case type.CHANGE_DURATION:
         return changeDuration(canvas, action);
-      case type.CHANGE_DURATION:
+      case type.CHANGE_CELL_SIZE:
         return changeCellSize(canvas, action);
       case type.IMPORT_PIXELATE:
         return importPixelate(action);

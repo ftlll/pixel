@@ -10,12 +10,7 @@ const Header = ({ changeName, name }) => {
           <h2> PIXEL ART HUB </h2>
         </div>
         <div className="author">
-          <h5>GITHUB: <a target="_blank" href="https://github.com/ftlll/pixel">FTL</a></h5>
-          {/* <iframe
-            src="https://ghbtns.com/github-btn.html?user=ftlll&repo=pixel&type=star&count=false"
-            frameBorder="0" scrolling="0" width="100px" height="20px"
-          >
-          </iframe> */}
+          <h5>GITHUB: <a href="https://github.com/ftlll/pixel" target="_blank" rel='noopener noreferrer'>FTL</a></h5>
         </div>
       </div>
     );

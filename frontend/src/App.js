@@ -17,7 +17,6 @@ import SaveContainer from './components/Save';
 import FrameListContainer from './components/FrameList';
 import ChangeDimensionContainer from './components/ChangeDimension';
 import DurantionContainer from './components/Duration';
-import SizeContainer from './components/CellSize';
 import CellSizeContainer from './components/CellSize';
 
 class App extends React.Component {
@@ -58,9 +57,9 @@ class App extends React.Component {
             <NewProjectContainer/>
             <ClearContainer />
             <SaveContainer />
-            <button className='upload' onClick={() => this.setPopUp('import')}>IMPORT</button>
-            <button className='upload' onClick={() => this.setPopUp('export')}>EXPORT</button>
-            <button className='upload' onClick={() => this.setPopUp('preview')}>PREVIEW</button>
+            <button className='import' onClick={() => this.setPopUp('import')}>IMPORT</button>
+            <button className='import' onClick={() => this.setPopUp('export')}>EXPORT</button>
+            <button className='import' onClick={() => this.setPopUp('preview')}>PREVIEW</button>
         </div>
         <div className='app-content'>
           <div className='side-bar col-lg-2'>

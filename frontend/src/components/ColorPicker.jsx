@@ -18,7 +18,7 @@ class ColorPicker extends React.Component {
   };
 
   render() {
-    const { color, applyColorPicker, applyPencil, usingColorPicker } = this.props;
+    const { color, applyColorPicker, applyPencil } = this.props;
     this.applyColorPicker = (color) => {
       color = color.rgb;
       let colorString = 'rgba(' + color.r + ',' + color.g + ',' + color.b + ',' + color.a + ')';
@@ -72,7 +72,7 @@ const mapStateToProps = state => {
   const active = palette.active;
   return {
       color: (active === -1) ? 'rgba(49,49,49,1)' : grid.getIn([active, 'color']),
-      usingColorPicker: state.present.get('drawingTool') === tool.COLOR_PICKER
+      // usingColorPicker: state.present.get('drawingTool') === tool.COLOR_PICKER
   };
 };
 

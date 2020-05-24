@@ -7,6 +7,7 @@ import Preview from './Preview';
 import Upload from './Upload';
 import LocalData from './LocalData';
 import Download from './Download';
+import DisplayCSS from './DisplayCSS';
 import * as actions from '../redux/actions/action';
 
 class Popup extends React.Component {
@@ -25,7 +26,6 @@ class Popup extends React.Component {
 
     changeType = (value) => {
         this.setState({type: value[0].value});
-        console.log(this.state.type)
     }
 
     getImportContent = (importType) => {
@@ -44,7 +44,7 @@ class Popup extends React.Component {
 
     getExportContent = (exportType) => {
         let content, gifPreview;
-        const { grids, columns, rows, duration, active } = this.props;
+        const { grids, columns, rows, cellSize, duration, active } = this.props;
         const style = {textAlign: 'center'};
         switch(exportType) {
             case 'download files':
@@ -84,8 +84,30 @@ class Popup extends React.Component {
                     </div>
                 );
                 return content;
-            case 'get css data':
-                return (<div> </div>);
+            case 'get css data (current frame)':
+                return (
+                    <DisplayCSS 
+                        grids={grids}
+                        columns={columns}
+                        rows={rows}
+                        size={cellSize}
+                        duration={duration}
+                        active={active}
+                        animate={false}
+                    />
+                );
+            case 'get css data (animation)':
+                return (
+                    <DisplayCSS 
+                    grids={grids}
+                    columns={columns}
+                    rows={rows}
+                    size={cellSize}
+                    duration={duration}
+                    active={active}
+                    animate={true}
+                />
+                );
             default: 
                 gifPreview = (
                     <div className='preview-animation'>
@@ -95,8 +117,8 @@ class Popup extends React.Component {
                             grids={grids}
                             columns={columns}
                             rows={rows}
-                            cellSize={10}
-                            duration={5}
+                            cellSize={cellSize}
+                            duration={duration}
                             active={active}
                             animate={true}
                         />
@@ -112,8 +134,8 @@ class Popup extends React.Component {
                                 grids={grids}
                                 columns={columns}
                                 rows={rows}
-                                cellSize={10}
-                                duration={5}
+                                cellSize={cellSize}
+                                duration={duration}
                                 active={active}
                                 animate={false}
                             />
@@ -138,7 +160,7 @@ class Popup extends React.Component {
                     columns={columns}
                     rows={rows}
                     cellSize={10}
-                    duration={3}
+                    duration={duration}
                     active={active}
                     animate={true}
                 />
@@ -186,7 +208,9 @@ class Popup extends React.Component {
             case 'export':
                 options = [{
                     value: 'download files',
-                }, { value: 'get css data' }]
+                }, { 
+                    value: 'get css data (current frame)'
+                }, { value: 'get css data (animation)' } ]
                 content = (
                     <div>
                         <button className='popup-close' onClick={() => this.props.close()}>x</button>
@@ -208,6 +232,7 @@ class Popup extends React.Component {
                         {this.getPreviewContent()}
                     </div>
                 );
+                break;
             default:
         }
         return content;
