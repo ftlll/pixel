@@ -5,9 +5,11 @@ import { changeDimensions } from '../redux/actions/action';
 const ChangeDimension = props => {
   const { changeDimensions, rows, columns } = props;
   const changeHeight = (newRows) => {
+    newRows = parseInt(newRows, 10);
     changeDimensions(columns, newRows);
   };
   const changeWidth = (newColumns) => {
+    newColumns = parseInt(newColumns, 10);
     changeDimensions(newColumns,rows);
   };
 
