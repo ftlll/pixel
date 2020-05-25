@@ -48,14 +48,14 @@ export function changeDimensions(newColumns, newRows) {
 export function changeDuration (duration) {
     return {
         type: type.CHANGE_DURATION,
-        duration
+        duration: parseInt(duration, 10)
     }
 }
 
 export function changeCellSize (size) {
     return {
         type: type.CHANGE_CELL_SIZE,
-        size
+        size: parseInt(size, 10)
     }
 }
 
