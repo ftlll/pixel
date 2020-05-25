@@ -56,7 +56,7 @@ class FrameList extends React.Component {
         },
         frameListContent: {
           backgroundColor: 'rgba(50, 50, 50, 0.3)',
-          maxWidth: '140px',
+          width: '140px',
           display: 'flex',
           flex: '1',
           minHeight: '0',
