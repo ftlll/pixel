@@ -35,13 +35,13 @@ const DisplayCSS = props => {
         {animate ? (
             <h4>
             Paste the following code anywhere in the CSS code and assign
-            <b> .pixel-animation </b>
+            <b> .pixel-art-hub </b>
             class to a HTML element
             </h4>
         ) : (
             <h4>
             Paste the following code anywhere in the CSS code and assign
-            <b> .pixelart-to-css </b>
+            <b> .pixel-art-hub </b>
             class to a HTML element
             </h4>
         )}

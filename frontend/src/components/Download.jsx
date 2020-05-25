@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import FileSaver from 'file-saver';
+import { NotificationManager } from 'react-notifications';
 
 const Download = props => {
     const { canvas, type } = props;
@@ -17,18 +18,21 @@ const Download = props => {
                 columns: canvas.get('columns'),
                 rows: canvas.get('rows'),
                 size: canvas.get('size'),
+                duration: canvas.get('duration'),
                 active: canvas.get('active'),
             }),
         }).then(res => {
             return res.blob();
-        })
-        .then(blob => {
+        }).then(blob => {
             if (type === 'gif') {
                 FileSaver.saveAs(blob, 'pixel.gif');
             } else if (type === 'png'){
                 FileSaver.saveAs(blob, 'pixel.png');
             }
-            
+            NotificationManager.success('File has been downloaded!');
+        })
+        .catch(err => {
+            NotificationManager.error('Sorry, there are some error processing your images');
         })
     }
 
@@ -44,12 +48,8 @@ const mapStateToProps = state => {
     };
 };
 
-const mapDispatchToProps = dispatch => ({
-  
-});
-
 const DownloadContainer = connect(
   mapStateToProps,
-  mapDispatchToProps
+  null
 )(Download);
 export default DownloadContainer;

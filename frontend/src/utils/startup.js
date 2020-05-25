@@ -6,7 +6,7 @@ const initialSetup = (dispatch, storage) => {
 
   if (dataStored) {
     // Load current project from the storage
-    if (dataStored.current > 0) {
+    if (dataStored.current >= 0) {
       const {
         grids,
         paletteGridData,
@@ -28,8 +28,27 @@ const initialSetup = (dispatch, storage) => {
       );
     }
   } else {
-    // If no data initialize storage
     initStorage(storage);
+    let newData = getDataFromStorage(storage);
+    const {
+      grids,
+      paletteGridData,
+      columns,
+      rows,
+      cellSize,
+      duration
+    } = newData.stored[0];
+
+    dispatch(
+      actions.setCanvas(
+        grids,
+        paletteGridData,
+        cellSize,
+        columns,
+        rows,
+        duration
+      )
+    );
   }
 };
 

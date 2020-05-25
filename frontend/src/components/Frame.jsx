@@ -30,7 +30,7 @@ class Frame extends React.Component {
                             grids={List([grid])}
                             columns={columns}
                             rows={rows}
-                            cellSize={4}
+                            cellSize={3}
                             active={0}
                         />
                         <div className="frame-tools">
