@@ -17,6 +17,7 @@ export function generatePixelDrawCss(frame, columns, cellSize, type) {
 }
   
 export function getCssImageClassOutput(frame, columns, cellSize) {
+    cellSize = parseInt(cellSize, 10) || 10;
     return getImageCssClassOutput(frame, {
         format: 'string',
         pSize: cellSize,
@@ -26,7 +27,23 @@ export function getCssImageClassOutput(frame, columns, cellSize) {
 }
   
 export function exportAnimationData(frames, columns, cellSize, duration) {
-    return getAnimationCssClassOutput(frames, {
+    let newFrames = List();
+    let size = frames.size;
+    cellSize = parseInt(cellSize, 10) || 10;
+    duration = parseInt(duration, 10) || 5;
+    const equalPercentage = 100 / size;
+    frames.forEach((frame, index) => {
+        let interval = (index === size - 1)
+          ? 100
+          : Math.round((index + 1) * equalPercentage * 10) / 10;
+
+        let newFrame = Map({
+            grid: frame,
+            interval
+        });
+        newFrames = newFrames.push(newFrame);
+    })
+    return getAnimationCssClassOutput(newFrames, {
         pSize: cellSize,
         c: columns,
         duration,

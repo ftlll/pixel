@@ -52,6 +52,7 @@ def pixelate(data, width, height, channel):
 def pixel():
     if (request.method == 'POST'):
         if 'file' not in request.files:
+            print('column' not in request.files)
             print('No file attached in request')
             return jsonify({
                 "msg": "No file attached in request"
@@ -125,9 +126,9 @@ def savePNG(grid, columns, rows, size, num):
     fileName = 'pil' + str(num) + '.png'
     img.save(fileName)
 
-def encodeGIF(grids, columns, rows, size):
+def encodeGIF(grids, columns, rows, size, time):
     pngFiles = [encodePNG(grids[i], columns, rows, size) for i in range(len(grids))]
-    pngFiles[0].save('pil.gif', save_all=True, append_images=pngFiles[1:], duration=40, loop=0)
+    pngFiles[0].save('pil.gif', save_all=True, append_images=pngFiles[1:], duration=time, loop=0)
 
 @app.route('/api/img', methods=['GET', 'POST'])
 def encodeFile():
@@ -137,17 +138,16 @@ def encodeFile():
         grids = request.get_json()['grids']
         active = int(request.get_json()['active'])
         size = int(request.get_json()['size'])
+        duration = int(request.get_json()['duration'])
         fileType = request.get_json()['type']
         if fileType == 'png':
             savePNG(grids[active], columns, rows, size, active)
             path = '../pil' + str(active) + '.png'
             return send_file(path, as_attachment=True)
         elif fileType == 'gif':
-            encodeGIF(grids, columns, rows, size)
+            encodeGIF(grids, columns, rows, size, duration)
             path = '../pil.gif'
             return send_file(path, as_attachment=True)
-
-    
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=8080)

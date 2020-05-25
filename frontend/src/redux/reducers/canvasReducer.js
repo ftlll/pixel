@@ -28,6 +28,7 @@ const initCanvas = (action = {})  => {
 
 const setCanvas = (canvas, action) => {
   const { grids, columns, rows, cellSize, duration } = action;
+  console.log(grids);
   return fromJS({
     grids,
     columns,

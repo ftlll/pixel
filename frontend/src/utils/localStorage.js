@@ -1,3 +1,4 @@
+import { pokemon } from './pokemon';
 const STORAGE_KEY = 'PIXEL_ART_HUB';
 
 const saveDataToStorage = (storage, data) => {
@@ -13,7 +14,7 @@ export function initStorage(storage) {
     storage.setItem(
         STORAGE_KEY,
         JSON.stringify({
-        stored: [],
+        stored: [pokemon],
         current: 0
         })
     );
