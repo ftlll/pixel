@@ -44,7 +44,7 @@ class Popup extends React.Component {
 
     getExportContent = (exportType) => {
         let content, gifPreview;
-        const { grids, columns, rows, cellSize, duration, active } = this.props;
+        const { grids, columns, rows, active, cellSize, duration } = this.props;
         const style = {textAlign: 'center'};
         switch(exportType) {
             case 'download files':

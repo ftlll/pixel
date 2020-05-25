@@ -68,5 +68,5 @@
 }
 
 .frame-delete-icon.disabled {
-    cursor: no-drop;
+    cursor: not-allowed;
 }

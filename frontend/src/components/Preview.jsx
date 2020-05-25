@@ -11,14 +11,15 @@ const Preview = props => {
         const { duration, storedData, active } = props;
         const { grids, columns, cellSize, animate } =  storedData || props;
         const animation = grids.size > 1 && animate;
-
+        let size =  cellSize || 10;
+        let Duration =  duration || 5;
         let animationData;
         let cssString;
     
         const styles = {
           previewWrapper: {
-            height: cellSize,
-            width: cellSize
+            height: size,
+            width: size
           }
         };
 
@@ -26,13 +27,13 @@ const Preview = props => {
           animationData = generateAnimationCSSData(
             grids,
             columns,
-            cellSize
+            size
           )
         } else {
           cssString = generatePixelDrawCss(
             grids.get(active),
             columns,
-            cellSize,
+            size,
             'string'
           );
         }
@@ -45,7 +46,7 @@ const Preview = props => {
           <div style={animation ? null : styles.previewWrapper}>
             {animation ? (
             <StyleRoot>
-              <Animation duration={duration} boxShadow={animationData} />
+              <Animation duration={Duration} boxShadow={animationData} />
             </StyleRoot>
             ) : null}
           </div>
@@ -54,9 +55,10 @@ const Preview = props => {
     
       const { storedData } = props;
       const { columns, rows, cellSize } = storedData || props;
+      let size = cellSize || 10;
       const style = {
-        width: columns * cellSize,
-        height: rows * cellSize,
+        width: `${columns * size}px`,
+        height: `${rows * size}px`,
         position: 'relative'
       };
     
