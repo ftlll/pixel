@@ -4,19 +4,19 @@ import { List, Map, fromJS } from 'immutable';
 
 const initPaletteGrid = () => {
     return List([
-        '#000000',
-        '#ff0000',
-        '#ff3300',
-        '#ff9900',
-        '#ffff00',
-        '#99ff00',
-        '#00ff00',
-        '#00ffff',
-        '#0000ff',
-        '#6600ff',
-        '#ff00ff',
-        '#ff0066',
-        '#ffffff',
+        'rgb(0,0,0)',
+        'rgb(255,0,0)',
+        'rgb(255,51,0)',
+        'rgb(255,153,0)',
+        'rgb(255,255,0)',
+        'rgb(153,255,0)',
+        'rgb(0,255,0)',
+        'rgb(0,255,255)',
+        'rgb(0,0,255)',
+        'rgb(102,0,255)',
+        'rgb(255,0,255)',
+        'rgb(192,192,192)',
+        'rgb(255,255,255)',
         '',''
     ]).map((color, i) => Map({ color, id: i}));
 };

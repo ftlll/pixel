@@ -83,6 +83,8 @@ const applyPaintBucketToGrid = (grid, { id, paletteColor, columns, rows }) => {
   let newGrid = grid;
   let currentId;
   let adjCells;
+  columns = parseInt(columns, 10);
+  rows = parseInt(rows, 10);
 
   while (cellQueue.length > 0) {
     currentId = cellQueue.shift();
