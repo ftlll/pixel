@@ -1,5 +1,4 @@
 # pixel art hub
-https://pixel-art-hub.herokuapp.com
 
 An online pixel art editor using react, redux and flask. 
 
