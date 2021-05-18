@@ -2,7 +2,10 @@
 
 An online pixel art editor using react, redux and flask. 
 
-In the project directory, you can run: `cd frontend && yarn build && cd .. && flask run` to run the project locally on http://localhost:5000
+In the project directory, you can run: 
+`cd frontend && npm install && yarn build`
+`cd .. && python3 -m venv venv && . venv/bin/activate && flask run`
+to run the project locally on http://localhost:5000
 
 # Screenshots
 ### Main page
