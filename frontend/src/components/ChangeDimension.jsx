@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { changeDimensions } from '../redux/actions/action';
+import { TextField } from '@material-ui/core';
 
 const ChangeDimension = props => {
   const { changeDimensions, rows, columns } = props;
@@ -17,23 +18,21 @@ const ChangeDimension = props => {
     <div className='change-dimension'>
       <div className="rows">
         <label> ROWS
-          <input
+          <TextField
+            id="outlined-number"
             type="number"
             value={rows}
-            onChange={event => {
-              changeHeight(event.target.value);
-            }}
+            onChange={event => changeHeight(event.target.value)}
           />
          </label>
       </div>
       <div className="">
         <label> COLUMNS
-          <input
+          <TextField
+            id="outlined-number"
             type="number"
             value={columns}
-            onChange={event => {
-              changeWidth(event.target.value);
-            }}
+            onChange={event => changeWidth(event.target.value)}
           />
         </label>
       </div>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { changeDuration } from '../redux/actions/action';
+import { TextField } from '@material-ui/core';
 
 const Duration = props => {
   const { changeDuration, duration } = props;
@@ -8,12 +9,11 @@ const Duration = props => {
   return (
       <div className="duration">
         <label> DURATION
-          <input
+          <TextField
+            id="outlined-number"
             type="number"
             value={duration}
-            onChange={event => {
-                changeDuration(event.target.value);
-            }}
+            onChange={event => changeDuration(event.target.value)}
           />
         </label>
       </div>

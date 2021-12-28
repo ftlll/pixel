@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { changeCellSize } from '../redux/actions/action';
+import { TextField } from '@material-ui/core';
 
 const CellSize = props => {
   const { changeCellSize, size } = props;
@@ -8,12 +9,11 @@ const CellSize = props => {
   return (
       <div className="cell-size">
         <label> Cell Size
-          <input
+          <TextField
+            id="outlined-number"
             type="number"
             value={size}
-            onChange={event => {
-                changeCellSize(event.target.value);
-            }}
+            onChange={event => changeCellSize(event.target.value)}
           />
         </label>
       </div>
