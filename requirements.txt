@@ -29,7 +29,7 @@ Jinja2==2.11.3
 jmespath==0.10.0
 jsonschema==3.2.0
 MarkupSafe==1.1.1
-numpy==1.18.2
+numpy==1.22.0
 paramiko==2.7.1
 pathspec==0.5.9
 Pillow==8.3.2
