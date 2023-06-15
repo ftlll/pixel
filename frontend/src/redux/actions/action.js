@@ -1,6 +1,11 @@
 import * as type from './actionTypes';
 import { ActionCreators } from 'redux-undo';
 
+const MAX_COLUMNS = 128;
+const MAX_ROWS = 128;
+const MIN_COLUMNS = 5;
+const MIN_ROWS = 5;
+
 export function init() {
     return {
         type: type.SET_INIT_STATE
@@ -37,11 +42,17 @@ export function changeName(name) {
     }
 }
 
-export function changeDimensions(newColumns, newRows) {
+export function changeWidth(newColumns) {
     return {
-        type: type.CHANGE_DIMENSIONS,
-        newColumns,
-        newRows
+        type: type.CHANGE_WIDTH,
+        newColumns: Math.max(Math.min(newColumns, MAX_COLUMNS), Math.max(newColumns, MIN_ROWS))
+    }
+}
+
+export function changeHeight(newRows) {
+    return {
+        type: type.CHANGE_HEIGHT,
+        newRows: Math.max(Math.min(newRows, MAX_ROWS), Math.max(newRows, MIN_ROWS))
     }
 }
 

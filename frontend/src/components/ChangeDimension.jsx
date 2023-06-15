@@ -1,39 +1,27 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { changeDimensions } from '../redux/actions/action';
-import { TextField } from '@material-ui/core';
+import { changeHeight, changeWidth } from '../redux/actions/action';
+import Editor from './Editor';
 
 const ChangeDimension = props => {
-  const { changeDimensions, rows, columns } = props;
-  const changeHeight = (newRows) => {
-    newRows = parseInt(newRows, 10);
-    changeDimensions(columns, newRows);
+  const { changeHeight, changeWidth, rows, columns } = props;
+  
+  const updateHeight = (i) => {
+    setTimeout(() => changeHeight(rows + i), 100);
   };
-  const changeWidth = (newColumns) => {
-    newColumns = parseInt(newColumns, 10);
-    changeDimensions(newColumns,rows);
+  const updateWidth = (i) => {
+    setTimeout(() => changeWidth(columns + i), 100) 
   };
 
   return (
     <div className='change-dimension'>
       <div className="rows">
-        <label> ROWS
-          <TextField
-            id="outlined-number"
-            type="number"
-            value={rows}
-            onChange={event => changeHeight(event.target.value)}
-          />
-         </label>
+        <label> 
+          ROWS: <Editor value={rows} action={updateHeight}/>
+        </label>
       </div>
       <div className="">
-        <label> COLUMNS
-          <TextField
-            id="outlined-number"
-            type="number"
-            value={columns}
-            onChange={event => changeWidth(event.target.value)}
-          />
+        <label> COLUMN: <Editor value={columns} action={updateWidth}/>
         </label>
       </div>
     </div>
@@ -51,7 +39,8 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  changeDimensions: (newColumns, newRows) => dispatch(changeDimensions(newColumns, newRows))
+  changeWidth: (newColumns) => dispatch(changeWidth(newColumns)),
+  changeHeight: (newRows) => dispatch(changeHeight(newRows))
 });
 
 const ChangeDimensionContainer = connect(

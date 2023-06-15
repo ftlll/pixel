@@ -1,20 +1,19 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { changeDuration } from '../redux/actions/action';
-import { TextField } from '@material-ui/core';
+import Editor from './Editor';
 
 const Duration = props => {
   const { changeDuration, duration } = props;
 
+  const updateDuration = (i) => {
+    changeDuration(duration + i);
+  };
+
   return (
       <div className="duration">
         <label> DURATION
-          <TextField
-            id="outlined-number"
-            type="number"
-            value={duration}
-            onChange={event => changeDuration(event.target.value)}
-          />
+          <Editor value={duration} action={updateDuration}/>
         </label>
       </div>
   );

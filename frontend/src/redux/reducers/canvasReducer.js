@@ -63,24 +63,10 @@ const changeName = (canvas, action) => {
   })
 }
 
-const changeDimensionForOne = (grid, columns, rows, newColumns, newRows) => {
-  const dRow = newRows - rows;
-  const dCol = newColumns - columns;
+const changeWidthForOne = (grid, newColumns, columns, rows) => {
   let newGrid = grid;
-
-  if (dRow > 0) {
-    for (let i = 0; i < columns; i++) {
-      for (let j = 0; j < dRow; j++) {
-        newGrid = newGrid.push('');
-      }
-    }
-  } else if (dRow < 0) {
-    for (let i = 0; i < columns; i++) {
-      for (let j = dRow; j < 0; j++) {
-        newGrid = newGrid.splice(-1, 1);
-      }
-    }
-  } else if (dCol > 0) {
+  let dCol = newColumns - columns;
+  if (dCol > 0) {
     for (let i = columns * rows; i > 0; i -= columns) {
       for (let j = 0; j < dCol; j++) {
         newGrid = newGrid.insert(i, '');
@@ -94,19 +80,55 @@ const changeDimensionForOne = (grid, columns, rows, newColumns, newRows) => {
   return newGrid;
 }
 
-const changeDimension = (canvas, action) => {
+const changeHeightForOne = (grid, newRows, columns, rows) => {
+  let dRow = newRows - rows;
+  let newGrid = grid;
+  if (dRow > 0) {
+    for (let i = 0; i < columns; i++) {
+      for (let j = 0; j < dRow; j++) {
+        newGrid = newGrid.push('');
+      }
+    }
+  } else if (dRow < 0) {
+    for (let i = 0; i < columns; i++) {
+      for (let j = dRow; j < 0; j++) {
+        newGrid = newGrid.splice(-1, 1);
+      }
+    }
+  }
+  return newGrid;
+}
+
+const changeWidth = (canvas, action) => {
   const columns = canvas.get('columns');
   const rows = canvas.get('rows');
-  const { newColumns, newRows } = action;
+  const { newColumns } = action;
   let newGrids = List();
   const grids = canvas.get('grids');
+
   grids.forEach(grid => {
-    newGrids = newGrids.push(changeDimensionForOne(grid, columns, rows, newColumns, newRows))
+    newGrids = newGrids.push(changeWidthForOne(grid, newColumns, columns, rows))
   });
   
   return canvas.merge({
     grids: newGrids,
     columns: newColumns,
+  });
+};
+
+const changeHeight = (canvas, action) => {
+  const rows = canvas.get('rows');
+  const columns = canvas.get('columns');
+  const { newRows } = action;
+  let newGrids = List();
+  const grids = canvas.get('grids');
+
+  grids.forEach(grid => {
+    newGrids = newGrids.push(changeHeightForOne(grid, newRows, columns, rows))
+  });
+  
+  return canvas.merge({
+    grids: newGrids,
     rows: newRows
   });
 };
@@ -190,8 +212,10 @@ export default function(canvas = initCanvas(), action) {
         return setCanvas(canvas, action);
       case type.CHANGE_NAME:
         return changeName(canvas,action);
-      case type.CHANGE_DIMENSIONS:
-        return changeDimension(canvas, action);
+      case type.CHANGE_HEIGHT:
+        return changeHeight(canvas, action);
+      case type.CHANGE_WIDTH:
+        return changeWidth(canvas, action);
       case type.CHANGE_DURATION:
         return changeDuration(canvas, action);
       case type.CHANGE_CELL_SIZE:
