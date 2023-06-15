@@ -1,6 +1,6 @@
 # pixel art hub
 
-[https://pixel-art-hub.herokuapp.com](https://pixel-art-hub-b0f617f44f38.herokuapp.com/)
+[Link](https://pixel-ftl-0f2307508e02.herokuapp.com/)
 
 An online pixel art editor using react, redux and flask. 
 
