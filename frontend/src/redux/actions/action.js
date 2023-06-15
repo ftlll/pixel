@@ -45,7 +45,7 @@ export function changeName(name) {
 export function changeWidth(newColumns) {
     return {
         type: type.CHANGE_WIDTH,
-        newColumns: Math.max(Math.min(newColumns, MAX_COLUMNS), Math.max(newColumns, MIN_ROWS))
+        newColumns: Math.max(Math.min(newColumns, MAX_COLUMNS), Math.max(newColumns, MIN_COLUMNS))
     }
 }
 
